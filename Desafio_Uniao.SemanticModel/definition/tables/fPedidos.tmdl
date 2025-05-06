@@ -1,0 +1,267 @@
+table fPedidos
+	lineageTag: 842db6fb-d2fb-4da3-bbf0-dd2528f26b8b
+
+	column ID_Pedido
+		dataType: string
+		lineageTag: bc7979c5-328f-44c6-af92-0da2b5691f94
+		summarizeBy: none
+		sourceColumn: ID_Pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Cliente
+		dataType: string
+		lineageTag: cf21435a-8415-4b89-a40a-893813e5920a
+		summarizeBy: none
+		sourceColumn: ID_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Hora_Entrada
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7f0ff214-4f1b-450f-9a66-57e352895659
+		summarizeBy: none
+		sourceColumn: Data_Hora_Entrada
+
+		variation Variation
+			isDefault
+			relationship: 07b048ea-5008-42e2-a17c-19c9e0ca6209
+			defaultHierarchy: LocalDateTable_d4e9b9f6-fd57-4da5-a323-9e850242a2ac.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Pedido
+		dataType: string
+		lineageTag: 271a7275-20ca-4fab-9138-29d9783b094d
+		summarizeBy: none
+		sourceColumn: Tipo_Pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Material
+		dataType: string
+		lineageTag: 31fc4c9b-0814-4242-8937-8ce1d94e3d89
+		summarizeBy: none
+		sourceColumn: ID_Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column Peso_Peca_KG
+		dataType: double
+		lineageTag: 5f8c8a6b-7cd2-45f3-992b-6aee923db786
+		summarizeBy: sum
+		sourceColumn: Peso_Peca_KG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Complexidade_Peca
+		dataType: int64
+		formatString: 0
+		lineageTag: 34c662e3-5c8c-4e02-8d15-4c9e5faafca7
+		summarizeBy: sum
+		sourceColumn: Complexidade_Peca
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prioridade_Interna
+		dataType: int64
+		formatString: 0
+		lineageTag: 7e6db639-4c25-4f96-aa84-0cab23319b8b
+		summarizeBy: sum
+		sourceColumn: Prioridade_Interna
+
+		annotation SummarizationSetBy = Automatic
+
+	column SLA
+		dataType: string
+		lineageTag: 5495ce5b-c0b3-4fcb-b5ab-24e75d2694b2
+		summarizeBy: none
+		sourceColumn: SLA
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status_Atual
+		dataType: string
+		lineageTag: 1ccc0060-80a7-4491-9c84-7b48368b2cf3
+		summarizeBy: none
+		sourceColumn: Status_Atual
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Hora_Prazo_Cliente
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ebb80b56-4e03-42c8-a2dd-40e797c2048e
+		summarizeBy: none
+		sourceColumn: Data_Hora_Prazo_Cliente
+
+		variation Variation
+			isDefault
+			relationship: d744ef24-7ed6-42cf-b6d9-eb1c237205fe
+			defaultHierarchy: LocalDateTable_4853bf79-3071-471b-a98b-7e29a2a58fbc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Hora_Conclusao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4eb88fbb-c9e3-45bd-ab50-bb5574c1f8ce
+		summarizeBy: none
+		sourceColumn: Data_Hora_Conclusao
+
+		variation Variation
+			isDefault
+			relationship: 5d3b380f-f6f2-46d4-844d-1bb47daf41ad
+			defaultHierarchy: LocalDateTable_d9335284-ad30-4f7d-9828-8992e128b050.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valor_Final
+		dataType: double
+		lineageTag: a5453105-8407-4538-a767-3b4abddef3cf
+		summarizeBy: sum
+		sourceColumn: Valor_Final
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Lucro_Prejuizo
+		dataType: double
+		lineageTag: 4a53b0e2-6a26-4549-87e9-176fa0f3e010
+		summarizeBy: sum
+		sourceColumn: Lucro_Prejuizo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Complexidade_Peca_Descricao
+		dataType: string
+		lineageTag: 371882b5-67a3-4aed-88fe-f0107bae19b4
+		summarizeBy: none
+		sourceColumn: Complexidade_Peca_Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prioridade_Interna_Descricao
+		dataType: string
+		lineageTag: a313e3cb-12f3-434b-befb-117518f6b9a6
+		summarizeBy: none
+		sourceColumn: Prioridade_Interna_Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Entrega
+		dataType: string
+		lineageTag: 97acde70-452f-489d-82de-2c0c437a5dcc
+		summarizeBy: none
+		sourceColumn: Entrega
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lucro_ou_Prejuizo
+		dataType: string
+		lineageTag: 90d244b5-4a6b-4c91-a1de-0ca14377d148
+		summarizeBy: none
+		sourceColumn: Lucro_ou_Prejuizo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Entrega_Descricao
+		dataType: string
+		lineageTag: 8abd148a-635b-499d-996b-ce5c12d060f9
+		summarizeBy: none
+		sourceColumn: Entrega_Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lucro_ou_Prejuizo_Descricao
+		dataType: string
+		lineageTag: bd3146f5-3501-4200-88c6-826d6fae55c6
+		summarizeBy: none
+		sourceColumn: Lucro_ou_Prejuizo_Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Entreda_Descricao_Teste
+		dataType: string
+		lineageTag: 3b270d5a-28fa-4d88-b98b-9518e1989728
+		summarizeBy: none
+		sourceColumn: Entreda_Descricao_Teste
+
+		annotation SummarizationSetBy = Automatic
+
+	column Lucro_ou_Prejuizo_Descricao_Teste
+		dataType: string
+		lineageTag: ef2db299-fcb3-4ebb-b092-7c5da160e8f9
+		summarizeBy: none
+		sourceColumn: Lucro_ou_Prejuizo_Descricao_Teste
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Entrada
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d10f5ed7-51c1-42c3-8a51-c25d1b8042a6
+		summarizeBy: none
+		sourceColumn: Data_Entrada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Data_Prazo_Cliente
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3c6a3b34-16b8-4f5d-8d2e-d6decf20e99c
+		summarizeBy: none
+		sourceColumn: Data_Prazo_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Data_Conclusao
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e2a3d7ba-9d48-4dd2-90cf-2998f65c3aaa
+		summarizeBy: none
+		sourceColumn: Data_Conclusao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fPedidos = m
+		mode: import
+		queryGroup: Fatos
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("D:\Cursos\Curso PBI\MBA\Desafio 1\Assets\Source\bases_modulo_produtivo.xlsx"), null, true){[Item="Pedidos",Kind="Sheet"]}[Data],
+				    PromoverCabecalho = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    AdicionarComplexidadeDescricao = Table.AddColumn(PromoverCabecalho, "Complexidade_Peca_Descricao", each if [Complexidade_Peca] = 5 then "Alta Complexidade" else if [Complexidade_Peca] >= 3 then "Media Complexidade" else if [Complexidade_Peca] >= 1 then "Baixa Complexidade" else "Check"),
+				    AdicionarPrioridadeDescricao = Table.AddColumn(AdicionarComplexidadeDescricao, "Prioridade_Interna_Descricao", each if [Prioridade_Interna] = 5 then "Alta Prioridade" else if [Prioridade_Interna] >= 3 then "Media Prioridade" else if [Prioridade_Interna] >= 1 then "Baixa Prioridade" else "Check"),
+				    AdicionarEntrega = Table.AddColumn(AdicionarPrioridadeDescricao, "Entrega", each Text.BeforeDelimiter([Status_Financeiro], " ("), type text),
+				    AdicionrLucroPrejuizo = Table.AddColumn(AdicionarEntrega, "Lucro_ou_Prejuizo", each Text.BetweenDelimiters([Status_Financeiro], "(", ")"), type text),
+				    AdicionarEntregaDescricao= Table.AddColumn(AdicionrLucroPrejuizo, "Entrega_Descricao", each if [Entrega] = "Sem atraso" then "Normal" else if Text.Contains([Entrega], "Atraso ") then "Atrasada" else "Check"),
+				    AdicionarLucroPrejuizoDescricao = Table.AddColumn(AdicionarEntregaDescricao, "Lucro_ou_Prejuizo_Descricao", each if Text.Contains([Lucro_ou_Prejuizo], "Lucro") then "Venda Lucrativa" else if Text.Contains([Lucro_ou_Prejuizo], "Prejuízo") then "Prejuízo" else if Text.Contains([Lucro_ou_Prejuizo], "lucro") then "Venda Lucrativa" else "Check"),
+				    AdicionarEntregaTeste= Table.AddColumn(AdicionarLucroPrejuizoDescricao, "Entreda_Descricao_Teste", each if Text.Contains([Entrega], "≤20d") then "Pouco Atraso" else if Text.Contains([Entrega], "21-50d") then "Medio Atraso" else if Text.Contains([Entrega], ">50d") then "Alto Atraso" else if [Entrega] = "Sem atraso" then "No Prazo" else "Check"),
+				    AdicionarLucrPrejuizoTeste = Table.AddColumn(AdicionarEntregaTeste, "Lucro_ou_Prejuizo_Descricao_Teste", each if Text.Contains([Lucro_ou_Prejuizo], "7-20%") then "Prejuízo" else if Text.Contains([Lucro_ou_Prejuizo], "3%") then "Baixo Lucro" else if Text.Contains([Lucro_ou_Prejuizo], "15%") then "Medio Lucro" else if Text.Contains([Lucro_ou_Prejuizo], "Lucro normal") then "Alto Lucro" else "Check"),
+				    TrocarVazioporDataAtual = Table.ReplaceValue(AdicionarLucrPrejuizoTeste,null,DateTime.LocalNow(),Replacer.ReplaceValue,{"Data_Conclusao"}),
+				    InserirDataEntrada = Table.AddColumn(TrocarVazioporDataAtual, "Data_Entrada.1", each DateTime.Date([Data_Conclusao]), type date),
+				    RemoveColunasStatusFinanceiro = Table.RemoveColumns(InserirDataEntrada,{"Status_Financeiro"}),
+				    InserirDataPrazoCliente = Table.AddColumn(RemoveColunasStatusFinanceiro, "Data_Prazo_Cliente", each DateTime.Date([Data_Entrada]), type date),
+				    InserirDataConclusao = Table.AddColumn(InserirDataPrazoCliente, "Data_Conclusao.1", each DateTime.Date([Prazo_Cliente]), type date),
+				    #"Renamed Columns" = Table.RenameColumns(InserirDataConclusao,{{"Data_Entrada", "Data_Hora_Entrada"}, {"Data_Entrada.1", "Data_Entrada"}, {"Peso_KG", "Peso_Peca_KG"}, {"Prazo_Cliente", "Data_Hora_Prazo_Cliente"}, {"Data_Conclusao", "Data_Hora_Conclusao"}, {"Data_Conclusao.1", "Data_Conclusao"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"ID_Pedido", type text}, {"ID_Cliente", type text}, {"Data_Hora_Entrada", type datetime}, {"Tipo_Pedido", type text}, {"ID_Material", type text}, {"Peso_Peca_KG", type number}, {"Complexidade_Peca", Int64.Type}, {"Prioridade_Interna", Int64.Type}, {"SLA", type text}, {"Status_Atual", type text}, {"Data_Hora_Prazo_Cliente", type datetime}, {"Data_Hora_Conclusao", type datetime}, {"Valor_Final", type number}, {"Lucro_Prejuizo", type number}, {"Complexidade_Peca_Descricao", type text}, {"Prioridade_Interna_Descricao", type text}, {"Entrega_Descricao", type text}, {"Lucro_ou_Prejuizo_Descricao", type text}, {"Entreda_Descricao_Teste", type text}, {"Lucro_ou_Prejuizo_Descricao_Teste", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,161 @@
+table fFluxoProcesso
+	lineageTag: 5ea0005e-dcbf-442f-b3e4-b79183779292
+
+	column ID_Fluxo
+		dataType: string
+		lineageTag: f224c4c3-ab1a-4eea-8b63-86ccae9abf36
+		summarizeBy: none
+		sourceColumn: ID_Fluxo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Pedido
+		dataType: string
+		lineageTag: 938c567e-ea7a-4648-aa92-866ebab0f0f1
+		summarizeBy: none
+		sourceColumn: ID_Pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Setor
+		dataType: string
+		lineageTag: 31d7fa86-266f-4be1-8e5c-a151fa4017c9
+		summarizeBy: none
+		sourceColumn: ID_Setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Funcionario
+		dataType: string
+		lineageTag: a884a89b-9f65-4ea8-98b4-1ae257134b9c
+		summarizeBy: none
+		sourceColumn: ID_Funcionario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turno
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a95684d-eb38-4b12-88d1-2a953f8d2f72
+		summarizeBy: sum
+		sourceColumn: Turno
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Hora_Entrada_Setor
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3ae9f802-4b13-44ce-86e0-42b418ebe8fb
+		summarizeBy: none
+		sourceColumn: Data_Hora_Entrada_Setor
+
+		variation Variation
+			isDefault
+			relationship: 8bc8b248-ab3f-4b9d-9ff4-93347955cd92
+			defaultHierarchy: LocalDateTable_f7bab66e-b267-45d7-9226-e087a47ada42.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Hora_Saida_Setor
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4bce05f5-14ee-49e1-98fd-8dd13d46cb90
+		summarizeBy: none
+		sourceColumn: Data_Hora_Saida_Setor
+
+		variation Variation
+			isDefault
+			relationship: b7fcb02e-71ba-41c3-9e31-755fbad6e0bc
+			defaultHierarchy: LocalDateTable_b1076362-e60b-4133-b9ba-b42a312f2ce3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tempo_Padrao_Dias
+		dataType: double
+		lineageTag: 29709491-4463-4092-8686-ee5d65bd4a3f
+		summarizeBy: sum
+		sourceColumn: Tempo_Padrao_Dias
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Tempo_Real_Dias
+		dataType: double
+		lineageTag: b8637ae8-bb52-47c9-8392-dec316ed610c
+		summarizeBy: sum
+		sourceColumn: Tempo_Real_Dias
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Retrabalho
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 722b39aa-7618-4a6a-84cc-f752c56ab876
+		summarizeBy: none
+		sourceColumn: Retrabalho
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: f4b19631-d337-4223-a209-2aee39d3926e
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Data_Entrada_Setor
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a086ac6b-d30a-40c4-ab96-629677bfebd3
+		summarizeBy: none
+		sourceColumn: Data_Entrada_Setor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Data_Saida_Setor
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 076a62f9-b7ac-4b9b-a611-2e666f3ae4b2
+		summarizeBy: none
+		sourceColumn: Data_Saida_Setor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ocorrencia_Descricao
+		dataType: string
+		lineageTag: e906bed6-9dea-4a42-b25c-f247fcc3c43a
+		summarizeBy: none
+		sourceColumn: Ocorrencia_Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fFluxoProcesso = m
+		mode: import
+		queryGroup: Fatos
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("D:\Cursos\Curso PBI\MBA\Desafio 1\Assets\Source\bases_modulo_produtivo.xlsx"), null, true){[Item="Fluxo_Processo",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Inserted Date" = Table.AddColumn(#"Promoted Headers", "Date", each DateTime.Date([Data_Entrada_Setor]), type date),
+				    #"Inserted Date1" = Table.AddColumn(#"Inserted Date", "Date.1", each DateTime.Date([Data_Saida_Setor]), type date),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Date1",{{"Data_Entrada_Setor", "Data_Hora_Entrada_Setor"}, {"Data_Saida_Setor", "Data_Hora_Saida_Setor"}, {"Tempo_Padrao", "Tempo_Padrao_Dias"}, {"Tempo_Real", "Tempo_Real_Dias"}, {"Date", "Data_Entrada_Setor"}, {"Date.1", "Data_Saida_Setor"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns",null,DateTime.LocalNow(),Replacer.ReplaceValue,{"Data_Saida_Setor"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value",{{"ID_Fluxo", type text}, {"ID_Pedido", type text}, {"ID_Setor", type text}, {"ID_Funcionario", type text}, {"Turno", Int64.Type}, {"Data_Hora_Entrada_Setor", type datetime}, {"Data_Hora_Saida_Setor", type datetime}, {"Tempo_Padrao_Dias", type number}, {"Tempo_Real_Dias", type number}, {"Retrabalho", type logical}, {"Ocorrencia_Eventual", type text}, {"Status", type text}, {"Data_Entrada_Setor", type date}, {"Data_Saida_Setor", type date}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"Ocorrencia_Eventual"}, aux_mapeamento, {"Ocorrencia_Eventual"}, "aux_mapeamento", JoinKind.LeftOuter),
+				    #"Expanded aux_mapeamento" = Table.ExpandTableColumn(#"Merged Queries", "aux_mapeamento", {"Ocorrencia_Descricao"}, {"Ocorrencia_Descricao"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Expanded aux_mapeamento",{"Ocorrencia_Eventual"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

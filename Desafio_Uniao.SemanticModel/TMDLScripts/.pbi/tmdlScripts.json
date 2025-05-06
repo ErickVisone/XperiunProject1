@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "tabOrder": [
+    "dCalendario PT",
+    "dCalendario ES",
+    "dCalendar",
+    "Grupo de Calculo",
+    "Calculation Group"
+  ],
+  "defaultTab": "Grupo de Calculo"
+}

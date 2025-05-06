@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Desafio_Uniao"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "7f725b33-eada-423e-84d1-3a9ada9135f1"
+  }
+}

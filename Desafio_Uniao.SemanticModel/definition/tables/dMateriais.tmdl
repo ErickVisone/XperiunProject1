@@ -1,0 +1,81 @@
+table dMateriais
+	lineageTag: 223bf22f-d0e4-4e74-88b9-dadf9574817d
+
+	column ID_Material
+		dataType: string
+		lineageTag: 122f0598-54ad-44a3-a094-3a617a4df274
+		summarizeBy: none
+		sourceColumn: ID_Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Material
+		dataType: string
+		lineageTag: ac8d0cbe-a40d-4138-adc8-9cb74067ad9b
+		summarizeBy: none
+		sourceColumn: Tipo_Material
+
+		annotation SummarizationSetBy = Automatic
+
+	column Complexidade
+		dataType: int64
+		formatString: 0
+		lineageTag: bbf2865d-e311-4369-9a5c-fa24c090cba8
+		summarizeBy: none
+		sourceColumn: Complexidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tempo_Medio_Processamento_Dias
+		dataType: int64
+		formatString: 0
+		lineageTag: c15f382a-1856-403c-b530-acbf1496d964
+		summarizeBy: none
+		sourceColumn: Tempo_Medio_Processamento_Dias
+
+		annotation SummarizationSetBy = Automatic
+
+	column Custo_Base_KG
+		dataType: double
+		lineageTag: c6766342-ab44-4e88-9f08-7ebb8ec69c60
+		summarizeBy: none
+		sourceColumn: Custo_Base_KG
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Disponibilidade
+		dataType: string
+		lineageTag: dce5cefc-bda9-4985-a885-d1b280f2c139
+		summarizeBy: none
+		sourceColumn: Disponibilidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Complexidade_Descricao
+		dataType: string
+		lineageTag: 0b2d64f5-f5e0-4f49-b70f-9e880a242270
+		summarizeBy: none
+		sourceColumn: Complexidade_Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dMateriais = m
+		mode: import
+		queryGroup: Dimensoes
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("D:\Cursos\Curso PBI\MBA\Desafio 1\Assets\Source\bases_modulo_produtivo.xlsx"), null, true){[Item="Materiais",Kind="Sheet"]}[Data],
+				    PromoverCabecalho = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    FiltrarNulos = Table.SelectRows(PromoverCabecalho, each ([ID_Material] <> null)),
+				    AdicionarDescricao = Table.AddColumn(FiltrarNulos, "Complexidade_Descricao", each if [Complexidade] = 4 then "Alta Complexidade" else if [Complexidade] >= 3 then "Media Complexidade" else if [Complexidade] >= 1 then "Baixa Complexidade" else "Check"),
+				    RenomearColunas = Table.RenameColumns(AdicionarDescricao,{{"Tempo_Medio_Processamento", "Tempo_Medio_Processamento_Dias"}}),
+				    TipoAlterado = Table.TransformColumnTypes(RenomearColunas,{{"ID_Material", type text}, {"Tipo_Material", type text}, {"Complexidade", Int64.Type}, {"Tempo_Medio_Processamento_Dias", Int64.Type}, {"Custo_Base_KG", type number}, {"Disponibilidade", type text}, {"Complexidade_Descricao", type text}})
+				in
+				    TipoAlterado
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

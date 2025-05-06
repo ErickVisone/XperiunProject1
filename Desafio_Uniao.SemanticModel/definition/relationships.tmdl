@@ -1,0 +1,64 @@
+relationship 07b048ea-5008-42e2-a17c-19c9e0ca6209
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPedidos.Data_Hora_Entrada
+	toColumn: LocalDateTable_d4e9b9f6-fd57-4da5-a323-9e850242a2ac.Date
+
+relationship d744ef24-7ed6-42cf-b6d9-eb1c237205fe
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPedidos.Data_Hora_Prazo_Cliente
+	toColumn: LocalDateTable_4853bf79-3071-471b-a98b-7e29a2a58fbc.Date
+
+relationship 5d3b380f-f6f2-46d4-844d-1bb47daf41ad
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPedidos.Data_Hora_Conclusao
+	toColumn: LocalDateTable_d9335284-ad30-4f7d-9828-8992e128b050.Date
+
+relationship 8bc8b248-ab3f-4b9d-9ff4-93347955cd92
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fFluxoProcesso.Data_Hora_Entrada_Setor
+	toColumn: LocalDateTable_f7bab66e-b267-45d7-9226-e087a47ada42.Date
+
+relationship b7fcb02e-71ba-41c3-9e31-755fbad6e0bc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fFluxoProcesso.Data_Hora_Saida_Setor
+	toColumn: LocalDateTable_b1076362-e60b-4133-b9ba-b42a312f2ce3.Date
+
+relationship 616509ac-d6b4-d86b-4ccc-980c2148ecbf
+	fromColumn: fPedidos.ID_Material
+	toColumn: dMateriais.ID_Material
+
+relationship 259ea575-a223-d686-cae2-b030800cc0fd
+	fromColumn: fPedidos.ID_Cliente
+	toColumn: dClientes.ID_Cliente
+
+relationship 9a187a8e-fe39-2371-af3c-8d70bada119e
+	fromColumn: fPedidos.Data_Entrada
+	toColumn: dCalendario.Data
+
+relationship d0a9d936-a401-d939-aa73-7ab0ae40bb11
+	isActive: false
+	fromColumn: fPedidos.Data_Conclusao
+	toColumn: dCalendario.Data
+
+relationship f857ff62-9789-0c43-5db4-76e5931a730e
+	isActive: false
+	fromColumn: fPedidos.Data_Prazo_Cliente
+	toColumn: dCalendario.Data
+
+relationship db0aacc0-d29f-4b0f-1ddf-38f387b7342d
+	fromColumn: fFluxoProcesso.Data_Entrada_Setor
+	toColumn: dCalendario.Data
+
+relationship 64bf0746-236f-a165-29f2-d51acc4e5973
+	isActive: false
+	fromColumn: fFluxoProcesso.Data_Saida_Setor
+	toColumn: dCalendario.Data
+
+relationship 7001e6d7-61de-8986-2e42-3c9c856b754d
+	fromColumn: fFluxoProcesso.ID_Funcionario
+	toColumn: dFuncionarios.ID_Funcionario
+
+relationship f748a018-dfe2-78fb-29e8-ebf4fc9a8ec5
+	fromColumn: fFluxoProcesso.ID_Setor
+	toColumn: dSetores.ID_Setor
+

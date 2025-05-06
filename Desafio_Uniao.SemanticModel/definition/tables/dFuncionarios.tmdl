@@ -1,0 +1,129 @@
+table dFuncionarios
+	lineageTag: f772bb92-d3e2-4e49-9967-eb1a8d9821b5
+
+	column ID_Funcionario
+		dataType: string
+		lineageTag: 19f205e2-7e0f-46f2-a563-972373ebdbab
+		summarizeBy: none
+		sourceColumn: ID_Funcionario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: 11f4cbf4-6097-4851-9767-4a2b99318aea
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Setor
+		dataType: string
+		lineageTag: e49a4733-062a-4398-8ba9-c6a06e080307
+		summarizeBy: none
+		sourceColumn: ID_Setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Setor
+		dataType: string
+		lineageTag: 305a3c0b-e448-4124-9243-672a12913ce8
+		summarizeBy: none
+		sourceColumn: Setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cargo
+		dataType: string
+		lineageTag: 4ce204d1-7c9b-4213-8f23-948beee3faa9
+		summarizeBy: none
+		sourceColumn: Cargo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Turno
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f79fd24-d36d-41c1-9572-7b96db2ca9b0
+		summarizeBy: none
+		sourceColumn: Turno
+
+		annotation SummarizationSetBy = Automatic
+
+	column Salario_Mensal
+		dataType: double
+		lineageTag: 42476b05-47dc-4792-92bf-18d0c954a173
+		summarizeBy: none
+		sourceColumn: Salario_Mensal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Custo_Hora
+		dataType: double
+		lineageTag: 372f5f25-7875-44e0-b7a3-5e7001895d56
+		summarizeBy: none
+		sourceColumn: Custo_Hora
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Horas_Mensais_Disponiveis
+		dataType: double
+		lineageTag: c85b1eec-17d9-4fa4-9066-f893b6416827
+		summarizeBy: none
+		sourceColumn: Horas_Mensais_Disponiveis
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Eficiencia_Tecnica
+		dataType: double
+		lineageTag: 0c905636-029b-4f5b-90f5-be5a9300d880
+		summarizeBy: none
+		sourceColumn: Eficiencia_Tecnica
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Horas_Produtivas_Mes
+		dataType: double
+		lineageTag: 1331dfb3-ad43-4616-bb88-8e9460db66c1
+		summarizeBy: none
+		sourceColumn: Horas_Produtivas_Mes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Horas_Produtivas_Dia
+		dataType: double
+		lineageTag: bc4150d4-081e-4aff-9e97-a7691780a465
+		summarizeBy: none
+		sourceColumn: Horas_Produtivas_Dia
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dFuncionarios = m
+		mode: import
+		queryGroup: Dimensoes
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("D:\Cursos\Curso PBI\MBA\Desafio 1\Assets\Source\bases_modulo_produtivo.xlsx"), null, true){[Item="Funcionarios",Kind="Sheet"]}[Data],
+				    PromoverCabecalho = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    FiltrarNulos = Table.SelectRows(PromoverCabecalho, each ([ID_Funcionario] <> null)),
+				    ColunasRenomeadas = Table.RenameColumns(FiltrarNulos,{{"Eficiência_Técnica", "Eficiencia_Tecnica"}, {"Horas_Produtivas_Mês", "Horas_Produtivas_Mes"}}),
+				    TipoAlterado= Table.TransformColumnTypes(ColunasRenomeadas,{{"ID_Funcionario", type text}, {"Nome", type text}, {"ID_Setor", type text}, {"Setor", type text}, {"Cargo", type text}, {"Turno", Int64.Type}, {"Salario_Mensal", type number}, {"Custo_Hora", type number}, {"Horas_Mensais_Disponiveis", type number}, {"Eficiencia_Tecnica", type number}, {"Horas_Produtivas_Mes", type number}, {"Horas_Produtivas_Dia", type number}})
+				in
+				    TipoAlterado
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

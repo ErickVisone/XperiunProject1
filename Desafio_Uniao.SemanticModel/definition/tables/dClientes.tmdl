@@ -1,0 +1,61 @@
+table dClientes
+	lineageTag: 5140d542-34a3-4273-b169-0d130769a2ce
+
+	column ID_Cliente
+		dataType: string
+		lineageTag: 21699909-c95f-4bc3-b9ca-cedd26654b1a
+		summarizeBy: none
+		sourceColumn: ID_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome_Cliente
+		dataType: string
+		lineageTag: a96931b8-ad8b-46d6-b53e-1e8ae83ebd61
+		summarizeBy: none
+		sourceColumn: Nome_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segmento
+		dataType: string
+		lineageTag: 07ce5993-bd86-475d-b638-65b99b47bec3
+		summarizeBy: none
+		sourceColumn: Segmento
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prioridade
+		dataType: int64
+		formatString: 0
+		lineageTag: f1867364-a25a-4de8-9956-ae9ed6ec11aa
+		summarizeBy: none
+		sourceColumn: Prioridade
+
+		annotation SummarizationSetBy = Automatic
+
+	column Prioridade_Descricao
+		dataType: string
+		lineageTag: 61964633-e508-4012-b14c-91f01139b06e
+		summarizeBy: none
+		sourceColumn: Prioridade_Descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dClientes = m
+		mode: import
+		queryGroup: Dimensoes
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("D:\Cursos\Curso PBI\MBA\Desafio 1\Assets\Source\bases_modulo_produtivo.xlsx"), null, true){[Item="Clientes",Kind="Sheet"]}[Data],
+				    PromoverCabecalhos = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    FiltrarNulos = Table.SelectRows(PromoverCabecalhos, each ([ID_Cliente] <> null)),
+				    #"Added Conditional Column" = Table.AddColumn(FiltrarNulos, "Prioridade_Descricao", each if [Prioridade] = 5 then "Alta Prioridade" else if [Prioridade] >= 3 then "Media Prioridade" else if [Prioridade] >= 0 then "Baixa Prioridade" else "Check"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Conditional Column",{{"ID_Cliente", type text}, {"Nome_Cliente", type text}, {"Segmento", type text}, {"Prioridade", Int64.Type}, {"Prioridade_Descricao", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

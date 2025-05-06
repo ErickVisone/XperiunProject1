@@ -1,0 +1,331 @@
+createOrReplace
+
+    table _TimeIntelligence
+
+        calculationGroup
+
+            calculationItem Actual = SELECTEDMEASURE ( )
+
+            calculationItem 'Previous Year' = ```
+                                        
+                    CALCULATE (
+                        SELECTEDMEASURE ( ),
+                        SAMEPERIODLASTYEAR ( dCalendar[Date] )
+                    )
+                    
+                    ```
+
+            calculationItem 'Actual Vs Previous Year' = ```
+                    
+                    VAR __Previous = 
+                        CALCULATE ( 
+                            SELECTEDMEASURE ( ),
+                            _TimeIntelligence[Item] = "Previous Year"
+                        )
+                    
+                    VAR __Result = 
+                        DIVIDE (
+                            SELECTEDMEASURE ( ) - __Previous,
+                            ABS ( __Previous )
+                        )
+                    
+                    RETURN __Result 
+                            
+                    ```
+
+                formatStringDefinition = ```
+                        "0.0%;-0.0%" 
+                        ```
+
+            calculationItem 'Previous Month' = ```
+                    
+                    CALCULATE (
+                        SELECTEDMEASURE ( ),
+                        PREVIOUSMONTH ( dCalendar[Date] )
+                    ) 
+                    
+                    ```
+
+            calculationItem 'Actual Vs Previous Month' = ```
+                    
+                    VAR __Previous = 
+                        CALCULATE ( 
+                            SELECTEDMEASURE ( ),
+                            _TimeIntelligence[Item] = "Previous Month"
+                        )
+                    
+                    VAR __Result = 
+                        DIVIDE (
+                            SELECTEDMEASURE ( ) - __Previous,
+                            ABS ( __Previous )
+                        )
+                    
+                    RETURN __Result 
+                    ```
+
+                formatStringDefinition = ```
+                        "0.0%;-0.0%" 
+                        ```
+
+            calculationItem 'Previous Week' = ```
+                    
+                    CALCULATE (
+                        SELECTEDMEASURE ( ),
+                        OFFSET (
+                            -1,
+                            ALLSELECTED (
+                                dCalendar[WeekYearNameISO], 
+                                dCalendar[WeekYearNumberISO] 
+                            ),
+                            ORDERBY ( dCalendar[WeekYearNumberISO], ASC )
+                        )
+                    ) 
+                    
+                    ```
+
+            calculationItem 'Current Vs Previous Week' = ```
+                    
+                    VAR __Current = SELECTEDMEASURE ( )
+                    VAR __Previous = 
+                        CALCULATE (
+                            SELECTEDMEASURE ( ),
+                            _TimeIntelligence[Item] = "Previous Week"
+                        ) 
+                    
+                    VAR __Result =
+                        DIVIDE (
+                            __Current - __Previous,
+                            ABS ( __Previous )
+                        ) 
+                    
+                    RETURN __Result 
+                    ```
+
+                formatStringDefinition = "0.0%;-0.0%"
+
+            calculationItem 'Previous Day' = ```
+                    
+                        CALCULATE (
+                            SELECTEDMEASURE ( ),
+                            DATEADD ( 
+                                dCalendar[Date],
+                                -1,
+                                DAY
+                            )
+                        ) 
+                    ```
+
+            calculationItem 'Current Vs Previous Day' = ```
+                    
+                    VAR __Current = SELECTEDMEASURE ( )
+                    VAR __Previous = 
+                        CALCULATE (
+                            SELECTEDMEASURE ( ),
+                            _TimeIntelligence[Item] = "Previous Day"
+                        ) 
+                    
+                    VAR __Result =
+                        DIVIDE (
+                            __Current - __Previous,
+                            ABS ( __Previous )
+                        ) 
+                    
+                    RETURN __Result 
+                    ```
+
+                formatStringDefinition = ```
+                        "0.0%;-0.0%" 
+                        ```
+
+            calculationItem 'Previous Quarter' = ```			
+
+                    CALCULATE (
+                        SELECTEDMEASURE ( ),
+                        DATEADD ( 
+                            dCalendar[Date],
+                            -1,
+                            QUARTER
+                        )
+                    ) 
+                                        
+                    ```
+
+            calculationItem 'Current Vs Previous Quarter' = ```
+                    
+                    VAR __Current = SELECTEDMEASURE ( )
+                    VAR __Previous = 
+                        CALCULATE (
+                            SELECTEDMEASURE ( ),
+                            _TimeIntelligence[Item] = "Previous Quarter"
+                        ) 
+                    
+                    VAR __Result =
+                        DIVIDE (
+                            __Current - __Previous,
+                            ABS ( __Previous )
+                        ) 
+                    
+                    RETURN __Result 
+                    ```
+
+            calculationItem 'Moving Average Days' = ```
+                                        
+                    VAR __Qty = 3 
+                    
+                    VAR __StartRel = -1 * ( __Qty - 1 )
+                    
+                    VAR __relation = 
+                        ALLSELECTED ( dCalendar[Date] )
+                    
+                    VAR __table =
+                        WINDOW (
+                            __StartRel, REL,
+                            0, REL,
+                            __relation,
+                            ORDERBY ( dCalendar[Date] )
+                        )
+                    
+                    VAR __Result = 
+                        AVERAGEX ( 
+                            __table,
+                            SELECTEDMEASURE ( )  
+                        )
+                    
+                    RETURN __Result 
+                    ```
+
+            calculationItem 'Moving Average Weeks' = ```
+                                        
+                    VAR __Qty = 3
+                    
+                    VAR __StartRel = -1 * ( __Qty - 1 )
+                    
+                    VAR __relation = 
+                        ALLSELECTED ( dCalendar[WeekYearNameISO], dCalendar[WeekYearNumberISO] )
+                    
+                    VAR __table =
+                        WINDOW (
+                            __StartRel, REL,
+                            0, REL,
+                            __relation,
+                            ORDERBY ( dCalendar[WeekYearNumberISO] )
+                        )
+                    
+                    VAR __Result = 
+                        AVERAGEX ( 
+                            __table,
+                            SELECTEDMEASURE ( )
+                        )
+                    
+                    RETURN __Result 
+                    ```
+
+            calculationItem 'Moving Average Months' = ```
+                    
+                    VAR __Qty = 3
+                    
+                    VAR __StartRel = -1 * ( __Qty - 1 )
+                    
+                    VAR __relation = 
+                        ALLSELECTED ( dCalendar[MonthYearName], dCalendar[MonthYearNumber] )
+                    
+                    VAR __table =
+                        WINDOW (
+                            __StartRel, REL,
+                            0, REL,
+                            __relation,
+                            ORDERBY ( dCalendar[MonthYearNumber] )
+                        )
+                    
+                    VAR __Result = 
+                        AVERAGEX ( 
+                            __table,
+                            SELECTEDMEASURE ( ) 
+                        )
+                    
+                    RETURN __Result 
+                    
+                    ```
+
+            calculationItem 'Moving Average Quarters' = ```
+                    
+                    VAR __Qty = 3
+                    
+                    VAR __StartRel = -1 * ( __Qty - 1 )
+                    
+                    VAR __relation = 
+                        ALLSELECTED ( dCalendar[QuarterYearName], dCalendar[QuarterYearNumber] )
+                    
+                    VAR __table =
+                        WINDOW (
+                            __StartRel, REL,
+                            0, REL,
+                            __relation,
+                            ORDERBY ( dCalendar[QuarterYearNumber] )
+                        )
+                    
+                    VAR __Result = 
+                        AVERAGEX ( 
+                            __table,
+                            SELECTEDMEASURE ( ) 
+                        )
+                    
+                    RETURN __Result 
+                    ```
+
+            calculationItem 'Year-to-Date' = ```
+                                        
+                    CALCULATE ( 
+                        SELECTEDMEASURE ( ),
+                        DATESYTD ( dCalendar[Date] )
+                    )
+                    
+                    ```
+
+            calculationItem 'All-time Accumulated' = ```
+                                        
+                    VAR __CurrentDate = MAX ( dCalendar[Date] )
+                    
+                    VAR __Result = 
+                        CALCULATE (
+                            SELECTEDMEASURE ( ),
+                            dCalendar[Date] <= __CurrentDate
+                        )
+                    
+                    RETURN __Result 
+
+                    ```
+
+            calculationItem 'Month-to-Date' = ```
+                                        
+                    CALCULATE (
+                        SELECTEDMEASURE ( ),
+                        DATESMTD ( dCalendar[Date] )
+                    )
+                    
+                    ```
+
+            calculationItem 'Quarter-to-Date' = ```
+                    
+                    CALCULATE (
+                        SELECTEDMEASURE ( ),
+                        DATESQTD ( dCalendar[Date] )
+                    )		
+                    
+                    ```
+
+		column Item
+			dataType: string
+			summarizeBy: none
+			sourceColumn: Name
+			sortByColumn: Ordinal
+
+			annotation SummarizationSetBy = Automatic
+
+		column Ordinal
+			dataType: int64
+			formatString: 0
+			summarizeBy: sum
+			sourceColumn: Ordinal
+
+			annotation SummarizationSetBy = Automatic

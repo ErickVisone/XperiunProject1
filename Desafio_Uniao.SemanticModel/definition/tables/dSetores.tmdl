@@ -1,0 +1,62 @@
+table dSetores
+	lineageTag: 83361b8d-ef28-443e-85ad-5e1fa04194c2
+
+	column ID_Setor
+		dataType: string
+		lineageTag: 553d8018-c600-42a7-80b4-8b1cad605ffe
+		summarizeBy: none
+		sourceColumn: ID_Setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome_Setor
+		dataType: string
+		lineageTag: 5d0d1809-1d69-4609-9d6f-5ab754932a6e
+		summarizeBy: none
+		sourceColumn: Nome_Setor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Responsavel
+		dataType: string
+		lineageTag: 1adeb404-3a18-4d8e-ac31-077389c6d35f
+		summarizeBy: none
+		sourceColumn: Responsavel
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tempo_Padrao_Processamento_Dias
+		dataType: int64
+		formatString: 0
+		lineageTag: a6870133-fd78-4ec3-9dd3-0cedbc733707
+		summarizeBy: none
+		sourceColumn: Tempo_Padrao_Processamento_Dias
+
+		annotation SummarizationSetBy = Automatic
+
+	column Capacidade_Diaria_Pedidos
+		dataType: int64
+		formatString: 0
+		lineageTag: ef77c691-b288-481a-aa4c-06f3b8533c2a
+		summarizeBy: none
+		sourceColumn: Capacidade_Diaria_Pedidos
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dSetores = m
+		mode: import
+		queryGroup: Dimensoes
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("D:\Cursos\Curso PBI\MBA\Desafio 1\Assets\Source\bases_modulo_produtivo.xlsx"), null, true){[Item="Setores",Kind="Sheet"]}[Data],
+				    PromoverCabecalho = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    FiltrarNulos = Table.SelectRows(PromoverCabecalho, each ([ID_Setor] <> null)),
+				    RenomearColunas = Table.RenameColumns(FiltrarNulos,{{"Tempo_Padrao_Processamento", "Tempo_Padrao_Processamento_Dias"}, {"Capacidade_Diaria", "Capacidade_Diaria_Pedidos"}}),
+				    TipoAlterado = Table.TransformColumnTypes(RenomearColunas,{{"ID_Setor", type text}, {"Nome_Setor", type text}, {"Responsavel", type text}, {"Tempo_Padrao_Processamento_Dias", Int64.Type}, {"Capacidade_Diaria_Pedidos", Int64.Type}})
+				in
+				    TipoAlterado
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
