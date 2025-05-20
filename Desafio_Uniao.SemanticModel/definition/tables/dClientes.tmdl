@@ -1,6 +1,40 @@
 table dClientes
 	lineageTag: 5140d542-34a3-4273-b169-0d130769a2ce
 
+	measure '_Numero de clientes' =
+			
+			// Numero total de clientes
+			CALCULATE(
+			    DISTINCTCOUNT(dClientes[Nome_Cliente])
+			)
+		lineageTag: 365acdc7-c31f-4c23-ade9-c4b921c59885
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '_Media de pedidos por cliente' =
+			
+			// Media de pedidos por cliente
+			DIVIDE(
+			    [_Numero de pedidos],
+			    [_Numero de clientes],
+			    0
+			)
+		lineageTag: 3552ee41-50e7-4a54-bc39-19b3fcbc6359
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '_Media de faturamento por cliente' =
+			
+			// Media de faturamento por cliente
+			DIVIDE(
+			    [_Lucro / Prejuizo],
+			    [_Numero de clientes],
+			    0
+			)
+		lineageTag: 28419218-79da-4b12-a840-efff21ef9d12
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ID_Cliente
 		dataType: string
 		lineageTag: 21699909-c95f-4bc3-b9ca-cedd26654b1a
@@ -39,8 +73,21 @@ table dClientes
 		lineageTag: 61964633-e508-4012-b14c-91f01139b06e
 		summarizeBy: none
 		sourceColumn: Prioridade_Descricao
+		sortByColumn: Ordem_Prioridade
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
+
+	column Ordem_Prioridade
+		dataType: double
+		lineageTag: 543e6dff-e7e9-429b-a0e3-86ab3ab4cc21
+		summarizeBy: none
+		sourceColumn: Ordem_Prioridade
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	partition dClientes = m
 		mode: import
@@ -51,9 +98,11 @@ table dClientes
 				    PromoverCabecalhos = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    FiltrarNulos = Table.SelectRows(PromoverCabecalhos, each ([ID_Cliente] <> null)),
 				    #"Added Conditional Column" = Table.AddColumn(FiltrarNulos, "Prioridade_Descricao", each if [Prioridade] = 5 then "Alta Prioridade" else if [Prioridade] >= 3 then "Media Prioridade" else if [Prioridade] >= 0 then "Baixa Prioridade" else "Check"),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Added Conditional Column",{{"ID_Cliente", type text}, {"Nome_Cliente", type text}, {"Segmento", type text}, {"Prioridade", Int64.Type}, {"Prioridade_Descricao", type text}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Conditional Column",{{"ID_Cliente", type text}, {"Nome_Cliente", type text}, {"Segmento", type text}, {"Prioridade", Int64.Type}, {"Prioridade_Descricao", type text}}),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Changed Type", "Ordem_Prioridade", each if Text.Contains([Prioridade_Descricao], "Alta") then 1 else if Text.Contains([Prioridade_Descricao], "Media") then 2 else if Text.Contains([Prioridade_Descricao], "Baixa") then 3 else 0, type number
+				)
 				in
-				    #"Changed Type"
+				    #"Added Conditional Column1"
 
 	annotation PBI_NavigationStepName = Navigation
 

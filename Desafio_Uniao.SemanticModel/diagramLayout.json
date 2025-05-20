@@ -23,8 +23,8 @@
         },
         {
           "location": {
-            "x": 1641.7845216010712,
-            "y": 30.400281482423509
+            "x": 1543.0275698246855,
+            "y": 331.52803607927143
           },
           "nodeIndex": "_gInteligenciaTemporal",
           "nodeLineageTag": "66cf20b9-884a-445d-bab2-366382c9aa9b",
@@ -71,7 +71,7 @@
             "height": 248,
             "width": 234
           },
-          "zIndex": 8
+          "zIndex": 7
         },
         {
           "location": {
@@ -84,7 +84,7 @@
             "height": 200,
             "width": 234
           },
-          "zIndex": 5
+          "zIndex": 8
         },
         {
           "location": {
@@ -97,7 +97,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 6
+          "zIndex": 5
         },
         {
           "location": {
@@ -110,7 +110,7 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 7
+          "zIndex": 6
         }
       ],
       "name": "All tables",

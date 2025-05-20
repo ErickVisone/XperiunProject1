@@ -1,6 +1,26 @@
 table dFuncionarios
 	lineageTag: f772bb92-d3e2-4e49-9967-eb1a8d9821b5
 
+	measure '_Salario Mensal' =
+			
+			// Calcula a despesa mensal da Uniao com salários.
+			CALCULATE(
+			    SUM(dFuncionarios[Salario_Mensal])
+			)
+		lineageTag: a2dc1600-b825-4fcf-af3f-997e2db26e80
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '_Funcionarios Ativos' =
+			
+			// Numero de funcionario ativos
+			CALCULATE(
+			    count(dFuncionarios[Nome])
+			)
+		lineageTag: 60455a3f-581d-4649-8896-3a783d1a4244
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ID_Funcionario
 		dataType: string
 		lineageTag: 19f205e2-7e0f-46f2-a563-972373ebdbab

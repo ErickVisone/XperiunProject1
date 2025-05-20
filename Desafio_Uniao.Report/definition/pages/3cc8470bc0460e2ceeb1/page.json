@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.4.0/schema.json",
+  "name": "3cc8470bc0460e2ceeb1",
+  "displayName": "Tooltip bubble",
+  "displayOption": "FitToPage",
+  "height": 360,
+  "width": 640,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "efcb76cd16c6d0026bb3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dClientes"
+              }
+            },
+            "Property": "Segmento"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "dbce092c64ab42cc874b",
+    "type": "Tooltip",
+    "parameters": [
+      {
+        "name": "e9a54c42c0edd3e592ea",
+        "boundFilter": "efcb76cd16c6d0026bb3",
+        "asAggregation": false,
+        "qnaSingleSelectRequired": false,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dClientes"
+              }
+            },
+            "Property": "Segmento"
+          }
+        }
+      }
+    ]
+  },
+  "type": "Tooltip"
+}

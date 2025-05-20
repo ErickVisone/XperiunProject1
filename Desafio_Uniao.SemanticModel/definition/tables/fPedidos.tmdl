@@ -1,6 +1,158 @@
 table fPedidos
 	lineageTag: 842db6fb-d2fb-4da3-bbf0-dd2528f26b8b
 
+	measure '_Numero de pedidos' = ```
+			
+			//Numero de pedidos
+			COUNTROWS(fPedidos)
+			
+			```
+		formatString: #,0.00
+		lineageTag: ccaf1689-6f6d-467d-ab42-c287e4e76676
+
+	measure '_Pedidos Atrasados' = ```
+			
+			// Quantidade de pedidos que nao foram entregues dentro do prazo 
+			CALCULATE(
+			    [_Numero de pedidos],
+			    fPedidos[Entrega_Descricao] = "Atrasada"
+			)
+			```
+		lineageTag: 212e8b8e-5003-40a1-bb07-0a109ea36034
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '_Pedidos No Prazo' = ```
+			
+			// Quantidade de pedidos que foram entregues dentro do prazo 
+			CALCULATE(
+			    [_Numero de pedidos],
+			    fPedidos[Entrega_Descricao] = "Normal"
+			)
+			```
+		lineageTag: 2f6c7aec-f670-479a-89d6-085d2408e5d8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '_% No Prazo' = ```
+			
+			// Verifica o % de pedidos em atraso 
+			DIVIDE(
+			    [_Pedidos No Prazo] -[_Pedidos Atrasados] ,
+			    [_Pedidos No Prazo],
+			    0
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 67fc79d0-85f8-4324-a2e0-ab9970d39834
+
+	measure '_% Atraso' =
+			
+			// Verifica o % de pedidos no prazo
+			1 - DIVIDE(
+			    [_Pedidos No Prazo] -[_Pedidos Atrasados] ,
+			    [_Pedidos No Prazo],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3e86b95d-9da6-43c9-a2c4-80fdb71fc46b
+
+	measure '_Lucro / Prejuizo' = ```
+			
+			// Soma lucros e prejuizos das entregas 
+			CALCULATE(
+			    SUM(fPedidos[Lucro_Prejuizo])
+			)
+			```
+		formatString: "€"\ #,0;-"€"\ #,0;"€"\ #,0
+		lineageTag: a6cc346f-13ec-414f-b04c-20ecd4f68dc3
+
+	measure '__Lim min faturamento por cliente' =
+			
+			MINX(
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            dClientes,
+			            dClientes[Prioridade_Descricao]
+			        )
+			        ,"Media de Faturamento por Cliente"
+			        ,[_Media de faturamento por cliente]
+			    )
+			    , [Media de Faturamento por Cliente]
+			) * (1 - [__espacamento])
+		lineageTag: f405db38-6a3a-4eba-bb38-78c82ea78aa0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Lim max faturamento por cliente' =
+			
+			MAXX(
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            dClientes,
+			            dClientes[Prioridade_Descricao]
+			        )
+			        ,"Media de Faturamento por Cliente"
+			        ,[_Media de faturamento por cliente]
+			    )
+			    , [Media de Faturamento por Cliente]
+			) * (1 + [__espacamento])
+		lineageTag: 596d312e-f1bf-48c5-85a0-1a01182c18d3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Lim max pedido por cliente' =
+			
+			MAXX(
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            dClientes,
+			            dClientes[Prioridade_Descricao]
+			        )
+			        ,"Media de pedidos por Cliente"
+			        ,[_Media de pedidos por cliente]
+			    )
+			    , [_Media de pedidos por cliente]
+			) * (1 + [__espacamento])
+		lineageTag: ea68b9ee-2aa7-455f-8a46-d57e64929628
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Lim min pedido por cliente' =
+			
+			MINX(
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            dClientes,
+			            dClientes[Prioridade_Descricao]
+			        )
+			        ,"Media de pedidos por Cliente"
+			        ,[_Media de pedidos por cliente]
+			    )
+			    , [_Media de pedidos por cliente]
+			) * (1 - [__espacamento])
+		lineageTag: 9f8581cf-8416-4cbc-a7cb-3a34379a2140
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure __espacamento =
+			
+			0.01
+		lineageTag: f85445ef-4015-43da-8c86-2ff3181dda91
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lucro por Pedido' =
+			
+			DIVIDE(
+			    [_Lucro / Prejuizo],
+			    [_Numero de pedidos],
+			    0
+			)
+		lineageTag: 9f50d6b9-9709-477c-bc9e-fd476637339a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ID_Pedido
 		dataType: string
 		lineageTag: bc7979c5-328f-44c6-af92-0da2b5691f94
@@ -252,10 +404,10 @@ table fPedidos
 				    AdicionarEntregaTeste= Table.AddColumn(AdicionarLucroPrejuizoDescricao, "Entreda_Descricao_Teste", each if Text.Contains([Entrega], "≤20d") then "Pouco Atraso" else if Text.Contains([Entrega], "21-50d") then "Medio Atraso" else if Text.Contains([Entrega], ">50d") then "Alto Atraso" else if [Entrega] = "Sem atraso" then "No Prazo" else "Check"),
 				    AdicionarLucrPrejuizoTeste = Table.AddColumn(AdicionarEntregaTeste, "Lucro_ou_Prejuizo_Descricao_Teste", each if Text.Contains([Lucro_ou_Prejuizo], "7-20%") then "Prejuízo" else if Text.Contains([Lucro_ou_Prejuizo], "3%") then "Baixo Lucro" else if Text.Contains([Lucro_ou_Prejuizo], "15%") then "Medio Lucro" else if Text.Contains([Lucro_ou_Prejuizo], "Lucro normal") then "Alto Lucro" else "Check"),
 				    TrocarVazioporDataAtual = Table.ReplaceValue(AdicionarLucrPrejuizoTeste,null,DateTime.LocalNow(),Replacer.ReplaceValue,{"Data_Conclusao"}),
-				    InserirDataEntrada = Table.AddColumn(TrocarVazioporDataAtual, "Data_Entrada.1", each DateTime.Date([Data_Conclusao]), type date),
+				    InserirDataEntrada = Table.AddColumn(TrocarVazioporDataAtual, "Data_Entrada.1", each DateTime.Date([Data_Entrada]), type date),
 				    RemoveColunasStatusFinanceiro = Table.RemoveColumns(InserirDataEntrada,{"Status_Financeiro"}),
-				    InserirDataPrazoCliente = Table.AddColumn(RemoveColunasStatusFinanceiro, "Data_Prazo_Cliente", each DateTime.Date([Data_Entrada]), type date),
-				    InserirDataConclusao = Table.AddColumn(InserirDataPrazoCliente, "Data_Conclusao.1", each DateTime.Date([Prazo_Cliente]), type date),
+				    InserirDataPrazoCliente = Table.AddColumn(RemoveColunasStatusFinanceiro, "Data_Prazo_Cliente", each DateTime.Date([Prazo_Cliente]), type date),
+				    InserirDataConclusao = Table.AddColumn(InserirDataPrazoCliente, "Data_Conclusao.1", each DateTime.Date([Data_Conclusao]), type date),
 				    #"Renamed Columns" = Table.RenameColumns(InserirDataConclusao,{{"Data_Entrada", "Data_Hora_Entrada"}, {"Data_Entrada.1", "Data_Entrada"}, {"Peso_KG", "Peso_Peca_KG"}, {"Prazo_Cliente", "Data_Hora_Prazo_Cliente"}, {"Data_Conclusao", "Data_Hora_Conclusao"}, {"Data_Conclusao.1", "Data_Conclusao"}}),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"ID_Pedido", type text}, {"ID_Cliente", type text}, {"Data_Hora_Entrada", type datetime}, {"Tipo_Pedido", type text}, {"ID_Material", type text}, {"Peso_Peca_KG", type number}, {"Complexidade_Peca", Int64.Type}, {"Prioridade_Interna", Int64.Type}, {"SLA", type text}, {"Status_Atual", type text}, {"Data_Hora_Prazo_Cliente", type datetime}, {"Data_Hora_Conclusao", type datetime}, {"Valor_Final", type number}, {"Lucro_Prejuizo", type number}, {"Complexidade_Peca_Descricao", type text}, {"Prioridade_Interna_Descricao", type text}, {"Entrega_Descricao", type text}, {"Lucro_ou_Prejuizo_Descricao", type text}, {"Entreda_Descricao_Teste", type text}, {"Lucro_ou_Prejuizo_Descricao_Teste", type text}})
 				in

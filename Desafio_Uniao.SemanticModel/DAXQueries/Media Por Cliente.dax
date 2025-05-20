@@ -1,0 +1,18 @@
+EVALUATE
+ROW("11",
+MINX(
+    ADDCOLUMNS(
+        ADDCOLUMNS(
+            SUMMARIZE(
+                dClientes,
+                dClientes[Prioridade_Descricao]
+            )
+            ,"Media de Faturamento por Cliente"
+            ,[_Media de faturamento por cliente]
+        )
+        ,"Media de Pedidos por Cliente"
+        ,[_Media de pedidos por cliente]
+    )
+    , [Media de Faturamento por Cliente]
+) * 0.9
+)
