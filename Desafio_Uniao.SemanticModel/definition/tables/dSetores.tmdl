@@ -2,7 +2,8 @@ table dSetores
 	lineageTag: 83361b8d-ef28-443e-85ad-5e1fa04194c2
 
 	column ID_Setor
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: 553d8018-c600-42a7-80b4-8b1cad605ffe
 		summarizeBy: none
 		sourceColumn: ID_Setor
@@ -52,7 +53,7 @@ table dSetores
 				    PromoverCabecalho = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    FiltrarNulos = Table.SelectRows(PromoverCabecalho, each ([ID_Setor] <> null)),
 				    RenomearColunas = Table.RenameColumns(FiltrarNulos,{{"Tempo_Padrao_Processamento", "Tempo_Padrao_Processamento_Dias"}, {"Capacidade_Diaria", "Capacidade_Diaria_Pedidos"}}),
-				    TipoAlterado = Table.TransformColumnTypes(RenomearColunas,{{"ID_Setor", type text}, {"Nome_Setor", type text}, {"Responsavel", type text}, {"Tempo_Padrao_Processamento_Dias", Int64.Type}, {"Capacidade_Diaria_Pedidos", Int64.Type}})
+				    TipoAlterado = Table.TransformColumnTypes(RenomearColunas,{{"ID_Setor", Int64.Type}, {"Nome_Setor", type text}, {"Responsavel", type text}, {"Tempo_Padrao_Processamento_Dias", Int64.Type}, {"Capacidade_Diaria_Pedidos", Int64.Type}})
 				in
 				    TipoAlterado
 

@@ -1,0 +1,14 @@
+EVALUATE
+ROW("teste!",
+	MAXX(
+		ADDCOLUMNS(
+			SUMMARIZE(
+				fPedidos,
+				dCalendario[MesNome]
+			)
+			,"Pedidos"
+			,[_Numero de pedidos]
+		),
+		[Pedidos]
+	)
+)

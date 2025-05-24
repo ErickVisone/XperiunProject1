@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
   "name": "412390b8a9b9717be8d9",
   "position": {
-    "x": 499.2151179835987,
-    "y": 108.07749976964509,
-    "z": 1002,
-    "height": 763.74766503882529,
-    "width": 1060.1888072641375
+    "x": 456.08165524426573,
+    "y": 90.016116166631392,
+    "z": 3000,
+    "height": 764.13680834784873,
+    "width": 1160.2077194810267
   },
   "visual": {
     "visualType": "tableEx",
@@ -106,11 +106,11 @@
                       "Entity": "fPedidos"
                     }
                   },
-                  "Property": "Valor Final Pedido"
+                  "Property": "Vendas"
                 }
               },
-              "queryRef": "fPedidos.Valor Final Pedido",
-              "nativeQueryRef": "Valor Final Pedido"
+              "queryRef": "fPedidos.Vendas",
+              "nativeQueryRef": "Vendas"
             },
             {
               "field": {
@@ -125,6 +125,20 @@
               },
               "queryRef": "fPedidos._Lucro / Prejuizo",
               "nativeQueryRef": "_Lucro / Prejuizo"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPedidos"
+                    }
+                  },
+                  "Property": "Lucro test"
+                }
+              },
+              "queryRef": "fPedidos.Lucro test",
+              "nativeQueryRef": "Lucro test"
             },
             {
               "field": {
@@ -147,13 +161,13 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
                     "Entity": "fPedidos"
                   }
                 },
-                "Property": "Peso_Peca_KG"
+                "Property": "Lucro test"
               }
             },
             "direction": "Ascending"
@@ -165,35 +179,6 @@
   },
   "filterConfig": {
     "filters": [
-      {
-        "name": "64d61e15d08a441d3c7e",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fPedidos"
-              }
-            },
-            "Property": "Peso_Peca_KG"
-          }
-        },
-        "type": "Advanced",
-        "howCreated": "User"
-      },
-      {
-        "name": "71847f4775c9c460d2e3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fPedidos"
-              }
-            },
-            "Property": "ID_Pedido"
-          }
-        },
-        "type": "Categorical"
-      },
       {
         "name": "f04204c814a023972e07",
         "field": {
@@ -209,7 +194,21 @@
         "type": "Advanced"
       },
       {
-        "name": "3dddd96e55e426054b41",
+        "name": "ba20453bb9541f22b612",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "ID_Pedido"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "313dd11ef45cfbb73224",
         "field": {
           "Column": {
             "Expression": {
@@ -223,7 +222,7 @@
         "type": "Advanced"
       },
       {
-        "name": "8039ed4d278600289102",
+        "name": "8a53a674a3ada3c8e4e7",
         "field": {
           "Measure": {
             "Expression": {
@@ -237,7 +236,7 @@
         "type": "Advanced"
       },
       {
-        "name": "1594cf787d7a00c8a241",
+        "name": "a521704acfbe627927dc",
         "field": {
           "Measure": {
             "Expression": {
@@ -251,7 +250,7 @@
         "type": "Advanced"
       },
       {
-        "name": "d2ad132961b005cdb520",
+        "name": "c6800bf2dbb376a09d2f",
         "field": {
           "Measure": {
             "Expression": {
@@ -265,7 +264,7 @@
         "type": "Advanced"
       },
       {
-        "name": "415e07e955851c94747d",
+        "name": "14df2cddf7be40c6ed68",
         "field": {
           "Measure": {
             "Expression": {
@@ -279,21 +278,7 @@
         "type": "Advanced"
       },
       {
-        "name": "403f417b12ee92dcce43",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fPedidos"
-              }
-            },
-            "Property": "Valor Final Pedido"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "824f90f4ac4529a77860",
+        "name": "83ff21d98bd4851a7c03",
         "field": {
           "Column": {
             "Expression": {
@@ -305,6 +290,20 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "7329d4467335e7ac1045",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "Vendas"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

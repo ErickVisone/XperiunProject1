@@ -1,0 +1,41 @@
+﻿{
+  "name": "Metal Pallet Pro",
+  "dataColors": [
+    "#1A2E40",
+    "#7A8899",
+    "#D16826",
+    "#45A2E6",
+    "#D5D9DC",
+    "#1A1A1A",
+    "#4B6E53",
+    "#FFC940"
+  ],
+  "minimum": "#C4473A",
+  "center": "#B4BAC0",
+  "maximum": "#2A6B91",
+  "good": "#2DBA66",
+  "neutral": "#B0B5B9",
+  "bad": "#C0392B",
+  "textClasses": {
+    "callout": {
+      "color": "#D5D9DC",
+      "fontFace": "'Segoe UI Semibold', wf_segoe-ui_semibold, helvetica, arial, sans-serif",
+      "fontSize": 20
+    },
+    "title": {
+      "color": "#FFC940",
+      "fontFace": "'Segoe UI Semibold', wf_segoe-ui_semibold, helvetica, arial, sans-serif",
+      "fontSize": 14
+    },
+    "header": {
+      "color": "#D16826",
+      "fontFace": "'Segoe UI Semibold', wf_segoe-ui_semibold, helvetica, arial, sans-serif",
+      "fontSize": 12
+    },
+    "label": {
+      "color": "#D5D9DC",
+      "fontFace": "'Segoe UI', wf_segoe-ui_normal, helvetica, arial, sans-serif",
+      "fontSize": 10
+    }
+  }
+}

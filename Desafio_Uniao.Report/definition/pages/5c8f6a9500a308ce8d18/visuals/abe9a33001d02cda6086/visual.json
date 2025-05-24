@@ -65,37 +65,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "17d206450c289a7e8db3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dMateriais"
-              }
-            },
-            "Property": "ID_Material"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "0cb22cc92690e0d0ba8d",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dMateriais"
-              }
-            },
-            "Property": "Custo_Base_KG"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

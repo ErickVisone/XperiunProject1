@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
   "name": "18c17a45d4b69d561b7a",
   "position": {
-    "x": 29.361702127659576,
-    "y": 134.04255319148936,
+    "x": 43.125,
+    "y": 50,
     "z": 1000,
-    "height": 777.44680851063833,
-    "width": 445.531914893617
+    "height": 777.5,
+    "width": 378.125
   },
   "visual": {
     "visualType": "tableEx",
@@ -64,37 +64,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "149140748a5c42296810",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fFluxoProcesso"
-              }
-            },
-            "Property": "ID_Pedido"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "cb21c00d7e7ce6e09927",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fFluxoProcesso"
-              }
-            },
-            "Property": "Custo de producao Hora Homem"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

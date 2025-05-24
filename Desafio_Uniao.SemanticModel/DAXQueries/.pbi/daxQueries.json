@@ -1,7 +1,8 @@
 {
   "version": "1.0.0",
   "tabOrder": [
-    "Limite Inf.-Sup. Tooltip"
+    "Limite Inf.-Sup. Tooltip",
+    "Query 1"
   ],
-  "defaultTab": "Limite Inf.-Sup. Tooltip"
+  "defaultTab": "Query 1"
 }

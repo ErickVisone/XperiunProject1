@@ -5,7 +5,7 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 0
+        "y": 52.886238529036405
       },
       "nodes": [
         {
@@ -114,10 +114,11 @@
         },
         {
           "location": {
-            "x": 420.33370771630655,
-            "y": 1568.3261988721247
+            "x": 523.94755876038323,
+            "y": 1566.7072324495609
           },
           "nodeIndex": "Custo Pedido Hora Homem",
+          "nodeLineageTag": "00d377b5-ae0f-47a4-9433-e1c1b5764acc",
           "size": {
             "height": 200,
             "width": 234

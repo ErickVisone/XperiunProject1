@@ -1,0 +1,195 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "e193c3fdfe82c87c5727",
+  "position": {
+    "x": 66.815495732107678,
+    "y": 325.252790544977,
+    "z": 0,
+    "height": 689.586342744583,
+    "width": 1232.934996717006
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "ID_Fluxo"
+                }
+              },
+              "queryRef": "fFluxoProcesso.ID_Fluxo",
+              "nativeQueryRef": "ID_Fluxo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "ID_Pedido"
+                }
+              },
+              "queryRef": "fFluxoProcesso.ID_Pedido",
+              "nativeQueryRef": "ID_Pedido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "ID_Setor"
+                }
+              },
+              "queryRef": "fFluxoProcesso.ID_Setor",
+              "nativeQueryRef": "ID_Setor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dSetores"
+                    }
+                  },
+                  "Property": "Nome_Setor"
+                }
+              },
+              "queryRef": "dSetores.Nome_Setor",
+              "nativeQueryRef": "Nome_Setor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dFuncionarios"
+                    }
+                  },
+                  "Property": "Custo_Hora"
+                }
+              },
+              "queryRef": "dFuncionarios.Custo_Hora",
+              "nativeQueryRef": "Custo_Hora"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Tempo_Padrao_Dias"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Tempo_Padrao_Dias",
+              "nativeQueryRef": "Tempo_Padrao_Dias"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Tempo_Real_Dias"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Tempo_Real_Dias",
+              "nativeQueryRef": "Tempo_Real_Dias"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Status"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Status",
+              "nativeQueryRef": "Status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Ocorrencia_Descricao"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Ocorrencia_Descricao",
+              "nativeQueryRef": "Ocorrencia_Descricao"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Retrabalho"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Retrabalho",
+              "nativeQueryRef": "Retrabalho"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Dias Excesso"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Dias Excesso",
+              "nativeQueryRef": "Dias Excesso"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fFluxoProcesso"
+                  }
+                },
+                "Property": "ID_Setor"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

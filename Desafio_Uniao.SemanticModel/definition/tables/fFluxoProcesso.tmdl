@@ -42,6 +42,13 @@ table fFluxoProcesso
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Dias Excesso' =
+			
+			SUM(fFluxoProcesso[Dias_Excessivos])
+		lineageTag: ee1c2f97-6a94-4716-97e4-053d22c48b08
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ID_Fluxo
 		dataType: string
 		lineageTag: f224c4c3-ab1a-4eea-8b63-86ccae9abf36
@@ -59,7 +66,8 @@ table fFluxoProcesso
 		annotation SummarizationSetBy = Automatic
 
 	column ID_Setor
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: 31d7fa86-266f-4be1-8e5c-a151fa4017c9
 		summarizeBy: none
 		sourceColumn: ID_Setor
@@ -188,6 +196,16 @@ table fFluxoProcesso
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column Dias_Excessivos
+		dataType: double
+		lineageTag: dd271dda-a460-4bdb-ab7c-bf834a2edbb9
+		summarizeBy: sum
+		sourceColumn: Dias_Excessivos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition fFluxoProcesso = m
 		mode: import
 		queryGroup: Fatos
@@ -204,9 +222,11 @@ table fFluxoProcesso
 				    #"Expanded aux_mapeamento" = Table.ExpandTableColumn(#"Merged Queries", "aux_mapeamento", {"Ocorrencia_Descricao"}, {"Ocorrencia_Descricao"}),
 				    #"Removed Columns" = Table.RemoveColumns(#"Expanded aux_mapeamento",{"Ocorrencia_Eventual"}),
 				    Subtracao = Table.AddColumn(#"Removed Columns", "Total_Horas_Fluxo", each [Data_Hora_Saida_Setor] - [Data_Hora_Entrada_Setor], type duration),
-				    #"Calculated Total Hours" = Table.TransformColumns(Subtracao,{{"Total_Horas_Fluxo", Duration.TotalHours, type number}})
+				    #"Calculated Total Hours" = Table.TransformColumns(Subtracao,{{"Total_Horas_Fluxo", Duration.TotalHours, type number}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Calculated Total Hours",{{"ID_Setor", Int64.Type}}),
+				    #"Inserted Subtraction" = Table.AddColumn(#"Changed Type1", "Dias_Excessivos", each [Tempo_Real_Dias] - [Tempo_Padrao_Dias], type number)
 				in
-				    #"Calculated Total Hours"
+				    #"Inserted Subtraction"
 
 	annotation PBI_NavigationStepName = Navigation
 

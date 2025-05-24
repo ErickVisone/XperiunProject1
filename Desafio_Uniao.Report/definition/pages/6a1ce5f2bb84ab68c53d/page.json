@@ -1,8 +1,53 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.4.0/schema.json",
   "name": "6a1ce5f2bb84ab68c53d",
-  "displayName": "Duplicate of Full HD",
+  "displayName": "Overview Pedidos",
   "displayOption": "FitToPage",
   "height": 1080,
-  "width": 1920
+  "width": 1920,
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "image": {
+            "image": {
+              "name": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              },
+              "url": {
+                "expr": {
+                  "Literal": {
+                    "Value": "''"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "93d7e7f760f8f9827cd7",
+      "target": "7803a903399dfb32a8b9",
+      "type": "DataFilter"
+    },
+    {
+      "source": "7803a903399dfb32a8b9",
+      "target": "93d7e7f760f8f9827cd7",
+      "type": "DataFilter"
+    }
+  ]
 }

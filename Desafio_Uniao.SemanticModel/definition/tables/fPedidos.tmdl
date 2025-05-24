@@ -15,7 +15,7 @@ table fPedidos
 			// Quantidade de pedidos que nao foram entregues dentro do prazo 
 			CALCULATE(
 			    [_Numero de pedidos],
-			    fPedidos[Entrega_Descricao] = "Atrasada"
+			    fPedidos[Status_Atual] = "Atrasado"
 			)
 			```
 		lineageTag: 212e8b8e-5003-40a1-bb07-0a109ea36034
@@ -49,9 +49,9 @@ table fPedidos
 	measure '_% Atraso' =
 			
 			// Verifica o % de pedidos no prazo
-			1 - DIVIDE(
-			    [_Pedidos No Prazo] -[_Pedidos Atrasados] ,
-			    [_Pedidos No Prazo],
+			DIVIDE(
+			    [_Pedidos Atrasados] ,
+			    [_Numero de pedidos],
 			    0
 			)
 		formatString: 0.00%;-0.00%;0.00%
@@ -80,6 +80,7 @@ table fPedidos
 			    )
 			    , [Media de Faturamento por Cliente]
 			) * (1 - [__espacamento])
+		displayFolder: __Configuracoes
 		lineageTag: f405db38-6a3a-4eba-bb38-78c82ea78aa0
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -97,6 +98,7 @@ table fPedidos
 			    )
 			    , [Media de Faturamento por Cliente]
 			) * (1 + [__espacamento])
+		displayFolder: __Configuracoes
 		lineageTag: 596d312e-f1bf-48c5-85a0-1a01182c18d3
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -114,6 +116,7 @@ table fPedidos
 			    )
 			    , [_Media de pedidos por cliente]
 			) * (1 + [__espacamento])
+		displayFolder: __Configuracoes
 		lineageTag: ea68b9ee-2aa7-455f-8a46-d57e64929628
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -131,6 +134,7 @@ table fPedidos
 			    )
 			    , [_Media de pedidos por cliente]
 			) * (1 - [__espacamento])
+		displayFolder: __Configuracoes
 		lineageTag: 9f8581cf-8416-4cbc-a7cb-3a34379a2140
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -138,6 +142,7 @@ table fPedidos
 	measure __espacamento =
 			
 			0.01
+		displayFolder: __Configuracoes
 		lineageTag: f85445ef-4015-43da-8c86-2ff3181dda91
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -193,14 +198,440 @@ table fPedidos
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Valor Final Pedido' =
+	measure 'Dias para Entrega' =
 			
+			// Numero de dias corridos para entrega do pedido
+			DATEDIFF(
+			    SELECTEDVALUE(fPedidos[Data_Entrada]),
+			    SELECTEDVALUE(fPedidos[Data_Conclusao]),
+			    DAY
+			)
+		lineageTag: 72a999ea-03fe-41a2-bfba-2c37837156ee
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '_Pedidos em Producao' =
+			
+			//Numero de pedidos concluidos
+			CALCULATE(
+			    [_Numero de pedidos],
+			    fPedidos[Status_Atual] = "Em Produção"
+			)
+		lineageTag: bc468188-b59d-45ba-b231-377e9e4e1314
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '_Pedidos Concluidos' =
+			
+			//Numero de pedidos concluidos
+			CALCULATE(
+			    [_Numero de pedidos],
+			    fPedidos[Status_Atual] = "Concluído"
+			)
+		formatString: 0
+		lineageTag: 929942a5-d509-4f13-b41f-b18f259196dd
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure '_Pedidos Cancelados' =
+			
+			//Numero de pedidos cancelados
+			CALCULATE(
+			    [_Numero de pedidos],
+			    fPedidos[Status_Atual] = "Cancelado"
+			)
+		lineageTag: 3443534d-270d-4a2e-9e61-020f88aaeb5b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Vendas =
+			
+			// Somatorio do valor final dos pedidos - Venda Bruta
 			CALCULATE(
 			    SUM(fPedidos[Valor_Final_Pedido])
 			)
-		lineageTag: 77752b37-7c39-4b69-84d2-aa0d444bae71
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 47dfa974-e250-4559-b6dd-0a19a7f36bc7
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure Lucro =
+			
+			// Calcula o lucro ou prejuizo de um pedido
+			CALCULATE(
+			    SUM(fPedidos[Lucro_Prejuizo])
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 3201c540-192a-4e36-b2ee-623c982749da
+
+	measure Custo =
+			
+			CALCULATE(
+			    [Custo Total]
+			)
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: d72985bc-f4f8-46f9-a816-506cba93ebda
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Lucro %' =
+			
+			DIVIDE(
+			    [Vendas] - [Lucro],
+			    [Lucro],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 185b6e30-ab06-4d94-bb9a-86acf1c45204
+
+	measure 'Venda PM' = ```
+			
+			// Vendas no mes anterior 
+			CALCULATE(
+			    [Vendas],
+			    DATEADD(dCalendario[Data], -1 , month)
+			)
+			```
+		lineageTag: a793579e-a0e2-49f6-98a4-7b1a45f6cba0
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Vendas PM var' =
+			
+			IF(
+			    [Venda PM] = BLANK(),
+			    BLANK(),
+			    [Vendas] - [Venda PM]
+			)
+		lineageTag: 943cab07-2f06-4aef-9674-ba0473ae78f4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Vendas Sparkline' = ```
+			
+			VAR LineColour = "#b98aff"
+			VAR PointColour = "#b98aff"
+			VAR Defs = "" // Sem gradiente
+			
+			VAR XMin = MIN(dCalendario[MesInicio])
+			VAR XMax = MAX(dCalendario[MesInicio])
+			VAR YMin = MINX(VALUES(dCalendario[MesInicio]), CALCULATE([Vendas]))
+			VAR YMax = MAXX(VALUES(dCalendario[MesInicio]), CALCULATE([Vendas]))
+			
+			VAR PointsTable = 
+			    ADDCOLUMNS(
+			        SUMMARIZE(dCalendario, dCalendario[MesInicio]),
+			        "X", INT(170 * DIVIDE(dCalendario[MesInicio] - XMin, XMax - XMin)) + 15,
+			        "Y", INT(70 * DIVIDE(CALCULATE([Vendas]) - YMin, YMax - YMin))
+			    )
+			
+			VAR PathPoints = 
+			    GENERATE(
+			        ADDCOLUMNS(PointsTable, "Index", RANKX(ALL(dCalendario[MesInicio]), dCalendario[MesInicio], , ASC)),
+			        VAR PrevX = MAXX(FILTER(PointsTable, RANKX(ALL(dCalendario[MesInicio]), dCalendario[MesInicio], , ASC) = [Index]-1), [X])
+			        VAR PrevY = MAXX(FILTER(PointsTable, RANKX(ALL(dCalendario[MesInicio]), dCalendario[MesInicio], , ASC) = [Index]-1), [Y])
+			        RETURN ROW("Curve", 
+			            IF([Index] = 1, 
+			                "M " & [X] & " " & 90 - [Y],
+			                " C " & PrevX & " " & 90 - PrevY & ", " & [X] & " " & 90 - [Y] & ", " & [X] & " " & 90 - [Y]
+			            )
+			        )
+			    )
+			
+			VAR PathData = CONCATENATEX(PathPoints, [Curve], " ")
+			
+			VAR LastX = MAXX(PointsTable, [X])
+			VAR LastY = MAXX(FILTER(PointsTable, [X] = LastX), [Y])
+			
+			VAR SVGImageURL =
+			    "data:image/svg+xml;utf8," &
+			    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'>" &
+			    
+			    // Linha curva
+			    "<path d='" & PathData & "' fill='none' stroke='" & LineColour & "' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' />" &
+			    
+			    // Ponto final
+			    "<circle cx='" & LastX & "' cy='" & 90 - LastY & "' r='5' stroke='" & LineColour & "' stroke-width='2' fill='" & PointColour & "' />" &
+			    
+			    "</svg>"
+			
+			RETURN SVGImageURL
+			
+			
+			
+			```
+		lineageTag: 36c539a0-bd9a-475c-8cc3-e89dfbad683b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Variancia = ```
+			
+			
+			var _PeriodoMaximo = MAX(fPedidos[Data_Entrada])
+			
+			var _InicioMes = 
+			CALCULATE(
+			    MIN(dCalendario[MesInicio]),
+			    dCalendario[Data] = _PeriodoMaximo
+			)
+			
+			var _VendaUltimoMes = 
+			CALCULATE(
+			    [Vendas],
+			    REMOVEFILTERS(dCalendario),
+			    DATESBETWEEN(
+			        dCalendario[Data],
+			        EOMONTH( _InicioMes, -3) +1,
+			        EOMONTH(_InicioMes, -2)
+			    )
+			)
+			
+			var _VendaMesAtual = 
+			CALCULATE(
+			    [Vendas],
+			    REMOVEFILTERS(dCalendario),
+			    DATESBETWEEN(
+			        dCalendario[Data],
+			        EOMONTH( _InicioMes, -2) +1,
+			        EOMONTH(_InicioMes,-1)
+			    )
+			)
+			
+			var result = 
+			IF(
+			    _VendaUltimoMes > 0, 
+			    (_VendaMesAtual - _VendaUltimoMes) / _VendaUltimoMes,
+			    BLANK()
+			)
+			
+			RETURN
+			result
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 194a719d-7208-4929-aa34-b6c32555f2f2
+
+	measure 'Variancia Meses' = ```
+			
+			
+			var _PeriodoMaximo = MAX(fPedidos[Data_Entrada])
+			
+			var _InicioMes = 
+			CALCULATE(
+			    MIN(dCalendario[MesInicio]),
+			    dCalendario[Data] = _PeriodoMaximo
+			)
+			
+			var _VendaUltimoMes = 
+			CALCULATE(
+			    MAX(dCalendario[Data]),
+			    REMOVEFILTERS(dCalendario),
+			    DATESBETWEEN(
+			        dCalendario[Data],
+			        EOMONTH( _InicioMes, -3) +1,
+			        EOMONTH(_InicioMes, -2)
+			    )
+			)
+			
+			var _VendaMesAtual = 
+			CALCULATE(
+			    MAX(dCalendario[Data]),
+			    REMOVEFILTERS(dCalendario),
+			    DATESBETWEEN(
+			        dCalendario[Data],
+			        EOMONTH( _InicioMes, -2) +1,
+			        EOMONTH(_InicioMes,-1)
+			    )
+			)
+			
+			var result = 
+			"MoM% | " & FORMAT( _VendaMesAtual, "mmm YY") & " vs. " & FORMAT(_VendaUltimoMes, "mmm YY")
+			
+			RETURN
+			
+			result
+			```
+		lineageTag: 49a11325-2c1e-4a31-a41b-71751b12a872
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pontos Vendas' = ```
+			
+			
+			VAR tabela = 
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            ALL(dCalendario[MesInicio]), 
+			            dCalendario[MesInicio]
+			        ),
+			        "Pedidos", [_Numero de pedidos]
+			    )
+			
+			VAR _maiorNumero = 
+			    MAXX(tabela, [Pedidos])
+			
+			VAR _menorNumero = 
+			    MINX(tabela, [Pedidos])
+			
+			VAR result = 
+			    SWITCH(
+			        TRUE(),
+			        [_Numero de pedidos] = _maiorNumero, "Green",
+			        [_Numero de pedidos] = _menorNumero, "Red",
+			        "#FFFFFF00"  
+			    )
+			
+			RETURN 
+			result
+			```
+		displayFolder: __Configuracoes
+		lineageTag: e597ea47-73ff-43e1-81c1-1f16e9d6800d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pontos Lucros' = ```
+			
+			
+			VAR tabela = 
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            ALL(dCalendario[MesInicio]),
+			            dCalendario[MesInicio]
+			        ),
+			        "Lucros", [Lucro]
+			    )
+			
+			VAR _maiorNumero = 
+			    MAXX(tabela, [Lucro])
+			
+			VAR _menorNumero = 
+			    MINX(tabela, [Lucro])
+			
+			VAR result = 
+			    SWITCH(
+			        TRUE(),
+			        [Lucro] = _maiorNumero, "Green",
+			        [Lucro] = _menorNumero, "Red",
+			        "#FFFFFF00" 
+			    )
+			
+			RETURN 
+			result
+			```
+		displayFolder: __Configuracoes
+		lineageTag: eef556f0-47d3-41d9-98f3-e176608800cb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pontos Custo' = ```
+			
+			
+			VAR tabela = 
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            ALL(dCalendario[MesInicio]),  
+			            dCalendario[MesInicio]
+			        ),
+			        "Pedidos", [Custo]
+			    )
+			
+			VAR _maiorNumero = 
+			    MAXX(tabela, [Custo])
+			
+			VAR _menorNumero = 
+			    MINX(tabela, [Custo])
+			
+			VAR result = 
+			    SWITCH(
+			        TRUE(),
+			        [Custo] = _maiorNumero, "Green",
+			        [Custo] = _menorNumero, "Red",
+			        "#FFFFFF00" 
+			    )
+			
+			RETURN 
+			result
+			```
+		displayFolder: __Configuracoes
+		lineageTag: 48123338-7942-4aa9-a95e-5e75c7eb5937
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pontos Lucro %' = ```
+			
+			
+			VAR tabela = 
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            ALL(dCalendario[MesInicio]),  
+			            dCalendario[MesInicio]
+			        ),
+			        "Pedidos", [Lucro %]
+			    )
+			
+			VAR _maiorNumero = 
+			    MAXX(tabela, [Lucro %])
+			
+			VAR _menorNumero = 
+			    MINX(tabela, [Lucro %])
+			
+			VAR result = 
+			    SWITCH(
+			        TRUE(),
+			        [Lucro %] = _maiorNumero, "Green",
+			        [Lucro %] = _menorNumero, "Red",
+			        "#FFFFFF00" 
+			    )
+			
+			RETURN 
+			result
+			```
+		displayFolder: __Configuracoes
+		lineageTag: 96f0e0b5-db7b-42f0-86a9-e0d3ef4139f3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Pontos Pedidos' = ```
+			
+			// Mostar maior e menor numero de pedidos no grafico
+			VAR tabela = 
+			    ADDCOLUMNS(
+			        SUMMARIZE(
+			            ALL(dCalendario[MesInicio]),
+			            dCalendario[MesInicio]
+			        ),
+			        "Lucros", [_Numero de pedidos]
+			    )
+			
+			VAR _maiorNumero = 
+			    MAXX(tabela, [_Numero de pedidos])
+			
+			VAR _menorNumero = 
+			    MINX(tabela, [_Numero de pedidos])
+			
+			VAR result = 
+			    SWITCH(
+			        TRUE(),
+			        [_Numero de pedidos] = _maiorNumero, "Green",
+			        [_Numero de pedidos] = _menorNumero, "Red",
+			        "#FFFFFF00" 
+			    )
+			
+			RETURN 
+			result
+			```
+		displayFolder: __Configuracoes
+		lineageTag: 5cfae549-7b2c-4e9e-a5f3-e58c0226c012
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Lucro test' = ```
+			
+			[Vendas] - [Custo Total] 
+			```
+		formatString: 0
+		lineageTag: 99a7ea81-7773-4459-8686-dbba7b7c37f9
+
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	column ID_Pedido
 		dataType: string
@@ -211,7 +642,8 @@ table fPedidos
 		annotation SummarizationSetBy = Automatic
 
 	column ID_Cliente
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: cf21435a-8415-4b89-a40a-893813e5920a
 		summarizeBy: none
 		sourceColumn: ID_Cliente
@@ -227,8 +659,8 @@ table fPedidos
 
 		variation Variation
 			isDefault
-			relationship: 07b048ea-5008-42e2-a17c-19c9e0ca6209
-			defaultHierarchy: LocalDateTable_d4e9b9f6-fd57-4da5-a323-9e850242a2ac.'Date Hierarchy'
+			relationship: ed421bcd-bfb5-4578-a438-dec6b3abac8c
+			defaultHierarchy: LocalDateTable_d74b47bf-f11f-40ac-b21d-aa927812d7e6.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -241,7 +673,8 @@ table fPedidos
 		annotation SummarizationSetBy = Automatic
 
 	column ID_Material
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: 31fc4c9b-0814-4242-8937-8ce1d94e3d89
 		summarizeBy: none
 		sourceColumn: ID_Material
@@ -301,30 +734,19 @@ table fPedidos
 
 		variation Variation
 			isDefault
-			relationship: d744ef24-7ed6-42cf-b6d9-eb1c237205fe
-			defaultHierarchy: LocalDateTable_4853bf79-3071-471b-a98b-7e29a2a58fbc.'Date Hierarchy'
-
-		annotation SummarizationSetBy = Automatic
-
-	column Data_Hora_Conclusao
-		dataType: dateTime
-		formatString: General Date
-		lineageTag: 4eb88fbb-c9e3-45bd-ab50-bb5574c1f8ce
-		summarizeBy: none
-		sourceColumn: Data_Hora_Conclusao
-
-		variation Variation
-			isDefault
-			relationship: 5d3b380f-f6f2-46d4-844d-1bb47daf41ad
-			defaultHierarchy: LocalDateTable_d9335284-ad30-4f7d-9828-8992e128b050.'Date Hierarchy'
+			relationship: 8c88275a-62dc-402e-a311-8e87479288e4
+			defaultHierarchy: LocalDateTable_41bd9216-15e4-4ed4-a5bf-84bdc3e9b8fd.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
 	column Valor_Final_Pedido
 		dataType: double
+		isHidden
 		lineageTag: a5453105-8407-4538-a767-3b4abddef3cf
 		summarizeBy: sum
 		sourceColumn: Valor_Final_Pedido
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -388,22 +810,6 @@ table fPedidos
 
 		annotation SummarizationSetBy = Automatic
 
-	column Entreda_Descricao_Teste
-		dataType: string
-		lineageTag: 3b270d5a-28fa-4d88-b98b-9518e1989728
-		summarizeBy: none
-		sourceColumn: Entreda_Descricao_Teste
-
-		annotation SummarizationSetBy = Automatic
-
-	column Lucro_ou_Prejuizo_Descricao_Teste
-		dataType: string
-		lineageTag: ef2db299-fcb3-4ebb-b092-7c5da160e8f9
-		summarizeBy: none
-		sourceColumn: Lucro_ou_Prejuizo_Descricao_Teste
-
-		annotation SummarizationSetBy = Automatic
-
 	column Data_Entrada
 		dataType: dateTime
 		formatString: Long Date
@@ -447,32 +853,129 @@ table fPedidos
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column Data_Hora_Conclusao
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3ff5f51b-e67c-4a92-bd50-5fe34210fa94
+		summarizeBy: none
+		sourceColumn: Data_Hora_Conclusao
+
+		variation Variation
+			isDefault
+			relationship: 49803049-2974-4131-885a-275be71ba836
+			defaultHierarchy: LocalDateTable_d4238d56-369a-46b6-825d-116c0f492a00.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fPedidos = m
 		mode: import
 		queryGroup: Fatos
-		source =
+		source = ```
 				let
 				    Source = Excel.Workbook(File.Contents("D:\Cursos\Curso PBI\MBA\Desafio 1\Assets\Source\bases_modulo_produtivo.xlsx"), null, true){[Item="Pedidos",Kind="Sheet"]}[Data],
 				    PromoverCabecalho = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    AdicionarComplexidadeDescricao = Table.AddColumn(PromoverCabecalho, "Complexidade_Peca_Descricao", each if [Complexidade_Peca] = 5 then "Alta Complexidade" else if [Complexidade_Peca] >= 3 then "Media Complexidade" else if [Complexidade_Peca] >= 1 then "Baixa Complexidade" else "Check"),
-				    AdicionarPrioridadeDescricao = Table.AddColumn(AdicionarComplexidadeDescricao, "Prioridade_Interna_Descricao", each if [Prioridade_Interna] = 5 then "Alta Prioridade" else if [Prioridade_Interna] >= 3 then "Media Prioridade" else if [Prioridade_Interna] >= 1 then "Baixa Prioridade" else "Check"),
-				    AdicionarEntrega = Table.AddColumn(AdicionarPrioridadeDescricao, "Entrega", each Text.BeforeDelimiter([Status_Financeiro], " ("), type text),
-				    AdicionrLucroPrejuizo = Table.AddColumn(AdicionarEntrega, "Lucro_ou_Prejuizo", each Text.BetweenDelimiters([Status_Financeiro], "(", ")"), type text),
-				    AdicionarEntregaDescricao= Table.AddColumn(AdicionrLucroPrejuizo, "Entrega_Descricao", each if [Entrega] = "Sem atraso" then "Normal" else if Text.Contains([Entrega], "Atraso ") then "Atrasada" else "Check"),
-				    AdicionarLucroPrejuizoDescricao = Table.AddColumn(AdicionarEntregaDescricao, "Lucro_ou_Prejuizo_Descricao", each if Text.Contains([Lucro_ou_Prejuizo], "Lucro") then "Venda Lucrativa" else if Text.Contains([Lucro_ou_Prejuizo], "Prejuízo") then "Prejuízo" else if Text.Contains([Lucro_ou_Prejuizo], "lucro") then "Venda Lucrativa" else "Check"),
-				    AdicionarEntregaTeste= Table.AddColumn(AdicionarLucroPrejuizoDescricao, "Entreda_Descricao_Teste", each if Text.Contains([Entrega], "≤20d") then "Pouco Atraso" else if Text.Contains([Entrega], "21-50d") then "Medio Atraso" else if Text.Contains([Entrega], ">50d") then "Alto Atraso" else if [Entrega] = "Sem atraso" then "No Prazo" else "Check"),
-				    AdicionarLucrPrejuizoTeste = Table.AddColumn(AdicionarEntregaTeste, "Lucro_ou_Prejuizo_Descricao_Teste", each if Text.Contains([Lucro_ou_Prejuizo], "7-20%") then "Prejuízo" else if Text.Contains([Lucro_ou_Prejuizo], "3%") then "Baixo Lucro" else if Text.Contains([Lucro_ou_Prejuizo], "15%") then "Medio Lucro" else if Text.Contains([Lucro_ou_Prejuizo], "Lucro normal") then "Alto Lucro" else "Check"),
-				    TrocarVazioporDataAtual = Table.ReplaceValue(AdicionarLucrPrejuizoTeste,null,DateTime.LocalNow(),Replacer.ReplaceValue,{"Data_Conclusao"}),
-				    InserirDataEntrada = Table.AddColumn(TrocarVazioporDataAtual, "Data_Entrada.1", each DateTime.Date([Data_Entrada]), type date),
-				    RemoveColunasStatusFinanceiro = Table.RemoveColumns(InserirDataEntrada,{"Status_Financeiro"}),
-				    InserirDataPrazoCliente = Table.AddColumn(RemoveColunasStatusFinanceiro, "Data_Prazo_Cliente", each DateTime.Date([Prazo_Cliente]), type date),
-				    InserirDataConclusao = Table.AddColumn(InserirDataPrazoCliente, "Data_Conclusao.1", each DateTime.Date([Data_Conclusao]), type date),
-				    #"Renamed Columns" = Table.RenameColumns(InserirDataConclusao,{{"Data_Entrada", "Data_Hora_Entrada"}, {"Data_Entrada.1", "Data_Entrada"}, {"Peso_KG", "Peso_Peca_KG"}, {"Prazo_Cliente", "Data_Hora_Prazo_Cliente"}, {"Data_Conclusao", "Data_Hora_Conclusao"}, {"Data_Conclusao.1", "Data_Conclusao"}, {"Valor_Final", "Valor_Final_Pedido"}}),
-				    Subtracao = Table.AddColumn(#"Renamed Columns","Total_Horas_Pedido", each [Data_Hora_Conclusao] - [Data_Hora_Entrada], type duration),
-				    #"Calculated Total Hours" = Table.TransformColumns(Subtracao,{{"Total_Horas_Pedido", Duration.TotalHours, type number}}),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Calculated Total Hours",{{"ID_Pedido", type text}, {"ID_Cliente", type text}, {"Data_Hora_Entrada", type datetime}, {"Tipo_Pedido", type text}, {"ID_Material", type text}, {"Peso_Peca_KG", type number}, {"Complexidade_Peca", Int64.Type}, {"Prioridade_Interna", Int64.Type}, {"SLA", type text}, {"Status_Atual", type text}, {"Data_Hora_Prazo_Cliente", type datetime}, {"Data_Hora_Conclusao", type datetime}, {"Valor_Final_Pedido", type number}, {"Lucro_Prejuizo", type number}, {"Complexidade_Peca_Descricao", type text}, {"Prioridade_Interna_Descricao", type text}, {"Entrega_Descricao", type text}, {"Lucro_ou_Prejuizo_Descricao", type text}, {"Entreda_Descricao_Teste", type text}, {"Lucro_ou_Prejuizo_Descricao_Teste", type text}})
+				
+				    // Agrupamento de descricao para complexidade
+				    AdicionarComplexidadeDescricao = 
+				        Table.AddColumn(
+				            PromoverCabecalho, "Complexidade_Peca_Descricao", 
+				            each if [Complexidade_Peca] = 5 then "Alta Complexidade" 
+				            else if [Complexidade_Peca] >= 3 then "Media Complexidade" 
+				            else if [Complexidade_Peca] >= 1 then "Baixa Complexidade" 
+				            else "Check"
+				    ),
+				
+				    // Agrupamento de descricao para prioridade
+				    AdicionarPrioridadeDescricao = 
+				        Table.AddColumn(
+				            AdicionarComplexidadeDescricao, "Prioridade_Interna_Descricao", 
+				            each if [Prioridade_Interna] = 5 then "Alta Prioridade" 
+				            else if [Prioridade_Interna] >= 3 then "Media Prioridade" 
+				            else if [Prioridade_Interna] >= 1 then "Baixa Prioridade" 
+				            else "Check"
+				    ),
+				    
+				    // Entrega entre Normal e Atrasado
+				    AdicionarEntrega = 
+				        Table.AddColumn(
+				            AdicionarPrioridadeDescricao, 
+				            "Entrega", 
+				            each 
+				                if [Status_Atual] = "Cancelado" then null
+				                else if [Data_Conclusao] = null or DateTime.Date([Data_Conclusao]) > DateTime.Date([Prazo_Cliente]) then  "Atrasado"
+				                else 
+				                    Text.BeforeDelimiter([Status_Financeiro], " ("),
+				            type text
+				    ),
+				    // Correcao para a coluna Lucro ou Prejuizo
+				    AdicionrLucroPrejuizo = 
+				        Table.AddColumn(AdicionarEntrega, "Lucro_ou_Prejuizo",
+				        each 
+				        if [Data_Conclusao] = null then null
+				        else if [Entrega] = null then null
+				        else if [Entrega] = "Atrasado" then
+				            let 
+				                diasAtraso = Duration.Days(DateTime.Date(DateTime.Date([Data_Conclusao])) - DateTime.Date([Prazo_Cliente]))
+				            in
+				                if diasAtraso <= 20 then "15% Lucro"
+				                else if diasAtraso <= 50 then "3% Lucro"
+				                else "Prejuízo 7-20%"
+				        else
+				            Text.BetweenDelimiters([Status_Financeiro], "(", ")")
+				        ,type text
+				    ),
+				    // Agrupamento de entrada Atrasada ou Normal
+				    AdicionarEntregaDescricao= 
+				        Table.AddColumn(AdicionrLucroPrejuizo, "Entrega_Descricao", 
+				        each if [Entrega] = "Sem atraso" then "Normal" 
+				        else "Atrasada"
+				    ),
+				
+				    // Se for nulo e tiver em producao, mantenha nulo, se tivr atrasado, colocar data de atual, caso contrario mantem como está
+				    SubstituirNulos = 
+				        Table.AddColumn(
+				            AdicionarEntregaDescricao,
+				            "Data_Conclusao_Corrigida",
+				            each 
+				                if [Data_Conclusao] <> null then [Data_Conclusao]
+				                else if [Status_Atual] = "Atrasado" then DateTime.LocalNow()
+				                else if [Status_Atual] = "Em Produção" then null
+				                else null,
+				            type datetime
+				        ),
+				        
+				    RemoverOriginalDataConclusao = Table.RemoveColumns(SubstituirNulos, {"Data_Conclusao"}),
+				    RenomearDataCorrigida = Table.RenameColumns(RemoverOriginalDataConclusao, {{"Data_Conclusao_Corrigida", "Data_Conclusao"}}),
+				
+				
+				    //Agrupamento Lucro ou Prejuizo    
+				    AdicionarLucroPrejuizoDescricao = 
+				        Table.AddColumn(RenomearDataCorrigida, "Lucro_ou_Prejuizo_Descricao", 
+				        each if [Lucro_ou_Prejuizo] = null then null 
+				        else if Text.Contains([Lucro_ou_Prejuizo], "Lucro") then "Venda Lucrativa" 
+				        else "Prejuízo"
+				    ),
+				    InserirDataEntrada = 
+				        Table.AddColumn(AdicionarLucroPrejuizoDescricao, "Data_Entrada.1", each DateTime.Date([Data_Entrada]), type date),
+				
+				    RemoveColunasStatusFinanceiro = 
+				        Table.RemoveColumns(InserirDataEntrada,{"Status_Financeiro"}),
+				
+				    InserirDataPrazoCliente = 
+				        Table.AddColumn(RemoveColunasStatusFinanceiro, "Data_Prazo_Cliente", each DateTime.Date([Prazo_Cliente]), type date),
+				
+				    InserirDataConclusao = 
+				        Table.AddColumn(InserirDataPrazoCliente, "Data_Conclusao.1", each DateTime.Date([Data_Conclusao]), type date),
+				
+				    RenomearColunas = Table.RenameColumns(InserirDataConclusao,{{"Data_Entrada", "Data_Hora_Entrada"}, {"Data_Entrada.1", "Data_Entrada"}, {"Peso_KG", "Peso_Peca_KG"}, {"Prazo_Cliente", "Data_Hora_Prazo_Cliente"}, {"Data_Conclusao", "Data_Hora_Conclusao"}, {"Data_Conclusao.1", "Data_Conclusao"}, {"Valor_Final", "Valor_Final_Pedido"}}),
+				    
+				    Subtracao = Table.AddColumn(RenomearColunas,"Total_Horas_Pedido", each [Data_Hora_Conclusao] - [Data_Hora_Entrada], type duration),
+				
+				    TotalHoras = Table.TransformColumns(Subtracao,{{"Total_Horas_Pedido", Duration.TotalHours, type number}}),
+				    #"Changed Type" = Table.TransformColumnTypes(TotalHoras,{{"ID_Pedido", type text}, {"ID_Cliente", Int64.Type}, {"Data_Hora_Entrada", type datetime}, {"Tipo_Pedido", type text}, {"ID_Material", Int64.Type}, {"Peso_Peca_KG", type number}, {"Complexidade_Peca", Int64.Type}, {"Prioridade_Interna", Int64.Type}, {"SLA", type text}, {"Status_Atual", type text}, {"Data_Hora_Prazo_Cliente", type datetime}, {"Valor_Final_Pedido", type number}, {"Lucro_Prejuizo", type number}, {"Complexidade_Peca_Descricao", type text}, {"Prioridade_Interna_Descricao", type text}, {"Entrega", type text}, {"Entrega_Descricao", type text}, {"Data_Hora_Conclusao", type datetime}, {"Lucro_ou_Prejuizo_Descricao", type text}})
 				in
 				    #"Changed Type"
+				```
 
 	annotation PBI_NavigationStepName = Navigation
 

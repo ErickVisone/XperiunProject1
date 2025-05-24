@@ -1,8 +1,0 @@
-{
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.4.0/schema.json",
-  "name": "8ded7170ac87ed3d7d54",
-  "displayName": "Duplicate of Full HD",
-  "displayOption": "FitToPage",
-  "height": 1080,
-  "width": 1920
-}

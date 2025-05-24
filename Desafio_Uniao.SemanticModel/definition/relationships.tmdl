@@ -1,18 +1,3 @@
-relationship 07b048ea-5008-42e2-a17c-19c9e0ca6209
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fPedidos.Data_Hora_Entrada
-	toColumn: LocalDateTable_d4e9b9f6-fd57-4da5-a323-9e850242a2ac.Date
-
-relationship d744ef24-7ed6-42cf-b6d9-eb1c237205fe
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fPedidos.Data_Hora_Prazo_Cliente
-	toColumn: LocalDateTable_4853bf79-3071-471b-a98b-7e29a2a58fbc.Date
-
-relationship 5d3b380f-f6f2-46d4-844d-1bb47daf41ad
-	joinOnDateBehavior: datePartOnly
-	fromColumn: fPedidos.Data_Hora_Conclusao
-	toColumn: LocalDateTable_d9335284-ad30-4f7d-9828-8992e128b050.Date
-
 relationship 8bc8b248-ab3f-4b9d-9ff4-93347955cd92
 	joinOnDateBehavior: datePartOnly
 	fromColumn: fFluxoProcesso.Data_Hora_Entrada_Setor
@@ -67,4 +52,19 @@ relationship 3e4a1978-6c40-0fbf-2e86-44c119c18936
 	fromCardinality: one
 	fromColumn: 'Custo Pedido Hora Homem'.ID_Pedido
 	toColumn: fPedidos.ID_Pedido
+
+relationship 49803049-2974-4131-885a-275be71ba836
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPedidos.Data_Hora_Conclusao
+	toColumn: LocalDateTable_d4238d56-369a-46b6-825d-116c0f492a00.Date
+
+relationship ed421bcd-bfb5-4578-a438-dec6b3abac8c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPedidos.Data_Hora_Entrada
+	toColumn: LocalDateTable_d74b47bf-f11f-40ac-b21d-aa927812d7e6.Date
+
+relationship 8c88275a-62dc-402e-a311-8e87479288e4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fPedidos.Data_Hora_Prazo_Cliente
+	toColumn: LocalDateTable_41bd9216-15e4-4ed4-a5bf-84bdc3e9b8fd.Date
 
