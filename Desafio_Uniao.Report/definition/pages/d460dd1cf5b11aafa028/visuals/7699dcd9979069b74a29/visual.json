@@ -2,11 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
   "name": "7699dcd9979069b74a29",
   "position": {
-    "x": 369.97689128784685,
-    "y": 87.053386185375729,
-    "z": 3,
-    "height": 198.97916842371595,
-    "width": 1118.221472547862
+    "x": 671.57649733416338,
+    "y": 477.9604319467374,
+    "z": 1000,
+    "height": 199.22812525372811,
+    "width": 1117.7352567051882,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "tableEx",
@@ -50,11 +51,11 @@
                       "Entity": "dClientes"
                     }
                   },
-                  "Property": "_Media de faturamento por cliente"
+                  "Property": "_Receita Media por Cliente"
                 }
               },
               "queryRef": "dClientes._Media de faturamento por cliente",
-              "nativeQueryRef": "_Media de faturamento por cliente"
+              "nativeQueryRef": "_Receita Media por Cliente"
             },
             {
               "field": {
@@ -120,11 +121,11 @@
                       "Entity": "fPedidos"
                     }
                   },
-                  "Property": "Lucro por Pedido"
+                  "Property": "_Ticket Medio"
                 }
               },
               "queryRef": "fPedidos.Lucro por Pedido",
-              "nativeQueryRef": "Lucro por Pedido"
+              "nativeQueryRef": "_Ticket Medio"
             }
           ]
         }
@@ -139,7 +140,7 @@
                     "Entity": "dClientes"
                   }
                 },
-                "Property": "_Media de faturamento por cliente"
+                "Property": "_Receita Media por Cliente"
               }
             },
             "direction": "Descending"
@@ -148,93 +149,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b1579ee28470361b1bbd",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dClientes"
-              }
-            },
-            "Property": "Prioridade_Descricao"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "107cee23c0dc0a15d9c0",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dClientes"
-              }
-            },
-            "Property": "_Media de faturamento por cliente"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "b7786e74020244e5d0be",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dClientes"
-              }
-            },
-            "Property": "_Media de pedidos por cliente"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "642de56e3d11c570d797",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dClientes"
-              }
-            },
-            "Property": "_Numero de clientes"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "96947d9b0e1a050ed91d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fPedidos"
-              }
-            },
-            "Property": "_Numero de pedidos"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "dc896580da4301da1d17",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fPedidos"
-              }
-            },
-            "Property": "_Lucro / Prejuizo"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

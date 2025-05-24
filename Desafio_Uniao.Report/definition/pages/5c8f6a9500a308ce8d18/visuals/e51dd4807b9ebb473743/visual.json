@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "e51dd4807b9ebb473743",
+  "position": {
+    "x": 1683.8297872340427,
+    "y": 49.787234042553195,
+    "z": 1001,
+    "height": 167.2340425531915,
+    "width": 149.36170212765958
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPedidos"
+                    }
+                  },
+                  "Property": "Valor_Final_Pedido"
+                }
+              },
+              "queryRef": "fPedidos.Receita",
+              "nativeQueryRef": "Valor_Final_Pedido"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fPedidos"
+                  }
+                },
+                "Property": "Valor_Final_Pedido"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f0bf84270d4d0211cd8d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "Valor_Final_Pedido"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

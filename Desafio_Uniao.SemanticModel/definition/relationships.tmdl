@@ -62,3 +62,9 @@ relationship f748a018-dfe2-78fb-29e8-ebf4fc9a8ec5
 	fromColumn: fFluxoProcesso.ID_Setor
 	toColumn: dSetores.ID_Setor
 
+relationship 3e4a1978-6c40-0fbf-2e86-44c119c18936
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Custo Pedido Hora Homem'.ID_Pedido
+	toColumn: fPedidos.ID_Pedido
+

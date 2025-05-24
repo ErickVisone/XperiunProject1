@@ -78,7 +78,7 @@
                       "Entity": "dClientes"
                     }
                   },
-                  "Property": "_Media de faturamento por cliente"
+                  "Property": "_Receita Media por Cliente"
                 }
               },
               "queryRef": "dClientes._Media de faturamento por prioridade",

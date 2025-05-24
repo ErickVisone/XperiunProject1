@@ -37,6 +37,7 @@ ref table LocalDateTable_d9335284-ad30-4f7d-9828-8992e128b050
 ref table fFluxoProcesso
 ref table LocalDateTable_f7bab66e-b267-45d7-9226-e087a47ada42
 ref table LocalDateTable_b1076362-e60b-4133-b9ba-b42a312f2ce3
+ref table 'Custo Pedido Hora Homem'
 
 ref cultureInfo en-US
 

@@ -1,6 +1,47 @@
 table fFluxoProcesso
 	lineageTag: 5ea0005e-dcbf-442f-b3e4-b79183779292
 
+	measure 'Total Horas Etapa' =
+			
+			// Calcula o total de horas trabalhadas em cada etapa
+			SUM(fFluxoProcesso[Total_Horas_Fluxo])
+		lineageTag: 656aaadc-b5e9-43ea-8e0f-d4d02ccbe2dc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Horas Trabalhadas Por Fluxo' =
+			
+			//Calcula o total de horas em cada parte do processo. O total de horas é arredondado para cima e pode nao refletir o dado correto
+			VAR vHorasDecimais = ROUNDUP([Total Horas Etapa], 0)
+			var Vhoras = INT(vHorasDecimais)
+			var MinutosDecimais = 60 * (vHorasDecimais - Vhoras)
+			var vMinutos = INT( MinutosDecimais)
+			var vSegundos = round( 60 * (MinutosDecimais - vMinutos),0)
+			var vHH = IF(LEN(Vhoras) = 1, "0" & Vhoras, Vhoras)
+			var vMM = IF(LEN(vMinutos) = 1, "0" & vMinutos, vMinutos)
+			var vSS = IF(LEN(vSegundos) = 1, "0" & vSegundos, vSegundos)
+			var Result = vHH & ":" & vMM & ":" & vSS
+			
+			
+			RETURN
+			
+			Vhoras
+		lineageTag: 6633c7f1-98cc-4298-b3b0-837b962a5410
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Custo de producao Hora Homem' =
+			
+			//Calcula o custo de producao de cada parte do processo baseado na mao de obra.
+			CALCULATE(
+			    SUMX(
+			        fFluxoProcesso,
+			        [Horas Trabalhadas Por Fluxo] * RELATED(dFuncionarios[Custo_Hora])
+			))
+		lineageTag: b1ba681e-6330-4669-ac02-d16282a9e701
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ID_Fluxo
 		dataType: string
 		lineageTag: f224c4c3-ab1a-4eea-8b63-86ccae9abf36
@@ -137,6 +178,16 @@ table fFluxoProcesso
 
 		annotation SummarizationSetBy = Automatic
 
+	column Total_Horas_Fluxo
+		dataType: double
+		lineageTag: c98d911b-af45-47eb-863c-9278ea8c1a97
+		summarizeBy: sum
+		sourceColumn: Total_Horas_Fluxo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition fFluxoProcesso = m
 		mode: import
 		queryGroup: Fatos
@@ -151,9 +202,11 @@ table fFluxoProcesso
 				    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value",{{"ID_Fluxo", type text}, {"ID_Pedido", type text}, {"ID_Setor", type text}, {"ID_Funcionario", type text}, {"Turno", Int64.Type}, {"Data_Hora_Entrada_Setor", type datetime}, {"Data_Hora_Saida_Setor", type datetime}, {"Tempo_Padrao_Dias", type number}, {"Tempo_Real_Dias", type number}, {"Retrabalho", type logical}, {"Ocorrencia_Eventual", type text}, {"Status", type text}, {"Data_Entrada_Setor", type date}, {"Data_Saida_Setor", type date}}),
 				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"Ocorrencia_Eventual"}, aux_mapeamento, {"Ocorrencia_Eventual"}, "aux_mapeamento", JoinKind.LeftOuter),
 				    #"Expanded aux_mapeamento" = Table.ExpandTableColumn(#"Merged Queries", "aux_mapeamento", {"Ocorrencia_Descricao"}, {"Ocorrencia_Descricao"}),
-				    #"Removed Columns" = Table.RemoveColumns(#"Expanded aux_mapeamento",{"Ocorrencia_Eventual"})
+				    #"Removed Columns" = Table.RemoveColumns(#"Expanded aux_mapeamento",{"Ocorrencia_Eventual"}),
+				    Subtracao = Table.AddColumn(#"Removed Columns", "Total_Horas_Fluxo", each [Data_Hora_Saida_Setor] - [Data_Hora_Entrada_Setor], type duration),
+				    #"Calculated Total Hours" = Table.TransformColumns(Subtracao,{{"Total_Horas_Fluxo", Duration.TotalHours, type number}})
 				in
-				    #"Removed Columns"
+				    #"Calculated Total Hours"
 
 	annotation PBI_NavigationStepName = Navigation
 

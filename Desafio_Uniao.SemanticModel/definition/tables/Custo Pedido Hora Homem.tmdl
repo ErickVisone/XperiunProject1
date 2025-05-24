@@ -1,0 +1,52 @@
+table 'Custo Pedido Hora Homem'
+	lineageTag: 00d377b5-ae0f-47a4-9433-e1c1b5764acc
+
+	measure 'Custo Pedido - Mao Obra' =
+			
+			CALCULATE(
+			    SUM('Custo Pedido Hora Homem'[Custo_Pedido_Mao_Obra])
+			)
+		lineageTag: 018bb5d3-09ac-448c-831b-04ff2a29a859
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Custo Total' = [Custo Materia Prima] + 'Custo Pedido Hora Homem'[Custo Pedido - Mao Obra]
+		lineageTag: 8fbec1c0-32f0-4c53-84c4-f26f43e8b63b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ID_Pedido
+		lineageTag: c4cf0ed1-3b03-4d4d-87a0-860cfaef10c3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: fFluxoProcesso[ID_Pedido]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Custo_Pedido_Mao_Obra
+		lineageTag: 92b673be-67df-4b7b-850b-2a5bc57e8a31
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Custo_Pedido_Mao_Obra]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Custo Pedido Hora Homem' = calculated
+		mode: import
+		source = ```
+				
+				// Tabela que sumariza o custo de producao de cada pedido 
+				ADDCOLUMNS(
+				    SUMMARIZE(
+				        fFluxoProcesso,
+				        fFluxoProcesso[ID_Pedido]
+				    )
+				    ,"Custo_Pedido_Mao_Obra"
+				    ,[Custo de producao Hora Homem]
+				)
+				```
+
+	annotation PBI_Id = 1fb88e3b4ad247ad97769fa522ee5dba
+

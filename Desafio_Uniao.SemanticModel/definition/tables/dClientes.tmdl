@@ -23,7 +23,7 @@ table dClientes
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure '_Media de faturamento por cliente' =
+	measure '_Receita Media por Cliente' =
 			
 			// Media de faturamento por cliente
 			DIVIDE(

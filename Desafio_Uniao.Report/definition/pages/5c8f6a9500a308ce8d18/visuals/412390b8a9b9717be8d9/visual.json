@@ -1,0 +1,311 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "412390b8a9b9717be8d9",
+  "position": {
+    "x": 499.2151179835987,
+    "y": 108.07749976964509,
+    "z": 1002,
+    "height": 763.74766503882529,
+    "width": 1060.1888072641375
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPedidos"
+                    }
+                  },
+                  "Property": "ID_Pedido"
+                }
+              },
+              "queryRef": "fPedidos.ID_Pedido",
+              "nativeQueryRef": "ID_Pedido"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPedidos"
+                    }
+                  },
+                  "Property": "Peso_Peca_KG"
+                }
+              },
+              "queryRef": "fPedidos.Peso_Peca_KG",
+              "nativeQueryRef": "Peso_Peca_KG"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dMateriais"
+                    }
+                  },
+                  "Property": "Custo_Base_KG"
+                }
+              },
+              "queryRef": "dMateriais.Custo_Base_KG",
+              "nativeQueryRef": "Custo_Base_KG"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPedidos"
+                    }
+                  },
+                  "Property": "Custo Materia Prima"
+                }
+              },
+              "queryRef": "fPedidos.Custo Materia Prima",
+              "nativeQueryRef": "Custo Materia Prima"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Custo Pedido Hora Homem"
+                    }
+                  },
+                  "Property": "Custo Pedido - Mao Obra"
+                }
+              },
+              "queryRef": "Custo Pedido Hora Homem.Custo Pedido - MP",
+              "nativeQueryRef": "Custo Pedido - Mao Obra"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Custo Pedido Hora Homem"
+                    }
+                  },
+                  "Property": "Custo Total"
+                }
+              },
+              "queryRef": "Custo Pedido Hora Homem.Custo Total",
+              "nativeQueryRef": "Custo Total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPedidos"
+                    }
+                  },
+                  "Property": "Valor Final Pedido"
+                }
+              },
+              "queryRef": "fPedidos.Valor Final Pedido",
+              "nativeQueryRef": "Valor Final Pedido"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPedidos"
+                    }
+                  },
+                  "Property": "_Lucro / Prejuizo"
+                }
+              },
+              "queryRef": "fPedidos._Lucro / Prejuizo",
+              "nativeQueryRef": "_Lucro / Prejuizo"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fPedidos"
+                    }
+                  },
+                  "Property": "Lucro_ou_Prejuizo"
+                }
+              },
+              "queryRef": "fPedidos.Lucro_ou_Prejuizo",
+              "nativeQueryRef": "Lucro_ou_Prejuizo"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fPedidos"
+                  }
+                },
+                "Property": "Peso_Peca_KG"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "64d61e15d08a441d3c7e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "Peso_Peca_KG"
+          }
+        },
+        "type": "Advanced",
+        "howCreated": "User"
+      },
+      {
+        "name": "71847f4775c9c460d2e3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "ID_Pedido"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f04204c814a023972e07",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "Peso_Peca_KG"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3dddd96e55e426054b41",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dMateriais"
+              }
+            },
+            "Property": "Custo_Base_KG"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8039ed4d278600289102",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "Custo Materia Prima"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1594cf787d7a00c8a241",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Custo Pedido Hora Homem"
+              }
+            },
+            "Property": "Custo Pedido - Mao Obra"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d2ad132961b005cdb520",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Custo Pedido Hora Homem"
+              }
+            },
+            "Property": "Custo Total"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "415e07e955851c94747d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "_Lucro / Prejuizo"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "403f417b12ee92dcce43",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "Valor Final Pedido"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "824f90f4ac4529a77860",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fPedidos"
+              }
+            },
+            "Property": "Lucro_ou_Prejuizo"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

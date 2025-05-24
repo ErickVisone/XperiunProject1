@@ -76,7 +76,7 @@ table fPedidos
 			            dClientes[Prioridade_Descricao]
 			        )
 			        ,"Media de Faturamento por Cliente"
-			        ,[_Media de faturamento por cliente]
+			        ,[_Receita Media por Cliente]
 			    )
 			    , [Media de Faturamento por Cliente]
 			) * (1 - [__espacamento])
@@ -93,7 +93,7 @@ table fPedidos
 			            dClientes[Prioridade_Descricao]
 			        )
 			        ,"Media de Faturamento por Cliente"
-			        ,[_Media de faturamento por cliente]
+			        ,[_Receita Media por Cliente]
 			    )
 			    , [Media de Faturamento por Cliente]
 			) * (1 + [__espacamento])
@@ -142,7 +142,7 @@ table fPedidos
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Lucro por Pedido' =
+	measure '_Ticket Medio' =
 			
 			DIVIDE(
 			    [_Lucro / Prejuizo],
@@ -150,6 +150,55 @@ table fPedidos
 			    0
 			)
 		lineageTag: 9f50d6b9-9709-477c-bc9e-fd476637339a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '_Tempo para conclusao' =
+			
+			
+			var vHorasDecimais = [Soma horas Pedido]
+			var Vhoras = INT(vHorasDecimais)
+			var MinutosDecimais = 60 * (vHorasDecimais - Vhoras)
+			var vMinutos = INT( MinutosDecimais)
+			var vSegundos = round( 60 * (MinutosDecimais - vMinutos),0)
+			var vHH = IF(LEN(Vhoras) = 1, "0" & Vhoras, Vhoras)
+			var vMM = IF(LEN(vMinutos) = 1, "0" & vMinutos, vMinutos)
+			var vSS = IF(LEN(vSegundos) = 1, "0" & vSegundos, vSegundos)
+			var Result = vHH & ":" & vMM & ":" & vSS
+			
+			RETURN
+			
+			Vhoras
+		lineageTag: fa21c6cd-9c3f-42bd-b320-18e55bfe85a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Soma horas Pedido' =
+			
+			SUM(fPedidos[Total_Horas_Pedido])
+		lineageTag: 17368823-55de-4436-8106-28d55405e3d9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Custo Materia Prima' =
+			
+			//Custo de materia prima para producao da peca
+			CALCULATE(
+			    SUMX(
+			        fPedidos,
+			        fPedidos[Peso_Peca_KG] * RELATED(dMateriais[Custo_Base_KG])
+			    )
+			)
+		lineageTag: d399bb83-0a00-4fc5-a554-4f6415b0e615
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Valor Final Pedido' =
+			
+			CALCULATE(
+			    SUM(fPedidos[Valor_Final_Pedido])
+			)
+		lineageTag: 77752b37-7c39-4b69-84d2-aa0d444bae71
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
@@ -271,11 +320,11 @@ table fPedidos
 
 		annotation SummarizationSetBy = Automatic
 
-	column Valor_Final
+	column Valor_Final_Pedido
 		dataType: double
 		lineageTag: a5453105-8407-4538-a767-3b4abddef3cf
 		summarizeBy: sum
-		sourceColumn: Valor_Final
+		sourceColumn: Valor_Final_Pedido
 
 		annotation SummarizationSetBy = Automatic
 
@@ -388,6 +437,16 @@ table fPedidos
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	column Total_Horas_Pedido
+		dataType: double
+		lineageTag: ff91ddc0-dad3-4f0e-97e9-5310af93f4c7
+		summarizeBy: sum
+		sourceColumn: Total_Horas_Pedido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition fPedidos = m
 		mode: import
 		queryGroup: Fatos
@@ -408,8 +467,10 @@ table fPedidos
 				    RemoveColunasStatusFinanceiro = Table.RemoveColumns(InserirDataEntrada,{"Status_Financeiro"}),
 				    InserirDataPrazoCliente = Table.AddColumn(RemoveColunasStatusFinanceiro, "Data_Prazo_Cliente", each DateTime.Date([Prazo_Cliente]), type date),
 				    InserirDataConclusao = Table.AddColumn(InserirDataPrazoCliente, "Data_Conclusao.1", each DateTime.Date([Data_Conclusao]), type date),
-				    #"Renamed Columns" = Table.RenameColumns(InserirDataConclusao,{{"Data_Entrada", "Data_Hora_Entrada"}, {"Data_Entrada.1", "Data_Entrada"}, {"Peso_KG", "Peso_Peca_KG"}, {"Prazo_Cliente", "Data_Hora_Prazo_Cliente"}, {"Data_Conclusao", "Data_Hora_Conclusao"}, {"Data_Conclusao.1", "Data_Conclusao"}}),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"ID_Pedido", type text}, {"ID_Cliente", type text}, {"Data_Hora_Entrada", type datetime}, {"Tipo_Pedido", type text}, {"ID_Material", type text}, {"Peso_Peca_KG", type number}, {"Complexidade_Peca", Int64.Type}, {"Prioridade_Interna", Int64.Type}, {"SLA", type text}, {"Status_Atual", type text}, {"Data_Hora_Prazo_Cliente", type datetime}, {"Data_Hora_Conclusao", type datetime}, {"Valor_Final", type number}, {"Lucro_Prejuizo", type number}, {"Complexidade_Peca_Descricao", type text}, {"Prioridade_Interna_Descricao", type text}, {"Entrega_Descricao", type text}, {"Lucro_ou_Prejuizo_Descricao", type text}, {"Entreda_Descricao_Teste", type text}, {"Lucro_ou_Prejuizo_Descricao_Teste", type text}})
+				    #"Renamed Columns" = Table.RenameColumns(InserirDataConclusao,{{"Data_Entrada", "Data_Hora_Entrada"}, {"Data_Entrada.1", "Data_Entrada"}, {"Peso_KG", "Peso_Peca_KG"}, {"Prazo_Cliente", "Data_Hora_Prazo_Cliente"}, {"Data_Conclusao", "Data_Hora_Conclusao"}, {"Data_Conclusao.1", "Data_Conclusao"}, {"Valor_Final", "Valor_Final_Pedido"}}),
+				    Subtracao = Table.AddColumn(#"Renamed Columns","Total_Horas_Pedido", each [Data_Hora_Conclusao] - [Data_Hora_Entrada], type duration),
+				    #"Calculated Total Hours" = Table.TransformColumns(Subtracao,{{"Total_Horas_Pedido", Duration.TotalHours, type number}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Calculated Total Hours",{{"ID_Pedido", type text}, {"ID_Cliente", type text}, {"Data_Hora_Entrada", type datetime}, {"Tipo_Pedido", type text}, {"ID_Material", type text}, {"Peso_Peca_KG", type number}, {"Complexidade_Peca", Int64.Type}, {"Prioridade_Interna", Int64.Type}, {"SLA", type text}, {"Status_Atual", type text}, {"Data_Hora_Prazo_Cliente", type datetime}, {"Data_Hora_Conclusao", type datetime}, {"Valor_Final_Pedido", type number}, {"Lucro_Prejuizo", type number}, {"Complexidade_Peca_Descricao", type text}, {"Prioridade_Interna_Descricao", type text}, {"Entrega_Descricao", type text}, {"Lucro_ou_Prejuizo_Descricao", type text}, {"Entreda_Descricao_Teste", type text}, {"Lucro_ou_Prejuizo_Descricao_Teste", type text}})
 				in
 				    #"Changed Type"
 

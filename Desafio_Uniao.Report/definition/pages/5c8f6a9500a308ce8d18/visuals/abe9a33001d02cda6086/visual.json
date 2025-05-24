@@ -1,0 +1,101 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "abe9a33001d02cda6086",
+  "position": {
+    "x": 1630.2127659574469,
+    "y": 270.63829787234044,
+    "z": 0,
+    "height": 777.44680851063833,
+    "width": 202.97872340425533
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dMateriais"
+                    }
+                  },
+                  "Property": "ID_Material"
+                }
+              },
+              "queryRef": "dMateriais.ID_Material",
+              "nativeQueryRef": "ID_Material"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dMateriais"
+                    }
+                  },
+                  "Property": "Custo_Base_KG"
+                }
+              },
+              "queryRef": "dMateriais.Custo_Base_KG",
+              "nativeQueryRef": "Custo_Base_KG"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dMateriais"
+                  }
+                },
+                "Property": "ID_Material"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "17d206450c289a7e8db3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dMateriais"
+              }
+            },
+            "Property": "ID_Material"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0cb22cc92690e0d0ba8d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dMateriais"
+              }
+            },
+            "Property": "Custo_Base_KG"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
