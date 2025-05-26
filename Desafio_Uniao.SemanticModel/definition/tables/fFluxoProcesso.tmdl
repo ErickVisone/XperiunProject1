@@ -49,6 +49,153 @@ table fFluxoProcesso
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Numero Distinto Pedidos' =
+			
+			// Numedo distinto de pedido por fluxo de trabalho
+			CALCULATE(
+			    DISTINCTCOUNT(fFluxoProcesso[ID_Pedido])
+			)
+		lineageTag: 59ba76b9-94b4-4b92-9ddd-1fe0ed6b2b92
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Pedidos Retrabalhados' =
+			
+			// Numero de pedido onde foi necessario retrabalho
+			CALCULATE(
+			    [Numero Distinto Pedidos],
+			    fFluxoProcesso[Ocorrencia_Descricao] = "Retrabalho"
+			)
+		lineageTag: 4e1a2bde-acc0-47eb-b5ee-a466f335feab
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Retrabalho' =
+			
+			DIVIDE(
+			    [Pedidos Retrabalhados],
+			    [Numero Distinto Pedidos],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ebe310fd-f471-472b-8010-3cb9c5caf1cd
+
+	measure 'Ocorrencia de retrabalho' =
+			
+			// Numero de ocorrencias de retrabalho
+			CALCULATE(
+			    COUNTROWS(fFluxoProcesso),
+			    fFluxoProcesso[Ocorrencia_Descricao] = "Retrabalho"
+			)
+		lineageTag: 409f0723-6d63-44bf-baaf-d2e7da73f32b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Setor Atual' =
+			
+			CALCULATE(
+			    MAX(fFluxoProcesso[ID_Setor])
+			)
+		lineageTag: c0615796-ef14-41a5-a1af-4f1234da69b9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Setores com ocorrencia' =
+			
+			DIVIDE(
+			    [Ocorrencia de retrabalho],
+			    [Setor Atual]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: a7e2d3e0-32dd-4333-8c75-7387ad8f82c0
+
+	measure 'Nome Setor Atual' = ```
+			
+			VAR SetorID = 
+			    CALCULATE(
+			        MAX(fFluxoProcesso[ID_Setor])
+			    )
+			
+			var NomeSetor = 
+			CALCULATE(
+			    MAX(dSetores[Nome_Setor]),
+			    TREATAS({SetorID}, dSetores[ID_Setor])
+			)
+			
+			return
+			
+			NomeSetor
+			```
+		lineageTag: 90d2337f-0c64-45fd-bea1-21c728882bae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Label Retrabalho' = ```
+			
+			
+			// % maximo de retrabalho
+			VAR retrabalhoMaximo = 
+			CALCULATE(
+			    [% Retrabalho],
+			    FILTER(
+			        ALLSELECTED(dSetores),
+			        RANKX(ALLSELECTED(dSetores), [% Retrabalho]) = 1
+			    )
+			)
+			
+			// Nome do setor com maior retrabalho
+			VAR setorRetrabalhoMax = 
+			CALCULATE(
+			    MAX(dSetores[Nome_Setor]),
+			    FILTER(
+			        ALLSELECTED(dSetores),
+			        RANKX(ALLSELECTED(dSetores), [% Retrabalho]) = 1
+			    )
+			)
+			
+			// Texto fina para resultado
+			VAR result = 
+			setorRetrabalhoMax & " possui o maior índice de retrabalho com " & FORMAT(retrabalhoMaximo, "0.0%")
+			
+			RETURN
+			
+			result
+			
+			```
+		lineageTag: ebd90a54-75db-43e9-a55d-687446c027cc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Numero Distinto Pedidos em andamento' =
+			
+			// Numedo distinto de pedido por fluxo de trabalho
+			CALCULATE(
+			    DISTINCTCOUNT(fFluxoProcesso[ID_Pedido]),
+			    fFluxoProcesso[Status] = "Em Andamento"
+			)
+		lineageTag: 4713f414-009d-41a1-a132-2fac09409962
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Numero Distinto Pedidos Concluidos' =
+			
+			// Numedo distinto de pedido por fluxo de trabalho
+			CALCULATE(
+			    DISTINCTCOUNT(fFluxoProcesso[ID_Pedido]),
+			    fFluxoProcesso[Status] = "Concluído",
+			    dFuncionarios[ID_Setor] = "11"
+			)
+		lineageTag: 0bcd0473-4cb5-47e3-87dc-5687063db664
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Pedidos' =
+			
+			[Numero Distinto Pedidos Concluidos] + [Numero Distinto Pedidos em andamento]
+		lineageTag: 203f5097-18ac-44a7-985d-aaac34b29bf1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ID_Fluxo
 		dataType: string
 		lineageTag: f224c4c3-ab1a-4eea-8b63-86ccae9abf36
@@ -216,8 +363,7 @@ table fFluxoProcesso
 				    #"Inserted Date" = Table.AddColumn(#"Promoted Headers", "Date", each DateTime.Date([Data_Entrada_Setor]), type date),
 				    #"Inserted Date1" = Table.AddColumn(#"Inserted Date", "Date.1", each DateTime.Date([Data_Saida_Setor]), type date),
 				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Date1",{{"Data_Entrada_Setor", "Data_Hora_Entrada_Setor"}, {"Data_Saida_Setor", "Data_Hora_Saida_Setor"}, {"Tempo_Padrao", "Tempo_Padrao_Dias"}, {"Tempo_Real", "Tempo_Real_Dias"}, {"Date", "Data_Entrada_Setor"}, {"Date.1", "Data_Saida_Setor"}}),
-				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns",null,DateTime.LocalNow(),Replacer.ReplaceValue,{"Data_Saida_Setor"}),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value",{{"ID_Fluxo", type text}, {"ID_Pedido", type text}, {"ID_Setor", type text}, {"ID_Funcionario", type text}, {"Turno", Int64.Type}, {"Data_Hora_Entrada_Setor", type datetime}, {"Data_Hora_Saida_Setor", type datetime}, {"Tempo_Padrao_Dias", type number}, {"Tempo_Real_Dias", type number}, {"Retrabalho", type logical}, {"Ocorrencia_Eventual", type text}, {"Status", type text}, {"Data_Entrada_Setor", type date}, {"Data_Saida_Setor", type date}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"ID_Fluxo", type text}, {"ID_Pedido", type text}, {"ID_Setor", type text}, {"ID_Funcionario", type text}, {"Turno", Int64.Type}, {"Data_Hora_Entrada_Setor", type datetime}, {"Data_Hora_Saida_Setor", type datetime}, {"Tempo_Padrao_Dias", type number}, {"Tempo_Real_Dias", type number}, {"Retrabalho", type logical}, {"Ocorrencia_Eventual", type text}, {"Status", type text}, {"Data_Entrada_Setor", type date}, {"Data_Saida_Setor", type date}}),
 				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"Ocorrencia_Eventual"}, aux_mapeamento, {"Ocorrencia_Eventual"}, "aux_mapeamento", JoinKind.LeftOuter),
 				    #"Expanded aux_mapeamento" = Table.ExpandTableColumn(#"Merged Queries", "aux_mapeamento", {"Ocorrencia_Descricao"}, {"Ocorrencia_Descricao"}),
 				    #"Removed Columns" = Table.RemoveColumns(#"Expanded aux_mapeamento",{"Ocorrencia_Eventual"}),

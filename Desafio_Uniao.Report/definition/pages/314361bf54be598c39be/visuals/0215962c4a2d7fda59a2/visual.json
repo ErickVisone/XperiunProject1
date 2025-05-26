@@ -1,0 +1,110 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "0215962c4a2d7fda59a2",
+  "position": {
+    "x": 1304.7924737133369,
+    "y": 0,
+    "z": 4000,
+    "height": 652.39623685666845,
+    "width": 600.3320420586607
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "ID_Pedido"
+                }
+              },
+              "queryRef": "fFluxoProcesso.ID_Pedido",
+              "nativeQueryRef": "ID_Pedido"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Ocorrencia de retrabalho"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Ocorrencia de retrabalho",
+              "nativeQueryRef": "Ocorrencia de retrabalho"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Setor Atual"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Setor Atual",
+              "nativeQueryRef": "Setor Atual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "% Setores com ocorrencia"
+                }
+              },
+              "queryRef": "fFluxoProcesso.% Setores com ocorrencia",
+              "nativeQueryRef": "% Setores com ocorrencia"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Nome Setor Atual"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Nome Setor Atual",
+              "nativeQueryRef": "Nome Setor Atual"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fFluxoProcesso"
+                  }
+                },
+                "Property": "% Setores com ocorrencia"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

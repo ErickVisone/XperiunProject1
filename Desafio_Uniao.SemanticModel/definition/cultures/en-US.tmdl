@@ -10626,6 +10626,962 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "f_pedido.data_hora_conclusao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Data_Hora_Conclusao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data hora conclusao": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Data_Hora_Conclusao": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information hora conclusao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "fact hora conclusao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "info hora conclusao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "statistic hora conclusao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "document hora conclusao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "figure hora conclusao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "record hora conclusao": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "f_pedido.venda_PM": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Venda PM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "venda PM": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "PM": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.vendas_PM_var": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Vendas PM var"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vendas PM var": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.vendas_sparkline": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Vendas Sparkline"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vendas sparkline": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.variancia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Variancia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "variancia": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.variancia_meses": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Variancia Meses"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "variancia meses": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.pontos_vendas": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Pontos Vendas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pontos vendas": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.pontos_lucros": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Pontos Lucros"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pontos lucros": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.pontos_custo": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Pontos Custo"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pontos custo": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.pontos_lucro_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Pontos Lucro %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pontos lucro %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ponto lucro percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "ponto lucro pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity___pontos_pedidos": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "__Pontos Pedidos"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "__pontos pedidos": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.lucro_test": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "Lucro test"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "lucro test": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "lucro examination": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "lucro exam": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "lucro assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "lucro investigation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "lucro analysis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "lucro quiz": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "lucro trial": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "lucro check": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "lucro experiment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "lucro assay": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__venda_PM_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Venda PM FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_venda PM FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__vendas_PM_var_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Vendas PM var FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_vendas PM var FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__vendas_sparkline_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Vendas Sparkline FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_vendas sparkline FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__variancia_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Variancia FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_variancia FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__variancia_meses_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Variancia Meses FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_variancia meses FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__pontos_vendas_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Pontos Vendas FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_pontos vendas FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__pontos_lucros_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Pontos Lucros FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_pontos lucros FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__pontos_custo_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Pontos Custo FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_pontos custo FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__pontos_lucro__FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Pontos Lucro % FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_pontos lucro % FormatString": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "_ponto lucro percentage formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        },
+			        {
+			          "_ponto lucro pct formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity____pontos_pedidos_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "___Pontos Pedidos FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "___pontos pedidos FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_pedido.entity__lucro_test_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fPedidos",
+			          "ConceptualProperty": "_Lucro test FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_lucro test FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.numero_distinto_pedidos": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "Numero Distinto Pedidos"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "numero distinto pedidos": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "No. Pedidos": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.pedidos_retrabalhados": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "Pedidos Retrabalhados"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "pedidos retrabalhados": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Pedidos com Retrabalho": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.retrabalho1": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "% Retrabalho"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% retrabalho": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage retrabalho": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "pct retrabalho": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.ocorrencia_de_retrabalho": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "Ocorrencia de retrabalho"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ocorrencia de retrabalho": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.setor_atual": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "Setor Atual"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "setor atual": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.setores_com_ocorrencia": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "% Setores com ocorrencia"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% setores com ocorrencia": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "percentage setore com ocorrencia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "pct setore com ocorrencia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.nome_setor_atual": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "Nome Setor Atual"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "nome setor atual": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.entity__numero_distinto_pedidos_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "_Numero Distinto Pedidos FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_numero distinto pedidos FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.entity__pedidos_retrabalhados_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "_Pedidos Retrabalhados FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_pedidos retrabalhados FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.entity___retrabalho_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "_% Retrabalho FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_% retrabalho FormatString": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "_ percentage retrabalho formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "_ pct retrabalho formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.entity__ocorrencia_de_retrabalho_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "_Ocorrencia de retrabalho FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_ocorrencia de retrabalho FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.entity__setor_atual_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "_Setor Atual FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_setor atual FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.entity___setores_com_ocorrencia_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "_% Setores com ocorrencia FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_% setores com ocorrencia FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo.entity__nome_setor_atual_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fFluxoProcesso",
+			          "ConceptualProperty": "_Nome Setor Atual FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_nome setor atual FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
@@ -11793,6 +12749,633 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "d_materiaises_have_f_pedidos"
+			        }
+			      ]
+			    },
+			    "d_setore_has_f_fluxo_processo_nome_setor_atual": {
+			      "Binding": {
+			        "ConceptualEntity": "dSetores"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_setore": {
+			          "Target": {
+			            "Entity": "d_setore"
+			          }
+			        },
+			        "f_fluxo_processo.nome_setor_atual": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo.nome_setor_atual"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_setore"
+			            },
+			            "Object": {
+			              "Role": "f_fluxo_processo.nome_setor_atual"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_setores_have_nome_setor_atual"
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo_has_setores_com_ocorrencia": {
+			      "Binding": {
+			        "ConceptualEntity": "fFluxoProcesso"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_fluxo_processo": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo"
+			          }
+			        },
+			        "f_fluxo_processo.setores_com_ocorrencia": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo.setores_com_ocorrencia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_fluxo_processo"
+			            },
+			            "Object": {
+			              "Role": "f_fluxo_processo.setores_com_ocorrencia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_fluxo_processos_have__setores_com_ocorrencia"
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo_has_setor_atual": {
+			      "Binding": {
+			        "ConceptualEntity": "fFluxoProcesso"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_fluxo_processo": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo"
+			          }
+			        },
+			        "f_fluxo_processo.setor_atual": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo.setor_atual"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_fluxo_processo"
+			            },
+			            "Object": {
+			              "Role": "f_fluxo_processo.setor_atual"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_fluxo_processos_have_setor_atual"
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo_has_ocorrencia_de_retrabalho": {
+			      "Binding": {
+			        "ConceptualEntity": "fFluxoProcesso"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_fluxo_processo": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo"
+			          }
+			        },
+			        "f_fluxo_processo.ocorrencia_de_retrabalho": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo.ocorrencia_de_retrabalho"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_fluxo_processo"
+			            },
+			            "Object": {
+			              "Role": "f_fluxo_processo.ocorrencia_de_retrabalho"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_fluxo_processos_have_ocorrencia_de_retrabalho"
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo_has_retrabalho1": {
+			      "Binding": {
+			        "ConceptualEntity": "fFluxoProcesso"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_fluxo_processo": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo"
+			          }
+			        },
+			        "f_fluxo_processo.retrabalho1": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo.retrabalho1"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_fluxo_processo"
+			            },
+			            "Object": {
+			              "Role": "f_fluxo_processo.retrabalho1"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_fluxo_processos_have__retrabalho"
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo_has_pedidos_retrabalhados": {
+			      "Binding": {
+			        "ConceptualEntity": "fFluxoProcesso"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_fluxo_processo": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo"
+			          }
+			        },
+			        "f_fluxo_processo.pedidos_retrabalhados": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo.pedidos_retrabalhados"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_fluxo_processo"
+			            },
+			            "Object": {
+			              "Role": "f_fluxo_processo.pedidos_retrabalhados"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_fluxo_processos_have_pedidos_retrabalhados"
+			        }
+			      ]
+			    },
+			    "f_fluxo_processo_has_numero_distinto_pedidos": {
+			      "Binding": {
+			        "ConceptualEntity": "fFluxoProcesso"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_fluxo_processo": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo"
+			          }
+			        },
+			        "f_fluxo_processo.numero_distinto_pedidos": {
+			          "Target": {
+			            "Entity": "f_fluxo_processo.numero_distinto_pedidos"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_fluxo_processo"
+			            },
+			            "Object": {
+			              "Role": "f_fluxo_processo.numero_distinto_pedidos"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_fluxo_processos_have_numero_distinto_pedidos"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_lucro_test": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.lucro_test": {
+			          "Target": {
+			            "Entity": "f_pedido.lucro_test"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.lucro_test"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_lucro_test"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_entity___pontos_pedidos": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.entity___pontos_pedidos": {
+			          "Target": {
+			            "Entity": "f_pedido.entity___pontos_pedidos"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.entity___pontos_pedidos"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have___pontos_pedidos"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_pontos_lucro_": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.pontos_lucro_": {
+			          "Target": {
+			            "Entity": "f_pedido.pontos_lucro_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.pontos_lucro_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_pontos_lucro_"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_pontos_custo": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.pontos_custo": {
+			          "Target": {
+			            "Entity": "f_pedido.pontos_custo"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.pontos_custo"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_pontos_custo"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_pontos_lucros": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.pontos_lucros": {
+			          "Target": {
+			            "Entity": "f_pedido.pontos_lucros"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.pontos_lucros"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_pontos_lucros"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_pontos_vendas": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.pontos_vendas": {
+			          "Target": {
+			            "Entity": "f_pedido.pontos_vendas"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.pontos_vendas"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_pontos_vendas"
+			        }
+			      ]
+			    },
+			    "d_calendario_has_f_pedido_variancia_meses": {
+			      "Binding": {
+			        "ConceptualEntity": "dCalendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "d_calendario": {
+			          "Target": {
+			            "Entity": "d_calendario"
+			          }
+			        },
+			        "f_pedido.variancia_meses": {
+			          "Target": {
+			            "Entity": "f_pedido.variancia_meses"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "d_calendario"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.variancia_meses"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "d_calendarios_have_variancia_meses"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_variancia": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.variancia": {
+			          "Target": {
+			            "Entity": "f_pedido.variancia"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.variancia"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_variancia"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_vendas_sparkline": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.vendas_sparkline": {
+			          "Target": {
+			            "Entity": "f_pedido.vendas_sparkline"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.vendas_sparkline"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_vendas_sparkline"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_vendas_PM_var": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.vendas_PM_var": {
+			          "Target": {
+			            "Entity": "f_pedido.vendas_PM_var"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.vendas_PM_var"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_vendas_PM_var"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_venda_PM": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.venda_PM": {
+			          "Target": {
+			            "Entity": "f_pedido.venda_PM"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.venda_PM"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_venda_PM"
+			        }
+			      ]
+			    },
+			    "f_pedido_has_data_hora_conclusao": {
+			      "Binding": {
+			        "ConceptualEntity": "fPedidos"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "f_pedido": {
+			          "Target": {
+			            "Entity": "f_pedido"
+			          }
+			        },
+			        "f_pedido.data_hora_conclusao": {
+			          "Target": {
+			            "Entity": "f_pedido.data_hora_conclusao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "f_pedido"
+			            },
+			            "Object": {
+			              "Role": "f_pedido.data_hora_conclusao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "f_pedidos_have_data_hora_conclusaos"
 			        }
 			      ]
 			    },
@@ -13479,72 +15062,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "f_pedido_has_lucro_ou_prejuizo_descricao_teste": {
-			      "Binding": {
-			        "ConceptualEntity": "fPedidos"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "f_pedido": {
-			          "Target": {
-			            "Entity": "f_pedido"
-			          }
-			        },
-			        "f_pedido.lucro_ou_prejuizo_descricao_teste": {
-			          "Target": {
-			            "Entity": "f_pedido.lucro_ou_prejuizo_descricao_teste"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "f_pedido"
-			            },
-			            "Object": {
-			              "Role": "f_pedido.lucro_ou_prejuizo_descricao_teste"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "f_pedidos_have_lucro_ou_prejuizo_descricao_testes"
-			        }
-			      ]
-			    },
-			    "f_pedido_has_entreda_descricao_teste": {
-			      "Binding": {
-			        "ConceptualEntity": "fPedidos"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "f_pedido": {
-			          "Target": {
-			            "Entity": "f_pedido"
-			          }
-			        },
-			        "f_pedido.entreda_descricao_teste": {
-			          "Target": {
-			            "Entity": "f_pedido.entreda_descricao_teste"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "f_pedido"
-			            },
-			            "Object": {
-			              "Role": "f_pedido.entreda_descricao_teste"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "f_pedidos_have_entreda_descricao_testes"
-			        }
-			      ]
-			    },
 			    "f_pedido_has_lucro_ou_prejuizo_descricao": {
 			      "Binding": {
 			        "ConceptualEntity": "fPedidos"
@@ -13773,39 +15290,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "f_pedidos_have_lucro_prejuizos"
-			        }
-			      ]
-			    },
-			    "f_pedido_has_data_hora_conclusao": {
-			      "Binding": {
-			        "ConceptualEntity": "fPedidos"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "f_pedido": {
-			          "Target": {
-			            "Entity": "f_pedido"
-			          }
-			        },
-			        "f_pedido.data_hora_conclusao": {
-			          "Target": {
-			            "Entity": "f_pedido.data_hora_conclusao"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "f_pedido"
-			            },
-			            "Object": {
-			              "Role": "f_pedido.data_hora_conclusao"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "f_pedidos_have_data_hora_conclusaos"
 			        }
 			      ]
 			    },

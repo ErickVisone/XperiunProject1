@@ -1,0 +1,128 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "e2e3625f172fd5a92c7e",
+  "position": {
+    "x": 0,
+    "y": 8.5002767017155509,
+    "z": 1000,
+    "height": 202.94410625345876,
+    "width": 661.95904814609844
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Numero Distinto Pedidos"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Numero Distinto Pedidos",
+              "nativeQueryRef": "Numero Distinto Pedidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Pedidos Retrabalhados"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Pedidos Retrabalhados",
+              "nativeQueryRef": "Pedidos Retrabalhados"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fFluxoProcesso"
+                  }
+                },
+                "Property": "Numero Distinto Pedidos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "referenceLabel": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Numero Distinto Pedidos em andamento"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "fFluxoProcesso.Numero Distinto Pedidos",
+            "id": "field-fcaa31ec-5c05-b32a-0126-5afa60f1fe75",
+            "order": 0
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Numero Distinto Pedidos Concluidos"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "fFluxoProcesso.Numero Distinto Pedidos",
+            "id": "field-5158986f-01dd-c998-5aad-678d0e438e40",
+            "order": 1
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

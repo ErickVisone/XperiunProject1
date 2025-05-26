@@ -1,0 +1,83 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "3e09daef30348e4d280b",
+  "position": {
+    "x": 24.318926087309535,
+    "y": 287.15039649246262,
+    "z": 0,
+    "height": 299.30985953611736,
+    "width": 977.43376004763331
+  },
+  "visual": {
+    "visualType": "multiRowCard",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Numero Distinto Pedidos"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Numero Distinto Pedidos",
+              "nativeQueryRef": "Numero Distinto Pedidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Numero Distinto Pedidos Concluidos"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Numero Distinto Pedidos Concluidos",
+              "nativeQueryRef": "Numero Distinto Pedidos Concluidos"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Numero Distinto Pedidos em andamento"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Numero Distinto Pedidos em andamento",
+              "nativeQueryRef": "Numero Distinto Pedidos em andamento"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fFluxoProcesso"
+                  }
+                },
+                "Property": "Numero Distinto Pedidos"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

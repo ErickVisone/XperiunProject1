@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "a00dd8b3668f8c816030",
+  "position": {
+    "x": 829.83951300498063,
+    "y": 372.9496402877698,
+    "z": 6000,
+    "height": 323.0105146651909,
+    "width": 1029.5960154952961
+  },
+  "visual": {
+    "visualType": "areaChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dSetores"
+                    }
+                  },
+                  "Property": "Nome_Setor"
+                }
+              },
+              "queryRef": "dSetores.Nome_Setor",
+              "nativeQueryRef": "Nome_Setor",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Numero Distinto Pedidos em andamento"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Numero Distinto Pedidos em andamento",
+              "nativeQueryRef": "Numero Distinto Pedidos em andamento"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

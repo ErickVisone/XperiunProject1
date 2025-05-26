@@ -15,6 +15,9 @@ table dSetores
 		lineageTag: 5d0d1809-1d69-4609-9d6f-5ab754932a6e
 		summarizeBy: none
 		sourceColumn: Nome_Setor
+		sortByColumn: ID_Setor
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 

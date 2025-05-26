@@ -1,0 +1,69 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "cbe0920682bd690f17ee",
+  "position": {
+    "x": 1224.36439416493,
+    "y": 0,
+    "z": 5000,
+    "height": 231.02979782944058,
+    "width": 555.593926763918
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dSetores"
+                    }
+                  },
+                  "Property": "ID_Setor"
+                }
+              },
+              "queryRef": "dSetores.ID_Setor",
+              "nativeQueryRef": "ID_Setor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dSetores"
+                    }
+                  },
+                  "Property": "Nome_Setor"
+                }
+              },
+              "queryRef": "dSetores.Nome_Setor",
+              "nativeQueryRef": "Nome_Setor"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dSetores"
+                  }
+                },
+                "Property": "ID_Setor"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
