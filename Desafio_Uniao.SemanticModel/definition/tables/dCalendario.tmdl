@@ -1,16 +1,14 @@
 table dCalendario
-	lineageTag: 63cb91df-2c3c-4c9e-8868-19abc7145f36
+	lineageTag: 04932073-a2af-4360-8fdb-c35715b1eef1
 	dataCategory: Time
 
 	column Data
 		dataType: dateTime
 		isKey
 		formatString: Short Date
-		lineageTag: 1eab71a8-baff-4150-8feb-9050d7b5e47f
+		lineageTag: 7e842370-e83c-4743-b26b-70cc10567431
 		summarizeBy: none
 		sourceColumn: Data
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -20,11 +18,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Data
-		lineageTag: 89992954-b76a-4b53-b9c6-b6000c416712
-		summarizeBy: sum
+		lineageTag: 78535b9d-050e-4519-aedf-28036d2b11ff
+		summarizeBy: none
 		sourceColumn: DataIndice
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -32,23 +28,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Data
-		lineageTag: 9314c194-b5f3-4bf4-8486-3c3f18184179
-		summarizeBy: sum
+		lineageTag: 4425bf9c-d32d-4d7c-941a-68d629a04074
+		summarizeBy: none
 		sourceColumn: DiasParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column DataAtual
 		dataType: string
 		displayFolder: Data
-		lineageTag: 24f7acae-875e-473c-bcc4-f77d84d973b4
+		lineageTag: 8510c96d-4e8e-4f26-868f-127f4c310a86
 		summarizeBy: none
 		sourceColumn: DataAtual
 		sortByColumn: Data
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -56,11 +48,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Ano
-		lineageTag: 44717ec0-b349-4056-a9d4-461a5e11ded1
-		summarizeBy: sum
+		lineageTag: f4dc775c-0d37-4e52-b16a-ecb3b820f0e7
+		summarizeBy: none
 		sourceColumn: Ano
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -68,11 +58,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: Ano
-		lineageTag: a320dfc8-d3b1-456e-81e4-841dd75e7d8d
+		lineageTag: 588d4dd3-8895-4982-b182-b6a02db4ea54
 		summarizeBy: none
 		sourceColumn: AnoInicio
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -82,11 +70,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: Ano
-		lineageTag: 87d7ecd6-1f8b-4500-9bd8-2bd0987fc4ba
+		lineageTag: 1932c11a-cfa0-4d29-8dc0-cd505b43161b
 		summarizeBy: none
 		sourceColumn: AnoFim
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -96,11 +82,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Ano
-		lineageTag: badd288d-5b95-4775-ade3-5cfd06a0782d
-		summarizeBy: sum
+		lineageTag: 7f1c9781-4fc1-4446-ba88-0cd5b5e55241
+		summarizeBy: none
 		sourceColumn: AnoIndice
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -108,12 +92,10 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Ano
-		lineageTag: 807078ce-0981-4c45-a7e8-aba72a36755a
-		summarizeBy: sum
+		lineageTag: b2b327a0-babd-46da-99d6-de597a7fe4eb
+		summarizeBy: none
 		sourceColumn: AnoDecrescenteNome
 		sortByColumn: AnoDecrescenteNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -121,11 +103,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Ano
-		lineageTag: baf2df91-a9e5-46b4-8811-a23cab978c43
-		summarizeBy: sum
+		lineageTag: 9e6bd4e1-6514-4bd3-8142-dcb025501a22
+		summarizeBy: none
 		sourceColumn: AnoDecrescenteNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -133,23 +113,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Ano
-		lineageTag: 55246ec7-6f39-4949-aa26-6ac0825b96df
-		summarizeBy: sum
+		lineageTag: 8aaed7b5-7f88-4c79-8b95-043a64c743f5
+		summarizeBy: none
 		sourceColumn: AnosParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column AnoAtual
 		dataType: string
 		displayFolder: Ano
-		lineageTag: 8b1c411f-a866-41f8-86c1-b317b867e385
+		lineageTag: e2e56f15-6bf7-42a1-b7a2-6dcc41eaa0ea
 		summarizeBy: none
 		sourceColumn: AnoAtual
 		sortByColumn: Ano
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -157,11 +133,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Dia
-		lineageTag: b3bb9f73-03df-4063-b368-b4b8a12643e8
-		summarizeBy: sum
+		lineageTag: eaf71f50-bded-49f0-b13f-c93dd129b3f4
+		summarizeBy: none
 		sourceColumn: DiaDoMes
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -169,11 +143,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Dia
-		lineageTag: 18d64a92-81ba-4aa5-a8ea-53bef7e4ad2c
-		summarizeBy: sum
+		lineageTag: 7669115f-338d-4cd0-8d29-d07e48ecc1f6
+		summarizeBy: none
 		sourceColumn: DiaDoAno
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -181,46 +153,38 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Dia
-		lineageTag: a43786d7-4296-4b22-8111-d163099fd39a
-		summarizeBy: sum
+		lineageTag: 544aecd0-1d05-41de-8c56-dd00376e671f
+		summarizeBy: none
 		sourceColumn: DiaDaSemanaNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column DiaDaSemanaNome
 		dataType: string
 		displayFolder: Dia
-		lineageTag: 8e18de55-30d2-479f-844c-ca3898ffb73f
+		lineageTag: bbe9ee37-df93-48f4-83f1-7be5919ecb21
 		summarizeBy: none
 		sourceColumn: DiaDaSemanaNome
 		sortByColumn: DiaDaSemanaNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column DiaDaSemanaNomeAbreviado
 		dataType: string
 		displayFolder: Dia
-		lineageTag: 727a902b-3c53-4201-b350-f6418c2eeab7
+		lineageTag: fbfd360f-7a25-43c8-930c-89cf913e0580
 		summarizeBy: none
 		sourceColumn: DiaDaSemanaNomeAbreviado
 		sortByColumn: DiaDaSemanaNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column DiaDaSemanaNomeIniciais
 		dataType: string
 		displayFolder: Dia
-		lineageTag: b9f2e72a-0ef2-40f9-9da6-ce4b4ed39e0d
+		lineageTag: e40fd87d-ef67-4a5d-9fa7-48dc766533d3
 		summarizeBy: none
 		sourceColumn: DiaDaSemanaNomeIniciais
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -228,58 +192,48 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Mes
-		lineageTag: 18fd8301-86f1-4580-a04c-d3a162a6afe5
-		summarizeBy: sum
+		lineageTag: 4749dbd4-9140-4d89-8c1e-b11583b87c6c
+		summarizeBy: none
 		sourceColumn: MesNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesNome
 		dataType: string
 		displayFolder: Mes
-		lineageTag: 7eea5761-74ac-4e61-96bb-90f796193382
+		lineageTag: bee8bf1d-2c27-411b-a26a-c06ca6188548
 		summarizeBy: none
 		sourceColumn: MesNome
 		sortByColumn: MesNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesNomeAbreviado
 		dataType: string
 		displayFolder: Mes
-		lineageTag: e6fd13bc-7bd9-4f23-b822-15060e47573a
+		lineageTag: 0e2f6d1f-78ce-458c-8017-24ebbf0be695
 		summarizeBy: none
 		sourceColumn: MesNomeAbreviado
 		sortByColumn: MesNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesNomeIniciais
 		dataType: string
 		displayFolder: Mes
-		lineageTag: afbf4581-0b44-486b-a9d0-5f060b023bc8
+		lineageTag: c15f25e4-dfad-49c5-b3cb-3eb37471d352
 		summarizeBy: none
 		sourceColumn: MesNomeIniciais
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesAnoNome
 		dataType: string
 		displayFolder: Mes
-		lineageTag: fbd3aa23-1e2f-4490-b5e8-3364d204330a
+		lineageTag: a85657a7-f9fe-40ea-a7ec-3955a8785379
 		summarizeBy: none
 		sourceColumn: MesAnoNome
 		sortByColumn: MesAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -287,11 +241,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Mes
-		lineageTag: 1b229a10-f760-491e-8024-90b6e66c8699
-		summarizeBy: sum
+		lineageTag: acea0c4c-acba-4112-b968-c4d0c26eb01c
+		summarizeBy: none
 		sourceColumn: MesAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -299,23 +251,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Mes
-		lineageTag: 4537cb1a-12f0-488e-9e68-7cfc8d2aa2b9
-		summarizeBy: sum
+		lineageTag: 9c0f41f6-9b85-4c62-8bf3-5eed08678fed
+		summarizeBy: none
 		sourceColumn: MesDiaNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesDiaNome
 		dataType: string
 		displayFolder: Mes
-		lineageTag: 834955cf-884d-4eee-b5dc-7f817381ac8a
+		lineageTag: 4d756a16-1490-4560-83bf-5b55809eb72b
 		summarizeBy: none
 		sourceColumn: MesDiaNome
 		sortByColumn: MesDiaNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -323,11 +271,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: Mes
-		lineageTag: 5e593524-5632-4dc7-9c56-aeb9f097207b
+		lineageTag: 08f036a6-f01a-409d-b136-33309d8a9157
 		summarizeBy: none
 		sourceColumn: MesInicio
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -337,11 +283,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: Mes
-		lineageTag: 0464f849-c2cd-4de2-bd69-adada2aa9465
+		lineageTag: 5ea77ae0-edd2-437f-a262-76d46bf8c2fc
 		summarizeBy: none
 		sourceColumn: MesFim
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -351,11 +295,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Mes
-		lineageTag: 772add92-3daf-495c-abbb-924138101552
-		summarizeBy: sum
+		lineageTag: 2bc74bed-b97d-4b2f-a27a-cefe6c43303b
+		summarizeBy: none
 		sourceColumn: MesIndice
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -363,47 +305,39 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Mes
-		lineageTag: 58728017-637d-45b2-a9bd-196ae7dccbf4
-		summarizeBy: sum
+		lineageTag: 5e784521-a453-4cbb-9d5b-df9b2544addc
+		summarizeBy: none
 		sourceColumn: MesesParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesAtualNome
 		dataType: string
 		displayFolder: Mes
-		lineageTag: 1d5e620e-085b-49dd-87d7-03fa70c6f1cd
+		lineageTag: ac3fa432-bfb4-4110-9c25-1019c9e635de
 		summarizeBy: none
 		sourceColumn: MesAtualNome
 		sortByColumn: MesNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesAtualNomeAbreviado
 		dataType: string
 		displayFolder: Mes
-		lineageTag: 5c199cd1-8f47-435a-9af5-68b4ffda043c
+		lineageTag: 615085e8-6a49-4407-9bd3-600e001aa607
 		summarizeBy: none
 		sourceColumn: MesAtualNomeAbreviado
 		sortByColumn: MesNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesAnoAtualNome
 		dataType: string
 		displayFolder: Mes
-		lineageTag: 920a035f-ec71-46fd-8ab6-c77367a7edbf
+		lineageTag: d3c16ec2-6953-4db7-827a-a767d6a4eb40
 		summarizeBy: none
 		sourceColumn: MesAnoAtualNome
 		sortByColumn: MesAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -411,35 +345,29 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Trimestre
-		lineageTag: e3540f13-98dc-425d-85ef-0af858b3ce95
-		summarizeBy: sum
+		lineageTag: b1a2ff5b-40e3-4f9f-94da-72e5470fdd4c
+		summarizeBy: none
 		sourceColumn: TrimestreNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column TrimestreNome
 		dataType: string
 		displayFolder: Trimestre
-		lineageTag: 77a76a8b-2c3d-43ab-b0f7-e45e7fda0b22
+		lineageTag: 41a141d3-5c2a-4cd1-a124-07a31686b7b6
 		summarizeBy: none
 		sourceColumn: TrimestreNome
 		sortByColumn: TrimestreNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column TrimestreAnoNome
 		dataType: string
 		displayFolder: Trimestre
-		lineageTag: 7f7177af-90ed-4994-b0e4-7c470f438143
+		lineageTag: 4dfb347f-66a3-4b3a-a25a-bb0adf7022d1
 		summarizeBy: none
 		sourceColumn: TrimestreAnoNome
 		sortByColumn: TrimestreAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -447,11 +375,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Trimestre
-		lineageTag: b578a524-566a-4a35-bbbd-f4d887ceebb9
-		summarizeBy: sum
+		lineageTag: d5d13fcf-266e-458f-b80a-324ce1afaedf
+		summarizeBy: none
 		sourceColumn: TrimestreAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -459,11 +385,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: Trimestre
-		lineageTag: e3854655-9d83-420b-af71-f97b49275033
+		lineageTag: 01db6718-7461-4a11-92e4-417dc1a8a15a
 		summarizeBy: none
 		sourceColumn: TrimestreInicio
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -473,11 +397,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: Trimestre
-		lineageTag: 88d38e2e-9877-4e09-9e25-5d46387cbb97
+		lineageTag: 46469d84-6c41-49cb-9c84-006bb0c2be80
 		summarizeBy: none
 		sourceColumn: TrimestreFim
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -487,11 +409,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Trimestre
-		lineageTag: 6595a6c5-e2d2-4fc7-9e69-4c0ce490d724
-		summarizeBy: sum
+		lineageTag: 47d37da7-53ca-415b-8bd7-957815a7d8ab
+		summarizeBy: none
 		sourceColumn: TrimestreIndice
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -499,35 +419,29 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Trimestre
-		lineageTag: 5d1239aa-88dc-412d-bb73-d5a89392e72b
-		summarizeBy: sum
+		lineageTag: f62917f1-0b4b-4107-b4d1-23c13104106a
+		summarizeBy: none
 		sourceColumn: TrimestresParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column TrimestreAtual
 		dataType: string
 		displayFolder: Trimestre
-		lineageTag: b798483e-70ef-4b33-a0b1-f01543f66c58
+		lineageTag: fbc4b0c1-3f28-432e-9f83-50de8b433c2d
 		summarizeBy: none
 		sourceColumn: TrimestreAtual
 		sortByColumn: TrimestreNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column TrimestreAnoAtual
 		dataType: string
 		displayFolder: Trimestre
-		lineageTag: 64e01c50-dc82-426f-9fc1-f57f1510927d
+		lineageTag: 2b9d7e81-c8eb-427a-ae71-3aa77fc2550d
 		summarizeBy: none
 		sourceColumn: TrimestreAnoAtual
 		sortByColumn: TrimestreAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -535,11 +449,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Mes
-		lineageTag: 046f992f-f212-432c-b594-37d7c824c615
-		summarizeBy: sum
+		lineageTag: e1362bd9-10c5-427a-a156-614747f013fd
+		summarizeBy: none
 		sourceColumn: MesDoTrimestreNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -547,11 +459,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semana
-		lineageTag: 1e6565fd-5eac-4b70-9561-5e0d7a32782c
-		summarizeBy: sum
+		lineageTag: 72454ae1-6d0b-4004-a168-ac88b7b8fafd
+		summarizeBy: none
 		sourceColumn: SemanaDoAnoNumeroISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -559,11 +469,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semana
-		lineageTag: df75102d-8906-482b-b36a-0d9d59de1036
-		summarizeBy: sum
+		lineageTag: 027270cc-6330-4000-9ae9-b3ded47687d8
+		summarizeBy: none
 		sourceColumn: AnoISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -571,23 +479,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semana
-		lineageTag: f2dd1889-9c3d-44f2-a3ef-181e3ea7b6c0
-		summarizeBy: sum
+		lineageTag: 47bd49ca-4b16-47be-9bd5-2f900a46f5f6
+		summarizeBy: none
 		sourceColumn: SemanaAnoNumeroISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column SemanaAnoNomeISO
 		dataType: string
 		displayFolder: Semana
-		lineageTag: e8530aa8-65c6-4a18-ad40-a97a9582d764
+		lineageTag: 972ebc63-6bf4-4b10-ad7f-116c963e9a9a
 		summarizeBy: none
 		sourceColumn: SemanaAnoNomeISO
 		sortByColumn: SemanaAnoNumeroISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -595,11 +499,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: Semana
-		lineageTag: 682ccc91-f12d-4c1d-b9b8-3f51cda8d93a
+		lineageTag: 8f27e652-f5da-4490-a151-e60fb43588b3
 		summarizeBy: none
 		sourceColumn: SemanaInicioISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -609,11 +511,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: Semana
-		lineageTag: 38a931f8-ddd2-444a-8b92-077cffbe00a8
+		lineageTag: a4729788-d42d-4a5e-b363-9ee51b187605
 		summarizeBy: none
 		sourceColumn: SemanaFimISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -623,11 +523,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semana
-		lineageTag: 2bc99406-556b-4913-9dce-ae90771c5552
-		summarizeBy: sum
+		lineageTag: 6717c66c-a84b-46ae-a178-40ea811bf685
+		summarizeBy: none
 		sourceColumn: SemanaIndiceISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -635,35 +533,29 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semana
-		lineageTag: 0ae9c583-975b-441a-8f8a-347f2d5656ee
-		summarizeBy: sum
+		lineageTag: eaae4d53-ed83-4d50-8142-2d322974a25e
+		summarizeBy: none
 		sourceColumn: SemanasParaHojeISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column SemanaAtualISO
 		dataType: string
 		displayFolder: Semana
-		lineageTag: a2c85d98-3a79-43b1-be63-7aec266c91ce
+		lineageTag: fb20ce62-fb53-4779-801a-75dcd96af2ee
 		summarizeBy: none
 		sourceColumn: SemanaAtualISO
 		sortByColumn: SemanaAnoNumeroISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column SemanaPeriodoNome
 		dataType: string
 		displayFolder: Semana
-		lineageTag: e710aac5-a46f-442b-9a89-5f5a2c883964
+		lineageTag: 2b5bc3a8-c7a8-4c90-bc0b-073a82ac39e1
 		summarizeBy: none
 		sourceColumn: SemanaPeriodoNome
 		sortByColumn: SemanaAnoNumeroISO
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -671,11 +563,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semana
-		lineageTag: eacc58a2-0eb1-4d95-9148-1885a529cf07
-		summarizeBy: sum
+		lineageTag: 6f0ad5a8-185c-4c9b-9d54-16f23ab9873d
+		summarizeBy: none
 		sourceColumn: SemanaDoMesNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -683,23 +573,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semestre
-		lineageTag: c0c32cd3-683e-43c9-8e5b-76a3e1549c96
-		summarizeBy: sum
+		lineageTag: 7a39af1c-e746-4b88-9ea9-7b0136ab8e83
+		summarizeBy: none
 		sourceColumn: SemestreNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column SemestreAnoNome
 		dataType: string
 		displayFolder: Semestre
-		lineageTag: 97ee2edc-efd3-44f0-85e8-390050f31a64
+		lineageTag: 968186d7-e690-4869-b0fa-63b04d657031
 		summarizeBy: none
 		sourceColumn: SemestreAnoNome
 		sortByColumn: SemestreAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -707,11 +593,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semestre
-		lineageTag: a0ed9270-4590-40ef-91c6-edab4d42392a
-		summarizeBy: sum
+		lineageTag: e332cc2f-27a1-462a-99a5-7cff5b5f4600
+		summarizeBy: none
 		sourceColumn: SemestreAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -719,11 +603,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semestre
-		lineageTag: 2674611b-11da-453d-b2fa-700d0d6d9e45
-		summarizeBy: sum
+		lineageTag: 3ee16f05-f460-4d17-a3ee-1a2b9d8b479d
+		summarizeBy: none
 		sourceColumn: SemestreIndice
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -731,23 +613,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Semestre
-		lineageTag: ef5dbfb1-0488-41fb-bacc-c5f724cf1e38
-		summarizeBy: sum
+		lineageTag: 65a55e4a-7b91-4c25-9a7c-eb5227cdd6f3
+		summarizeBy: none
 		sourceColumn: SemestresParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column SemestreAtual
 		dataType: string
 		displayFolder: Semestre
-		lineageTag: 58218659-559c-44a8-80b3-44aeeb5602be
+		lineageTag: 91f3d485-1dc5-4e52-b95a-01262e144fa9
 		summarizeBy: none
 		sourceColumn: SemestreAtual
 		sortByColumn: SemestreAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -755,23 +633,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Bimestre
-		lineageTag: fd24f0e7-1afd-47b5-8648-1b655a0c6eca
-		summarizeBy: sum
+		lineageTag: bcb028be-3b2c-4ca3-8c06-cd0ebdf9b2cf
+		summarizeBy: none
 		sourceColumn: BimestreNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column BimestreAnoNome
 		dataType: string
 		displayFolder: Bimestre
-		lineageTag: 87426121-8d48-4d41-80fa-7d015dea82fe
+		lineageTag: 384f7099-3db4-4011-aea1-ba3464a2aa05
 		summarizeBy: none
 		sourceColumn: BimestreAnoNome
 		sortByColumn: BimestreAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -779,11 +653,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Bimestre
-		lineageTag: 0737ef8f-f169-454f-9d5e-17551f654379
-		summarizeBy: sum
+		lineageTag: c008e2b1-e6a3-4f6f-b56c-e4f53842d546
+		summarizeBy: none
 		sourceColumn: BimestreAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -791,11 +663,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Bimestre
-		lineageTag: 1b3e9d1b-ca53-4e4c-b36d-a2bcc34fc225
-		summarizeBy: sum
+		lineageTag: a480b52b-f5b6-4f80-a357-da0986db72a5
+		summarizeBy: none
 		sourceColumn: BimestreIndice
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -803,23 +673,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Bimestre
-		lineageTag: aedc0565-e2b7-416c-8bb5-495b966ad814
-		summarizeBy: sum
+		lineageTag: fac7b015-7c98-410f-a2ff-5180f613c80e
+		summarizeBy: none
 		sourceColumn: BimestresParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column BimestreAtual
 		dataType: string
 		displayFolder: Bimestre
-		lineageTag: 5fdd9ee7-9f43-4089-92f2-a6157d6d62f8
+		lineageTag: 0dd83229-887d-4cee-9f97-a35218909104
 		summarizeBy: none
 		sourceColumn: BimestreAtual
 		sortByColumn: BimestreAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -827,11 +693,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Quinzena
-		lineageTag: 5ab8c1e4-26aa-49ca-86c7-52640a5dfcc3
-		summarizeBy: sum
+		lineageTag: 193abfaf-be95-41ba-af58-6ec6b1ab288a
+		summarizeBy: none
 		sourceColumn: QuinzenaDoMesNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -839,23 +703,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Quinzena
-		lineageTag: 1f838f5e-cef2-4258-9887-2194f19416b4
-		summarizeBy: sum
+		lineageTag: 1e21e183-7e4f-42c2-a7ca-7a39580b249f
+		summarizeBy: none
 		sourceColumn: QuinzenaMesNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column QuinzenaMesNome
 		dataType: string
 		displayFolder: Quinzena
-		lineageTag: 4c0cb515-9457-4f65-b0f7-db5b2a788982
+		lineageTag: 6f7436e1-614c-4de1-8970-b5a13dcc35e7
 		summarizeBy: none
 		sourceColumn: QuinzenaMesNome
 		sortByColumn: QuinzenaMesNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -863,23 +723,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Quinzena
-		lineageTag: 40d0cccb-d563-4498-98b1-4e10e8bc41e9
-		summarizeBy: sum
+		lineageTag: a6da46de-65ff-45b1-a5db-accdabc98ccd
+		summarizeBy: none
 		sourceColumn: QuinzenaMesAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column QuinzenaMesAnoNome
 		dataType: string
 		displayFolder: Quinzena
-		lineageTag: 8cc197e6-732f-4e9c-bf39-585e3d87a131
+		lineageTag: b1ed4065-1b7e-48a7-954a-042b836c6f88
 		summarizeBy: none
 		sourceColumn: QuinzenaMesAnoNome
 		sortByColumn: QuinzenaMesAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -887,11 +743,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Quinzena
-		lineageTag: c32727b5-2766-4aac-b990-5a93c29c2f59
-		summarizeBy: sum
+		lineageTag: c6f38b3b-a929-46df-9ffe-678eda005339
+		summarizeBy: none
 		sourceColumn: QuinzenaIndice
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -899,23 +753,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Quinzena
-		lineageTag: 10d36ff8-f08c-47e9-ba22-1cb7725a5f20
-		summarizeBy: sum
+		lineageTag: cda14feb-3df5-444a-b375-6c7942dbecae
+		summarizeBy: none
 		sourceColumn: QuinzenasParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column QuinzenaAtual
 		dataType: string
 		displayFolder: Quinzena
-		lineageTag: 137a7e9c-fcf0-479d-a3f8-cfa34d20767c
+		lineageTag: 6433f027-b4c7-4beb-a79d-a16693d1e014
 		summarizeBy: none
 		sourceColumn: QuinzenaAtual
 		sortByColumn: QuinzenaMesAnoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -923,11 +773,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: Fechamento
-		lineageTag: d04532f7-fc4e-4866-b9f1-be0d3db44d26
+		lineageTag: aca86cf0-6c32-4ac4-8518-3ef151c7e077
 		summarizeBy: none
 		sourceColumn: DataDeFechamentoRef
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -937,35 +785,29 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Fechamento
-		lineageTag: 17815a21-5c94-4d2a-8693-fa433e457d51
-		summarizeBy: sum
+		lineageTag: 211879f9-c4f2-42e5-85e9-03d8c290934b
+		summarizeBy: none
 		sourceColumn: AnoFechamento
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesFechamentoNome
 		dataType: string
 		displayFolder: Fechamento
-		lineageTag: dfb49732-2dba-4483-9263-b1760e36a327
+		lineageTag: 0d59a872-08d9-4d51-a15a-25014ae5fd49
 		summarizeBy: none
 		sourceColumn: MesFechamentoNome
 		sortByColumn: MesFechamentoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesFechamentoNomeAbreviado
 		dataType: string
 		displayFolder: Fechamento
-		lineageTag: f5bc3663-83ce-495b-86b4-8a0be6c638d9
+		lineageTag: e5d8d911-1591-44c0-b730-48daee4a4723
 		summarizeBy: none
 		sourceColumn: MesFechamentoNomeAbreviado
 		sortByColumn: MesFechamentoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -973,23 +815,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Fechamento
-		lineageTag: 61317aea-3396-41e5-ba81-789b25e84554
-		summarizeBy: sum
+		lineageTag: c72dffcc-8b5c-4f56-8f00-8cdec684cdc1
+		summarizeBy: none
 		sourceColumn: MesFechamentoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesAnoFechamentoNome
 		dataType: string
 		displayFolder: Fechamento
-		lineageTag: 781433ee-4672-4943-8d90-22cf7a584916
+		lineageTag: ec9bd19a-1ca6-4604-8f74-5cfe68d371b4
 		summarizeBy: none
 		sourceColumn: MesAnoFechamentoNome
 		sortByColumn: MesAnoFechamentoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -997,11 +835,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Fechamento
-		lineageTag: a1e6771e-6332-41d3-aca5-350ddd456940
-		summarizeBy: sum
+		lineageTag: af1bd596-2843-42cd-96d1-8e326a97cbf7
+		summarizeBy: none
 		sourceColumn: MesAnoFechamentoNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1009,23 +845,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Estacao
-		lineageTag: c7c39e8f-47b3-42d7-a179-40d50f5ed18d
-		summarizeBy: sum
+		lineageTag: f4da1842-8b99-45d6-84e8-4eed25d788dd
+		summarizeBy: none
 		sourceColumn: EstacaoNorteNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column EstacaoNorteNome
 		dataType: string
 		displayFolder: Estacao
-		lineageTag: 96b9746d-d441-4835-9393-1f23ed26ff3b
+		lineageTag: 6e56f74e-5386-4cd5-99f5-130e564a81d3
 		summarizeBy: none
 		sourceColumn: EstacaoNorteNome
 		sortByColumn: EstacaoNorteNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1033,34 +865,28 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: Estacao
-		lineageTag: df6bdf46-2c4f-4288-ab2d-9429359a5556
-		summarizeBy: sum
+		lineageTag: 81029bec-b737-4cc6-b070-207e728b19e0
+		summarizeBy: none
 		sourceColumn: EstacaoSulNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column EstacaoSulNome
 		dataType: string
 		displayFolder: Estacao
-		lineageTag: ba59d34d-aa9a-4fab-801d-b2f0793ee3bf
+		lineageTag: d3c5bd43-e760-4c1d-86bb-fe71d0968105
 		summarizeBy: none
 		sourceColumn: EstacaoSulNome
 		sortByColumn: EstacaoSulNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column Feriado
 		dataType: string
 		displayFolder: DiasUteis_Feriados
-		lineageTag: 5a927a9c-4701-4452-9770-459575d1792c
+		lineageTag: d3d143f1-3901-4b29-ac20-5b8d6254da28
 		summarizeBy: none
 		sourceColumn: Feriado
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1068,22 +894,18 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: DiasUteis_Feriados
-		lineageTag: c599accd-6182-424e-84e4-1ec3743ae26b
-		summarizeBy: sum
+		lineageTag: 09fa7737-b457-406c-bd45-154fba5227ef
+		summarizeBy: none
 		sourceColumn: DiaUtilNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column DiaUtilNome
 		dataType: string
 		displayFolder: DiasUteis_Feriados
-		lineageTag: 210771e7-f0e2-4b9f-98e3-a3b5a0a5312a
+		lineageTag: 5e069572-7cd1-49e8-9a7c-9f371ccbf8d7
 		summarizeBy: none
 		sourceColumn: DiaUtilNome
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1091,11 +913,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: AnoFiscal
-		lineageTag: 0ddec990-3d26-4836-b9e2-9945f1d7fb24
-		summarizeBy: sum
+		lineageTag: 00dd3359-2ea8-4096-a443-26e20d647248
+		summarizeBy: none
 		sourceColumn: AnoFiscalInicialNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1103,22 +923,18 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: AnoFiscal
-		lineageTag: f03e0ecc-372a-4baa-a789-5e36e1e615b3
-		summarizeBy: sum
+		lineageTag: 55dc1422-3b78-464b-aefc-afae66079fb5
+		summarizeBy: none
 		sourceColumn: AnoFiscalFinalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column AnoFiscal
 		dataType: string
 		displayFolder: AnoFiscal
-		lineageTag: 9f26fdd7-028b-4ee7-b0a8-90dbef8bf77b
+		lineageTag: f0135018-f2c3-4a5f-a467-02fffa15171a
 		summarizeBy: none
 		sourceColumn: AnoFiscal
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1126,11 +942,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: AnoFiscal
-		lineageTag: 03ebeb3b-a253-41ad-bb91-dc8308682757
+		lineageTag: 31009f20-3c45-4543-8290-208821b9dad1
 		summarizeBy: none
 		sourceColumn: AnoFiscalInicio
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1140,11 +954,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: AnoFiscal
-		lineageTag: ac0c34ad-0118-479a-8d6c-9b0c4c86b953
+		lineageTag: f93e5210-9735-43b9-a706-9e6608279907
 		summarizeBy: none
 		sourceColumn: AnoFiscalFim
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1153,12 +965,10 @@ table dCalendario
 	column AnoFiscalAtual
 		dataType: string
 		displayFolder: AnoFiscal
-		lineageTag: 8dde71ef-e55d-445a-a80d-4f9a8b20ade8
+		lineageTag: 35bacaca-5923-476d-bca8-52341059c197
 		summarizeBy: none
 		sourceColumn: AnoFiscalAtual
 		sortByColumn: AnoFiscal
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1166,11 +976,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: AnoFiscal
-		lineageTag: d522b2d6-cd94-4859-8727-b0c96ebf106f
-		summarizeBy: sum
+		lineageTag: 49adf0e4-369d-431f-b43d-97e9e33afab8
+		summarizeBy: none
 		sourceColumn: AnosFiscaisParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1178,59 +986,49 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: AnoFiscal
-		lineageTag: 1a061751-b1f8-4400-850f-edb680d4615a
-		summarizeBy: sum
+		lineageTag: 581689f2-348d-4bb7-bc95-4a180f023948
+		summarizeBy: none
 		sourceColumn: MesFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesFiscalNome
 		dataType: string
 		displayFolder: AnoFiscal
-		lineageTag: 0ccfeac4-10e7-4aaa-9a4b-4f0c2aaea708
+		lineageTag: 96913c03-580d-4d1b-8dc5-812de87d46f2
 		summarizeBy: none
 		sourceColumn: MesFiscalNome
 		sortByColumn: MesFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesFiscalNomeAbreviado
 		dataType: string
 		displayFolder: AnoFiscal
-		lineageTag: 65d0036f-6f69-483e-8593-34f3b4dc2542
+		lineageTag: 4af8814d-cfee-4eab-9141-46752a567fc3
 		summarizeBy: none
 		sourceColumn: MesFiscalNomeAbreviado
 		sortByColumn: MesFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesFiscalAtual
 		dataType: string
 		displayFolder: AnoFiscal
-		lineageTag: a894f263-ec77-45a2-84f2-39e39aa9b477
+		lineageTag: e75e8c78-7cd3-47ef-bf23-ae6a697fbe77
 		summarizeBy: none
 		sourceColumn: MesFiscalAtual
 		sortByColumn: MesFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesAnoFiscalNome
 		dataType: string
 		displayFolder: AnoFiscal
-		lineageTag: 3a8722b2-374c-47ef-8fa8-679f79124416
+		lineageTag: 13e5d035-dd31-479f-937f-0472b1a67593
 		summarizeBy: none
 		sourceColumn: MesAnoFiscalNome
 		sortByColumn: MesAnoFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1238,23 +1036,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: AnoFiscal
-		lineageTag: 81eb58b3-3d9f-47f9-bb0c-e4a01ecc8e8a
-		summarizeBy: sum
+		lineageTag: 0c387dc7-5c75-44bf-b4e4-8d906f77da4b
+		summarizeBy: none
 		sourceColumn: MesAnoFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column MesAnoFiscalAtual
 		dataType: string
 		displayFolder: AnoFiscal
-		lineageTag: 81ef7dc1-0e60-45da-a611-4b3358777a71
+		lineageTag: 971a0aab-65ef-4364-bb60-5deaa05f3314
 		summarizeBy: none
 		sourceColumn: MesAnoFiscalAtual
 		sortByColumn: MesAnoFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1262,11 +1056,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: AnoFiscal
-		lineageTag: 2c851f20-c483-4315-b84e-e0bbad38ecdd
-		summarizeBy: sum
+		lineageTag: be645550-8aee-4a71-a69d-3261a2dce31e
+		summarizeBy: none
 		sourceColumn: MesesFiscaisParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1274,23 +1066,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: TrimestreFiscal
-		lineageTag: 38647e5f-34cb-4f11-8782-3ac0549a648f
-		summarizeBy: sum
+		lineageTag: 29cbee6c-aa3f-4168-8697-60fabec552ea
+		summarizeBy: none
 		sourceColumn: TrimestreFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column TrimestreFiscalNome
 		dataType: string
 		displayFolder: TrimestreFiscal
-		lineageTag: e63cd24c-3a94-432b-8c29-38b668ada17e
+		lineageTag: 1508e0b0-d1e4-460e-aa7d-a170aab26afb
 		summarizeBy: none
 		sourceColumn: TrimestreFiscalNome
 		sortByColumn: TrimestreFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1298,23 +1086,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: TrimestreFiscal
-		lineageTag: 0f2a404f-25ca-4b69-824d-e41b77942f84
-		summarizeBy: sum
+		lineageTag: 37eb3d4c-ad7c-4498-bc10-24fea6c11b61
+		summarizeBy: none
 		sourceColumn: MesDoTrimestreFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column AnoTrimestreFiscalNome
 		dataType: string
 		displayFolder: TrimestreFiscal
-		lineageTag: 27481b9c-630c-48b2-ada5-c41068d7a637
+		lineageTag: 691098d6-87f9-4bff-a8c9-92d3f818013b
 		summarizeBy: none
 		sourceColumn: AnoTrimestreFiscalNome
 		sortByColumn: AnoTrimestreFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1322,11 +1106,9 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: TrimestreFiscal
-		lineageTag: 353e3df6-05fc-4e12-a6ae-d3c406a88b46
-		summarizeBy: sum
+		lineageTag: 71360fe7-46b8-4cdf-92cb-3f164abe70ea
+		summarizeBy: none
 		sourceColumn: AnoTrimestreFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1334,11 +1116,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: TrimestreFiscal
-		lineageTag: 64d0f291-497a-482f-b45c-7f24a6ffff39
+		lineageTag: 34d3516f-7e1c-4cbf-ada1-0a05c50721f5
 		summarizeBy: none
 		sourceColumn: TrimestreFiscalInicio
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1348,11 +1128,9 @@ table dCalendario
 		dataType: dateTime
 		formatString: Short Date
 		displayFolder: TrimestreFiscal
-		lineageTag: f604c181-0570-437a-a7e8-11a4b90fe26d
+		lineageTag: cf9823f5-34ef-417d-9f84-c10955b2be2e
 		summarizeBy: none
 		sourceColumn: TrimestreFiscalFim
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1362,23 +1140,19 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: TrimestreFiscal
-		lineageTag: 2df93961-caa7-45b9-86c4-47bea89205fa
-		summarizeBy: sum
+		lineageTag: 1d4a982f-dda4-4965-8076-763a61dc286b
+		summarizeBy: none
 		sourceColumn: TrimestresFiscaisParaHoje
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column TrimestreFiscalAtual
 		dataType: string
 		displayFolder: TrimestreFiscal
-		lineageTag: 2da7e319-08db-4707-8862-f33ec97ab080
+		lineageTag: 57e59669-7684-4a3b-ab13-b434d4c718b6
 		summarizeBy: none
 		sourceColumn: TrimestreFiscalAtual
 		sortByColumn: AnoTrimestreFiscalNumero
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -1386,24 +1160,21 @@ table dCalendario
 		dataType: int64
 		formatString: 0
 		displayFolder: TrimestreFiscal
-		lineageTag: a48da7b2-21a3-47db-9c71-a6e98d062a88
-		summarizeBy: sum
+		lineageTag: c87122c5-65fe-4753-99fc-2e463066b6e2
+		summarizeBy: none
 		sourceColumn: DiaDoTrimestreFiscal
-
-		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	partition DimCalendario = m
 		mode: import
-		queryGroup: Dimensoes
 		source = ```
 				let
 				
 				    #"-----PARAMETERS-----" = "",
 				
 				    // Specify the start date 
-				    startDate = #date(2020, 1, 1),
+				    startDate = #date(2024, 1, 1),
 				
 				    // Years ahead today
 				    yearsAhead = 1,
@@ -1783,8 +1554,6 @@ table dCalendario
 				in
 				    renamedColumns
 				```
-
-	changedProperty = IsHidden
 
 	annotation PBI_NavigationStepName = Navigation
 

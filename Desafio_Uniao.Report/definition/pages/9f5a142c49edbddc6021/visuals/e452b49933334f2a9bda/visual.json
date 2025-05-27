@@ -1,0 +1,128 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "e452b49933334f2a9bda",
+  "position": {
+    "x": 552.34449760765551,
+    "y": 59.71291866028708,
+    "z": 2,
+    "height": 607.46411483253587,
+    "width": 1367.6555023923445
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dCalendario"
+                    }
+                  },
+                  "Property": "Data"
+                }
+              },
+              "queryRef": "dCalendario.Data",
+              "nativeQueryRef": "Data"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Work In Progress"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Work In Progress",
+              "nativeQueryRef": "Work In Progress"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dSetores"
+                    }
+                  },
+                  "Property": "Capacidade Total"
+                }
+              },
+              "queryRef": "dSetores.Capacidade Total",
+              "nativeQueryRef": "Capacidade Total"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dCalendario"
+                  }
+                },
+                "Property": "Data"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d378fa2ce33c70118b9b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dCalendario"
+              }
+            },
+            "Property": "Data"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c98ef823650877902f02",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "Work In Progress"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "eeae7a4633b86ce83fb9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dSetores"
+              }
+            },
+            "Property": "Capacidade Total"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,6 +1,19 @@
 table dSetores
 	lineageTag: 83361b8d-ef28-443e-85ad-5e1fa04194c2
 
+	measure 'Capacidade Total' =
+			
+			CALCULATE(
+			    SUM(dSetores[Capacidade_Diaria_Pedidos]),
+			    FILTER(
+			        dCalendario,
+			        dCalendario[Data] <= TODAY()
+			    )
+			)
+		lineageTag: c90f2edf-4590-405b-b1ca-51ea0d8371f2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ID_Setor
 		dataType: int64
 		formatString: 0

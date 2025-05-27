@@ -196,6 +196,78 @@ table fFluxoProcesso
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Work In Progress' =
+			
+			
+			[WIP - Entrada] - [WIP - Saida]
+		lineageTag: a356e18e-58c3-47ae-afd2-63d5fcf3600c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Dias Excedentes' =
+			
+			CALCULATE(
+			    SUM(fFluxoProcesso[Dias_Excesso_Producao])
+			)
+		formatString: 0
+		lineageTag: 422b84b0-4269-4be6-89b4-83e2c5aa33d3
+
+	measure 'Media De Atraso por pedido' = ```
+			
+			AVERAGEX(
+			    SUMMARIZE(
+			        fFluxoProcesso,
+			        fFluxoProcesso[ID_Pedido],
+			        "Dias", [Dias Excedentes]
+			    )
+			    ,[Dias]
+			)
+			
+			```
+		lineageTag: 13e650b3-f483-4752-a567-e7d751d28165
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'WIP - Entrada' = ```
+			
+			VAR DataSelecionada = MAX(dCalendario[Data])
+			
+			VAR PedidosEntrados = 
+			    CALCULATE(
+			        DISTINCTCOUNT(fFluxoProcesso[ID_Pedido]),
+			        ALL(dCalendario[Data]),
+			        fFluxoProcesso[Data_Entrada_Setor] <= DataSelecionada
+			    )
+			
+			RETURN
+			PedidosEntrados
+			```
+		lineageTag: 75e11270-f242-4681-81e5-cbb0a3b0eb04
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'WIP - Saida' = ```
+			
+			
+			VAR DataSelecionada = MAX(dCalendario[Data])
+			
+			VAR PedidosSaidos = 
+			    CALCULATE(
+			        DISTINCTCOUNT(fFluxoProcesso[ID_Pedido]),
+			        fFluxoProcesso[Data_Saida_Setor] <= DataSelecionada,
+			        not(ISBLANK(fFluxoProcesso[Data_Saida_Setor])),
+			        ALL(dCalendario[Data]),
+			        USERELATIONSHIP(fFluxoProcesso[Data_Saida_Setor], dCalendario[Data])
+			    )
+			
+			RETURN
+			
+			PedidosSaidos
+			```
+		lineageTag: 0bcb617b-5490-4080-834c-5cb0b7f3ce70
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	column ID_Fluxo
 		dataType: string
 		lineageTag: f224c4c3-ab1a-4eea-8b63-86ccae9abf36
@@ -353,6 +425,16 @@ table fFluxoProcesso
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column Dias_Excesso_Producao
+		dataType: double
+		lineageTag: 88edb18f-f0a4-484d-8103-922c37455b7d
+		summarizeBy: sum
+		sourceColumn: Dias_Excesso_Producao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	partition fFluxoProcesso = m
 		mode: import
 		queryGroup: Fatos
@@ -369,10 +451,11 @@ table fFluxoProcesso
 				    #"Removed Columns" = Table.RemoveColumns(#"Expanded aux_mapeamento",{"Ocorrencia_Eventual"}),
 				    Subtracao = Table.AddColumn(#"Removed Columns", "Total_Horas_Fluxo", each [Data_Hora_Saida_Setor] - [Data_Hora_Entrada_Setor], type duration),
 				    #"Calculated Total Hours" = Table.TransformColumns(Subtracao,{{"Total_Horas_Fluxo", Duration.TotalHours, type number}}),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Calculated Total Hours",{{"ID_Setor", Int64.Type}}),
-				    #"Inserted Subtraction" = Table.AddColumn(#"Changed Type1", "Dias_Excessivos", each [Tempo_Real_Dias] - [Tempo_Padrao_Dias], type number)
+				    #"Inserted Subtraction" = Table.AddColumn(#"Calculated Total Hours", "Dias_Excessivos", each [Tempo_Real_Dias] - [Tempo_Padrao_Dias], type number),
+				    #"Added Conditional Column" = Table.AddColumn(#"Inserted Subtraction", "Dias_Excesso_Producao", each if [Dias_Excessivos] < 0 then 0 else [Dias_Excessivos]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Conditional Column",{{"ID_Setor", Int64.Type}, {"Dias_Excesso_Producao", type number}})
 				in
-				    #"Inserted Subtraction"
+				    #"Changed Type1"
 
 	annotation PBI_NavigationStepName = Navigation
 

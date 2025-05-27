@@ -1,0 +1,9 @@
+EVALUATE
+FILTER(
+	SUMMARIZE(
+		fFluxoProcesso,
+		fFluxoProcesso[ID_Pedido],
+		fFluxoProcesso[Data_Entrada_Setor]
+	)
+	,fFluxoProcesso[Data_Entrada_Setor] <= DATE(2024,03,01)
+    )

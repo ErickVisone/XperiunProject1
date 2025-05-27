@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "4756a190f38c7545c5be",
+  "position": {
+    "x": 107.94258373205741,
+    "y": 552.34449760765551,
+    "z": 0,
+    "height": 527.08133971291863,
+    "width": 488.03827751196172
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dSetores"
+                    }
+                  },
+                  "Property": "Nome_Setor"
+                }
+              },
+              "queryRef": "dSetores.Nome_Setor",
+              "nativeQueryRef": "Nome_Setor",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "Dias Excedentes"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Dias Excedentes",
+              "nativeQueryRef": "Dias Excedentes"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fFluxoProcesso"
+                  }
+                },
+                "Property": "Dias Excedentes"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
