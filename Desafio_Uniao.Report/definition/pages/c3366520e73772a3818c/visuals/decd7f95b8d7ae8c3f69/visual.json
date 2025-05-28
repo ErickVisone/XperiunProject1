@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "decd7f95b8d7ae8c3f69",
+  "position": {
+    "x": 1266.4092664092664,
+    "y": 60.54054054054054,
+    "z": 8000,
+    "height": 80.308880308880319,
+    "width": 254.51737451737452
+  },
+  "visual": {
+    "visualType": "card",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "__% De processos com algum incidente"
+                }
+              },
+              "queryRef": "fFluxoProcesso.__% De processos com algum incidente",
+              "nativeQueryRef": "__% De processos com algum incidente"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fFluxoProcesso"
+                  }
+                },
+                "Property": "__% De processos com algum incidente"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "543c748c51dbfd378a3e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "__% De processos com algum incidente"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

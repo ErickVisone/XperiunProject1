@@ -36,7 +36,7 @@
                       "Entity": "fFluxoProcesso"
                     }
                   },
-                  "Property": "Ocorrencia de retrabalho"
+                  "Property": "__Processos com Retrabalho"
                 }
               },
               "queryRef": "fFluxoProcesso.Ocorrencia de retrabalho",

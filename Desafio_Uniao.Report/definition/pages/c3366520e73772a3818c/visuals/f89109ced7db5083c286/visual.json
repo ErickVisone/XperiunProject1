@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "f89109ced7db5083c286",
+  "position": {
+    "x": 1050.1930501930503,
+    "y": 59.305019305019307,
+    "z": 7000,
+    "height": 81.544401544401552,
+    "width": 216.21621621621622
+  },
+  "visual": {
+    "visualType": "card",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "__Processos com Algum Incidente"
+                }
+              },
+              "queryRef": "fFluxoProcesso.__Processos com Algum Incidente",
+              "nativeQueryRef": "__Processos com Algum Incidente"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "a429f406254a1b1f1c2b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "__Processos com Algum Incidente"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

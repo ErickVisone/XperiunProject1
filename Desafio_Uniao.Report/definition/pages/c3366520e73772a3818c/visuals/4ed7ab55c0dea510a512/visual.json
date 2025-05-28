@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
-  "name": "04f631858b40f2248c76",
+  "name": "4ed7ab55c0dea510a512",
   "position": {
-    "x": 31.720279720279716,
-    "y": 613.25874125874122,
-    "z": 2000,
-    "height": 433.51048951048949,
-    "width": 629.87412587412587
+    "x": 1012.404181184669,
+    "y": 289.89547038327527,
+    "z": 9000,
+    "height": 371.28919860627178,
+    "width": 724.7386759581882
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -28,6 +28,21 @@
               "queryRef": "dSetores.Nome_Setor",
               "nativeQueryRef": "Nome_Setor",
               "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dFuncionarios"
+                    }
+                  },
+                  "Property": "Nome"
+                }
+              },
+              "queryRef": "dFuncionarios.Nome",
+              "nativeQueryRef": "Nome",
+              "active": false
             }
           ]
         },
@@ -41,26 +56,11 @@
                       "Entity": "fFluxoProcesso"
                     }
                   },
-                  "Property": "Numero Distinto Pedidos"
-                }
-              },
-              "queryRef": "fFluxoProcesso.Numero Distinto Pedidos",
-              "nativeQueryRef": "No. Pedidos",
-              "displayName": "No. Pedidos"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fFluxoProcesso"
-                    }
-                  },
                   "Property": "__% De processos Retrabalhados"
                 }
               },
-              "queryRef": "fFluxoProcesso.% Retrabalho",
-              "nativeQueryRef": "% Retrabalho"
+              "queryRef": "fFluxoProcesso.__% De processos Retrabalhados",
+              "nativeQueryRef": "__% De processos Retrabalhados"
             }
           ]
         },
@@ -74,12 +74,11 @@
                       "Entity": "fFluxoProcesso"
                     }
                   },
-                  "Property": "Pedidos Retrabalhados"
+                  "Property": "__Processos com Retrabalho"
                 }
               },
-              "queryRef": "fFluxoProcesso.Pedidos Retrabalhados",
-              "nativeQueryRef": "Pedidos com Retrabalho",
-              "displayName": "Pedidos com Retrabalho"
+              "queryRef": "fFluxoProcesso.__Processos com Retrabalho",
+              "nativeQueryRef": "__Processos com Retrabalho"
             }
           ]
         }
@@ -94,7 +93,7 @@
                     "Entity": "fFluxoProcesso"
                   }
                 },
-                "Property": "Pedidos Retrabalhados"
+                "Property": "__Processos com Retrabalho"
               }
             },
             "direction": "Descending"
@@ -110,13 +109,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "labelPosition": {
-              "expr": {
-                "Literal": {
-                  "Value": "'OutsideEnd'"
                 }
               }
             }
@@ -146,10 +138,10 @@
                 }
               }
             },
-            "showAxisTitle": {
+            "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'No de processos com retrabalho'"
                 }
               }
             }
@@ -178,5 +170,51 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5bc1c98fdeca7467a788",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dSetores"
+              }
+            },
+            "Property": "Nome_Setor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3f2ab8c6be0a8b127dbc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "__Processos com Retrabalho"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f3e7ee2fde13265b2d14",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "__% De processos Retrabalhados"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

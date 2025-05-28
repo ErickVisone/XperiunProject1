@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "be7bee82ee021daf0b8a",
+  "position": {
+    "x": 576.988416988417,
+    "y": 60.54054054054054,
+    "z": 5000,
+    "height": 90.1930501930502,
+    "width": 227.33590733590734
+  },
+  "visual": {
+    "visualType": "card",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "__Processos com Retrabalho"
+                }
+              },
+              "queryRef": "fFluxoProcesso.Ocorrencia de retrabalho",
+              "nativeQueryRef": "__Processos com Retrabalho"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "62c4d40e859e1a59cdab",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "__Processos com Retrabalho"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

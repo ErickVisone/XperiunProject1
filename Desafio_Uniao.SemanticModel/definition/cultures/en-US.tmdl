@@ -11314,7 +11314,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "fFluxoProcesso",
-			          "ConceptualProperty": "% Retrabalho"
+			          "ConceptualProperty": "__% De processos Retrabalhados"
 			        }
 			      },
 			      "State": "Generated",
@@ -11350,29 +11350,13 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "fFluxoProcesso",
-			          "ConceptualProperty": "Ocorrencia de retrabalho"
+			          "ConceptualProperty": "__Processos com Retrabalho"
 			        }
 			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
 			          "ocorrencia de retrabalho": {
-			            "State": "Generated"
-			          }
-			        }
-			      ]
-			    },
-			    "f_fluxo_processo.setor_atual": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "fFluxoProcesso",
-			          "ConceptualProperty": "Setor Atual"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "setor atual": {
 			            "State": "Generated"
 			          }
 			        }

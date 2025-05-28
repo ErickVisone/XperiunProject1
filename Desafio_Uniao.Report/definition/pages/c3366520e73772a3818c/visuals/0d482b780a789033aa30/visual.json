@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
-  "name": "c500950a9865e789f0b9",
+  "name": "0d482b780a789033aa30",
   "position": {
-    "x": 662.06896551724128,
-    "y": 15.278514588859416,
-    "z": 3000,
-    "height": 198.62068965517241,
-    "width": 300.47745358090185
+    "x": 793.2046332046333,
+    "y": 60.54054054054054,
+    "z": 6000,
+    "height": 90.1930501930502,
+    "width": 254.51737451737452
   },
   "visual": {
     "visualType": "card",
@@ -27,12 +27,30 @@
                 }
               },
               "queryRef": "fFluxoProcesso.% Retrabalho",
-              "nativeQueryRef": "% Retrabalho"
+              "nativeQueryRef": "__% De processos Retrabalhados"
             }
           ]
         }
       }
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5bfe7c7d06bfd263fd74",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "__% De processos Retrabalhados"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

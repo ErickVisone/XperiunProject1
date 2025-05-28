@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "fcce44841cb60b3b4854",
+  "position": {
+    "x": 383.011583011583,
+    "y": 60.54054054054054,
+    "z": 4000,
+    "height": 90.1930501930502,
+    "width": 213.74517374517376
+  },
+  "visual": {
+    "visualType": "card",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "__Media de processos por Setor"
+                }
+              },
+              "queryRef": "fFluxoProcesso.__Media de processos por etapas",
+              "nativeQueryRef": "__Media de processos por Setor"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fFluxoProcesso"
+                  }
+                },
+                "Property": "__Media de processos por Setor"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "06962f9d53e2054b1d0d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "__Media de processos por Setor"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

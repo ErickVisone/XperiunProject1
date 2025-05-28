@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
-  "name": "04f631858b40f2248c76",
+  "name": "c0c0966fa0a79817d80f",
   "position": {
-    "x": 31.720279720279716,
-    "y": 613.25874125874122,
-    "z": 2000,
-    "height": 433.51048951048949,
-    "width": 629.87412587412587
+    "x": 79.1637630662021,
+    "y": 632.19512195121956,
+    "z": 9001,
+    "height": 371.28919860627178,
+    "width": 724.7386759581882
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -28,6 +28,21 @@
               "queryRef": "dSetores.Nome_Setor",
               "nativeQueryRef": "Nome_Setor",
               "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dFuncionarios"
+                    }
+                  },
+                  "Property": "Nome"
+                }
+              },
+              "queryRef": "dFuncionarios.Nome",
+              "nativeQueryRef": "Nome",
+              "active": false
             }
           ]
         },
@@ -41,26 +56,11 @@
                       "Entity": "fFluxoProcesso"
                     }
                   },
-                  "Property": "Numero Distinto Pedidos"
-                }
-              },
-              "queryRef": "fFluxoProcesso.Numero Distinto Pedidos",
-              "nativeQueryRef": "No. Pedidos",
-              "displayName": "No. Pedidos"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fFluxoProcesso"
-                    }
-                  },
                   "Property": "__% De processos Retrabalhados"
                 }
               },
-              "queryRef": "fFluxoProcesso.% Retrabalho",
-              "nativeQueryRef": "% Retrabalho"
+              "queryRef": "fFluxoProcesso.__% De processos Retrabalhados",
+              "nativeQueryRef": "__% De processos Retrabalhados"
             }
           ]
         },
@@ -74,12 +74,11 @@
                       "Entity": "fFluxoProcesso"
                     }
                   },
-                  "Property": "Pedidos Retrabalhados"
+                  "Property": "Dias Excesso"
                 }
               },
-              "queryRef": "fFluxoProcesso.Pedidos Retrabalhados",
-              "nativeQueryRef": "Pedidos com Retrabalho",
-              "displayName": "Pedidos com Retrabalho"
+              "queryRef": "fFluxoProcesso.Dias Excesso",
+              "nativeQueryRef": "Dias Excesso"
             }
           ]
         }
@@ -94,7 +93,7 @@
                     "Entity": "fFluxoProcesso"
                   }
                 },
-                "Property": "Pedidos Retrabalhados"
+                "Property": "Dias Excesso"
               }
             },
             "direction": "Descending"
@@ -110,13 +109,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "labelPosition": {
-              "expr": {
-                "Literal": {
-                  "Value": "'OutsideEnd'"
                 }
               }
             }
@@ -146,10 +138,10 @@
                 }
               }
             },
-            "showAxisTitle": {
+            "titleText": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'No de processos com retrabalho'"
                 }
               }
             }

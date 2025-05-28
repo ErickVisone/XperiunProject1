@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "f4b8126369e258eb1e59",
+  "position": {
+    "x": 44.478764478764482,
+    "y": 60.54054054054054,
+    "z": 0,
+    "height": 90.1930501930502,
+    "width": 168.03088803088804
+  },
+  "visual": {
+    "visualType": "card",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fFluxoProcesso"
+                    }
+                  },
+                  "Property": "__Numero Processos"
+                }
+              },
+              "queryRef": "fFluxoProcesso.__Numero Processos",
+              "nativeQueryRef": "__Numero Processos"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "cd94de7fa52009ff94f0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "__Numero Processos"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

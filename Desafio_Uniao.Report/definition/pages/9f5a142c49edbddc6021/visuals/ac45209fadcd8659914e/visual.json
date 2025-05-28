@@ -4,7 +4,7 @@
   "position": {
     "x": 595.98086124401914,
     "y": 667.17703349282294,
-    "z": 3,
+    "z": 2000,
     "height": 412.2488038277512,
     "width": 1324.0191387559807
   },
@@ -115,23 +115,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "fdee234949f185126495",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "dCalendario"
-              }
-            },
-            "Property": "Data"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

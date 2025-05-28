@@ -1,15 +1,15 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
-  "name": "04f631858b40f2248c76",
+  "name": "b3ce9ec812e8acc99209",
   "position": {
-    "x": 31.720279720279716,
-    "y": 613.25874125874122,
-    "z": 2000,
-    "height": 433.51048951048949,
-    "width": 629.87412587412587
+    "x": 63.554006968641119,
+    "y": 236.37630662020908,
+    "z": 1000,
+    "height": 338.95470383275261,
+    "width": 815.05226480836234
   },
   "visual": {
-    "visualType": "clusteredBarChart",
+    "visualType": "clusteredColumnChart",
     "query": {
       "queryState": {
         "Category": {
@@ -19,48 +19,15 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dSetores"
+                      "Entity": "fFluxoProcesso"
                     }
                   },
-                  "Property": "Nome_Setor"
+                  "Property": "Ocorrencia_Descricao"
                 }
               },
-              "queryRef": "dSetores.Nome_Setor",
-              "nativeQueryRef": "Nome_Setor",
+              "queryRef": "fFluxoProcesso.Ocorrencia_Descricao",
+              "nativeQueryRef": "Ocorrencia_Descricao",
               "active": true
-            }
-          ]
-        },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fFluxoProcesso"
-                    }
-                  },
-                  "Property": "Numero Distinto Pedidos"
-                }
-              },
-              "queryRef": "fFluxoProcesso.Numero Distinto Pedidos",
-              "nativeQueryRef": "No. Pedidos",
-              "displayName": "No. Pedidos"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fFluxoProcesso"
-                    }
-                  },
-                  "Property": "__% De processos Retrabalhados"
-                }
-              },
-              "queryRef": "fFluxoProcesso.% Retrabalho",
-              "nativeQueryRef": "% Retrabalho"
             }
           ]
         },
@@ -74,12 +41,11 @@
                       "Entity": "fFluxoProcesso"
                     }
                   },
-                  "Property": "Pedidos Retrabalhados"
+                  "Property": "__Numero Processos"
                 }
               },
-              "queryRef": "fFluxoProcesso.Pedidos Retrabalhados",
-              "nativeQueryRef": "Pedidos com Retrabalho",
-              "displayName": "Pedidos com Retrabalho"
+              "queryRef": "fFluxoProcesso.__Numero Processos",
+              "nativeQueryRef": "__Numero Processos"
             }
           ]
         }
@@ -94,7 +60,7 @@
                     "Entity": "fFluxoProcesso"
                   }
                 },
-                "Property": "Pedidos Retrabalhados"
+                "Property": "__Numero Processos"
               }
             },
             "direction": "Descending"
@@ -113,10 +79,31 @@
                 }
               }
             },
-            "labelPosition": {
+            "enableDetailDataLabel": {
               "expr": {
                 "Literal": {
-                  "Value": "'OutsideEnd'"
+                  "Value": "false"
+                }
+              }
+            },
+            "enableTitleDataLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelOverflow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "optimizeLabelDisplay": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -126,6 +113,13 @@
       "categoryAxis": [
         {
           "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
             "showAxisTitle": {
               "expr": {
                 "Literal": {
@@ -169,7 +163,7 @@
                       "Entity": "fFluxoProcesso"
                     }
                   },
-                  "Property": "__Label Retrabalho"
+                  "Property": "__Label Ocorrencias"
                 }
               }
             }
@@ -178,5 +172,52 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2a005830ec819fe839ca",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "Ocorrencia_Descricao"
+          }
+        },
+        "type": "Categorical",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "fad083582f9b4f1b20cd",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fFluxoProcesso"
+              }
+            },
+            "Property": "__Numero Processos"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

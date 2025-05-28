@@ -70,17 +70,17 @@ table fFluxoProcesso
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure '% Retrabalho' =
+	measure '__% De processos Retrabalhados' =
 			
 			DIVIDE(
-			    [Pedidos Retrabalhados],
-			    [Numero Distinto Pedidos],
+			    [__Processos com Retrabalho],
+			    [__Numero Processos],
 			    0
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: ebe310fd-f471-472b-8010-3cb9c5caf1cd
 
-	measure 'Ocorrencia de retrabalho' =
+	measure '__Processos com Retrabalho' =
 			
 			// Numero de ocorrencias de retrabalho
 			CALCULATE(
@@ -91,20 +91,11 @@ table fFluxoProcesso
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Setor Atual' =
-			
-			CALCULATE(
-			    MAX(fFluxoProcesso[ID_Setor])
-			)
-		lineageTag: c0615796-ef14-41a5-a1af-4f1234da69b9
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	measure '% Setores com ocorrencia' =
 			
 			DIVIDE(
-			    [Ocorrencia de retrabalho],
-			    [Setor Atual]
+			    [__Processos com Retrabalho],
+			    [Nome Setor Atual]
 			)
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: a7e2d3e0-32dd-4333-8c75-7387ad8f82c0
@@ -136,10 +127,10 @@ table fFluxoProcesso
 			// % maximo de retrabalho
 			VAR retrabalhoMaximo = 
 			CALCULATE(
-			    [% Retrabalho],
+			    [__% De processos Retrabalhados],
 			    FILTER(
 			        ALLSELECTED(dSetores),
-			        RANKX(ALLSELECTED(dSetores), [% Retrabalho]) = 1
+			        RANKX(ALLSELECTED(dSetores), [__% De processos Retrabalhados]) = 1
 			    )
 			)
 			
@@ -149,7 +140,7 @@ table fFluxoProcesso
 			    MAX(dSetores[Nome_Setor]),
 			    FILTER(
 			        ALLSELECTED(dSetores),
-			        RANKX(ALLSELECTED(dSetores), [% Retrabalho]) = 1
+			        RANKX(ALLSELECTED(dSetores), [__% De processos Retrabalhados]) = 1
 			    )
 			)
 			
@@ -265,6 +256,112 @@ table fFluxoProcesso
 			PedidosSaidos
 			```
 		lineageTag: 0bcb617b-5490-4080-834c-5cb0b7f3ce70
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Numero Processos' =
+			
+			CALCULATE(
+			    COUNTROWS(fFluxoProcesso)
+			)
+		lineageTag: f9774d81-025a-4a60-90aa-b9e5f679c707
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Numero de Setores' =
+			
+			CALCULATE(
+			    MAX(fFluxoProcesso[ID_Setor])
+			)
+		lineageTag: d80c8940-08eb-421c-a3a8-10715932258c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Media de processos por Setor' =
+			
+			DIVIDE(
+			    [__Numero Processos],
+			    [__Numero de Setores],
+			    0
+			)
+		lineageTag: b4ebcdfe-e5eb-4c46-97d3-1f4456bbb8a6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Processos com Algum Incidente' =
+			
+			// Numero de ocorrencias de retrabalho
+			CALCULATE(
+			    COUNTROWS(fFluxoProcesso),
+			    fFluxoProcesso[Ocorrencia_Descricao] <> "Normal"
+			)
+		lineageTag: 61c57cfc-01b5-47dc-a63c-b7c887ed3318
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__% De processos com algum incidente' =
+			
+			DIVIDE(
+			    [__Processos com Algum Incidente],
+			    [__Numero Processos],
+			    0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c1b15076-1a49-4633-91a6-232369195ca6
+
+	measure '__Label Ocorrencias' = ```
+			
+			
+			// % maximo de retrabalho
+			VAR retrabalhoMaximo = 
+			CALCULATE(
+			    [__Processos com Algum Incidente],
+			    FILTER(
+			        ALLSELECTED(dSetores),
+			        RANKX(ALLSELECTED(dSetores), [__Processos com Algum Incidente]) = 1
+			    )
+			)
+			
+			// Nome do setor com maior retrabalho
+			VAR setorRetrabalhoMax = 
+			CALCULATE(
+			    MAX(dSetores[Nome_Setor]),
+			    FILTER(
+			        ALLSELECTED(dSetores),
+			        RANKX(ALLSELECTED(dSetores), [__% De processos Retrabalhados]) = 1
+			    )
+			)
+			
+			// Texto fina para resultado
+			VAR result = 
+			FORMAT([__% De processos com algum incidente],"0.0%") & " dos processos possuem algum tipo de incidente, sendo Retrabalho o mais relevante "
+			
+			RETURN
+			
+			result
+			
+			```
+		lineageTag: d984f2fd-9350-4d50-9a89-1f2c6185b804
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Numero Processos excluindo normal' =
+			
+			CALCULATE(
+			    COUNTROWS(fFluxoProcesso),
+			    fFluxoProcesso[Ocorrencia_Descricao] <> "Normal"
+			)
+		lineageTag: f50fc2b6-3a6c-4aba-a9e1-249cfe024ee8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '__Numero Processos em andamento' =
+			
+			CALCULATE(
+			    COUNTROWS(fFluxoProcesso),
+			    fFluxoProcesso[Status] = "Em Andamento"
+			)
+		lineageTag: 2332503c-cdc9-4b3d-8c5d-3bdf1c8b89fb
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
